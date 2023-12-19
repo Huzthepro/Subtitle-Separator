@@ -7,15 +7,9 @@ namespace Subtitle_Handler
             InitializeComponent();
         }
 
-
-        private void closeAppBtn_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
 
-        private void minAppBtn_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
         }
     }
 }
