@@ -62,10 +62,10 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.ForeColor = SystemColors.ButtonFace;
             button2.Image = Properties.Resources.save32;
-            button2.Location = new Point(63, 0);
+            button2.Location = new Point(66, 4);
             button2.Margin = new Padding(0);
             button2.Name = "button2";
-            button2.Size = new Size(32, 32);
+            button2.Size = new Size(33, 31);
             button2.TabIndex = 3;
             button2.TextAlign = ContentAlignment.MiddleLeft;
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -77,10 +77,10 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = SystemColors.ButtonFace;
             button1.Image = Properties.Resources.open_folder32;
-            button1.Location = new Point(12, 0);
+            button1.Location = new Point(12, 4);
             button1.Margin = new Padding(0);
             button1.Name = "button1";
-            button1.Size = new Size(32, 32);
+            button1.Size = new Size(33, 31);
             button1.TabIndex = 2;
             button1.TextAlign = ContentAlignment.MiddleLeft;
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
