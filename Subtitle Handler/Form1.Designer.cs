@@ -29,22 +29,33 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
+            panelMenu = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 12);
+            dataGridView1.Location = new Point(85, 36);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(776, 237);
+            dataGridView1.Size = new Size(703, 237);
             dataGridView1.TabIndex = 0;
+            // 
+            // panelMenu
+            // 
+            panelMenu.BackColor = Color.FromArgb(51, 51, 76);
+            panelMenu.Dock = DockStyle.Left;
+            panelMenu.Location = new Point(0, 0);
+            panelMenu.Name = "panelMenu";
+            panelMenu.Size = new Size(79, 450);
+            panelMenu.TabIndex = 1;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(panelMenu);
             Controls.Add(dataGridView1);
             Name = "Form1";
             Text = "Form1";
@@ -55,5 +66,6 @@
         #endregion
 
         private DataGridView dataGridView1;
+        private Panel panelMenu;
     }
 }
