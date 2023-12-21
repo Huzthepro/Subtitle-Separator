@@ -63,6 +63,56 @@ namespace Subtitle_Handler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_24 {
+            get {
+                object obj = ResourceManager.GetObject("close-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_folder_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-folder-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap max_24 {
+            get {
+                object obj = ResourceManager.GetObject("max-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap min_24 {
+            get {
+                object obj = ResourceManager.GetObject("min-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_files_32 {
+            get {
+                object obj = ResourceManager.GetObject("open-files-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap open_folder {
             get {
                 object obj = ResourceManager.GetObject("open_folder", resourceCulture);
@@ -96,6 +146,16 @@ namespace Subtitle_Handler.Properties {
         internal static System.Drawing.Bitmap opened_folder_24 {
             get {
                 object obj = ResourceManager.GetObject("opened-folder-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_32 {
+            get {
+                object obj = ResourceManager.GetObject("save-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

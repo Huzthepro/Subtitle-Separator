@@ -30,8 +30,11 @@
         {
             dataGridView = new DataGridView();
             panelMenu = new Panel();
-            button2 = new Button();
-            button1 = new Button();
+            saveBtn = new Button();
+            openFileBtn = new Button();
+            closeWindowBtn = new Button();
+            maxBtn = new Button();
+            minBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             panelMenu.SuspendLayout();
             SuspendLayout();
@@ -48,8 +51,11 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.Transparent;
-            panelMenu.Controls.Add(button2);
-            panelMenu.Controls.Add(button1);
+            panelMenu.Controls.Add(minBtn);
+            panelMenu.Controls.Add(maxBtn);
+            panelMenu.Controls.Add(closeWindowBtn);
+            panelMenu.Controls.Add(saveBtn);
+            panelMenu.Controls.Add(openFileBtn);
             panelMenu.Dock = DockStyle.Top;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
@@ -57,35 +63,78 @@
             panelMenu.TabIndex = 1;
             panelMenu.MouseDown += panelMenu_MouseDown;
             // 
-            // button2
+            // saveBtn
             // 
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = SystemColors.ButtonFace;
-            button2.Image = Properties.Resources.save32;
-            button2.Location = new Point(66, 4);
-            button2.Margin = new Padding(0);
-            button2.Name = "button2";
-            button2.Size = new Size(33, 31);
-            button2.TabIndex = 3;
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = true;
+            saveBtn.FlatAppearance.BorderSize = 0;
+            saveBtn.FlatStyle = FlatStyle.Flat;
+            saveBtn.ForeColor = SystemColors.ButtonFace;
+            saveBtn.Image = Properties.Resources.save_32;
+            saveBtn.Location = new Point(66, 4);
+            saveBtn.Margin = new Padding(0);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(33, 33);
+            saveBtn.TabIndex = 3;
+            saveBtn.TextAlign = ContentAlignment.MiddleLeft;
+            saveBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            saveBtn.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // openFileBtn
             // 
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = SystemColors.ButtonFace;
-            button1.Image = Properties.Resources.open_folder32;
-            button1.Location = new Point(12, 4);
-            button1.Margin = new Padding(0);
-            button1.Name = "button1";
-            button1.Size = new Size(33, 31);
-            button1.TabIndex = 2;
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
+            openFileBtn.FlatAppearance.BorderSize = 0;
+            openFileBtn.FlatStyle = FlatStyle.Flat;
+            openFileBtn.ForeColor = SystemColors.ButtonFace;
+            openFileBtn.Image = Properties.Resources.open_files_32;
+            openFileBtn.Location = new Point(12, 3);
+            openFileBtn.Margin = new Padding(0);
+            openFileBtn.Name = "openFileBtn";
+            openFileBtn.Size = new Size(33, 33);
+            openFileBtn.TabIndex = 2;
+            openFileBtn.UseVisualStyleBackColor = true;
+            // 
+            // closeWindowBtn
+            // 
+            closeWindowBtn.FlatAppearance.BorderSize = 0;
+            closeWindowBtn.FlatStyle = FlatStyle.Flat;
+            closeWindowBtn.ForeColor = SystemColors.ButtonFace;
+            closeWindowBtn.Image = Properties.Resources.close_24;
+            closeWindowBtn.Location = new Point(768, 4);
+            closeWindowBtn.Margin = new Padding(0);
+            closeWindowBtn.Name = "closeWindowBtn";
+            closeWindowBtn.Size = new Size(19, 20);
+            closeWindowBtn.TabIndex = 4;
+            closeWindowBtn.TextAlign = ContentAlignment.MiddleLeft;
+            closeWindowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            closeWindowBtn.UseVisualStyleBackColor = true;
+            // 
+            // maxBtn
+            // 
+            maxBtn.FlatAppearance.BorderSize = 0;
+            maxBtn.FlatStyle = FlatStyle.Flat;
+            maxBtn.ForeColor = SystemColors.ButtonFace;
+            maxBtn.Image = Properties.Resources.max_24;
+            maxBtn.Location = new Point(746, 4);
+            maxBtn.Margin = new Padding(0);
+            maxBtn.Name = "maxBtn";
+            maxBtn.Size = new Size(19, 20);
+            maxBtn.TabIndex = 5;
+            maxBtn.TextAlign = ContentAlignment.MiddleLeft;
+            maxBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            maxBtn.UseVisualStyleBackColor = true;
+            // 
+            // minBtn
+            // 
+            minBtn.FlatAppearance.BorderSize = 0;
+            minBtn.FlatStyle = FlatStyle.Flat;
+            minBtn.ForeColor = SystemColors.ButtonFace;
+            minBtn.Image = Properties.Resources.min_24;
+            minBtn.Location = new Point(724, 4);
+            minBtn.Margin = new Padding(0);
+            minBtn.Name = "minBtn";
+            minBtn.Size = new Size(19, 20);
+            minBtn.TabIndex = 6;
+            minBtn.TextAlign = ContentAlignment.MiddleLeft;
+            minBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            minBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -105,7 +154,10 @@
 
         private DataGridView dataGridView;
         private Panel panelMenu;
-        private Button button1;
-        private Button button2;
+        private Button openFileBtn;
+        private Button saveBtn;
+        private Button minBtn;
+        private Button maxBtn;
+        private Button closeWindowBtn;
     }
 }
