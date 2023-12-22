@@ -49,7 +49,7 @@
             maxBtn = new Button();
             minBtn = new Button();
             panelMenu = new Panel();
-            confirmBtn = new Button();
+            updateBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             panelMenu.SuspendLayout();
             SuspendLayout();
@@ -362,22 +362,22 @@
             panelMenu.TabIndex = 1;
             panelMenu.MouseDown += panelMenu_MouseDown;
             // 
-            // confirmBtn
+            // updateBtn
             // 
-            confirmBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            confirmBtn.Location = new Point(226, 376);
-            confirmBtn.Name = "confirmBtn";
-            confirmBtn.Size = new Size(75, 23);
-            confirmBtn.TabIndex = 20;
-            confirmBtn.Text = "Confirm";
-            confirmBtn.UseVisualStyleBackColor = true;
+            updateBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            updateBtn.Location = new Point(226, 376);
+            updateBtn.Name = "updateBtn";
+            updateBtn.Size = new Size(75, 23);
+            updateBtn.TabIndex = 20;
+            updateBtn.Text = "Update";
+            updateBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(558, 411);
-            Controls.Add(confirmBtn);
+            Controls.Add(updateBtn);
             Controls.Add(pinkBtn);
             Controls.Add(purpleBtn);
             Controls.Add(orangeBtn);
@@ -423,6 +423,6 @@
         private Button maxBtn;
         private Button minBtn;
         private Panel panelMenu;
-        private Button confirmBtn;
+        private Button updateBtn;
     }
 }
