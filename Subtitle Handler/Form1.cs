@@ -8,7 +8,7 @@ namespace Subtitle_Handler
 {
     public partial class Form1 : Form
     {
-        public List<Subtitle> SubtitleList = new List<Subtitle>();
+        public List<Subtitle> SubtitleList = [];
         public Form1()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   Fill DataGridView  v v v   ///////////////////////////////////////////////////////
         public void FillDatas()
         {
-            SubtitleList = SubtitleList.OrderBy(o => o.SubTimeText).ToList();
+            SubtitleList = [.. SubtitleList.OrderBy(o => o.SubTimeText)];
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("No", typeof(int));
             dataTable.Columns.Add("Time", typeof(string));
