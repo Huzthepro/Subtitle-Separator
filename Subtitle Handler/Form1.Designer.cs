@@ -264,6 +264,7 @@
             openFileBtn.Size = new Size(33, 33);
             openFileBtn.TabIndex = 2;
             openFileBtn.UseVisualStyleBackColor = true;
+            openFileBtn.Click += openFileBtn_Click;
             // 
             // saveBtn
             // 
