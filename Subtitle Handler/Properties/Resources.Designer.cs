@@ -73,6 +73,26 @@ namespace Subtitle_Handler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap blue_man {
+            get {
+                object obj = ResourceManager.GetObject("blue man", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap brown_woman {
+            get {
+                object obj = ResourceManager.GetObject("brown woman", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_24 {
             get {
                 object obj = ResourceManager.GetObject("close-24", resourceCulture);
@@ -86,6 +106,16 @@ namespace Subtitle_Handler.Properties {
         internal static System.Drawing.Bitmap dlt_row_24 {
             get {
                 object obj = ResourceManager.GetObject("dlt-row-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap green_man {
+            get {
+                object obj = ResourceManager.GetObject("green man", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,6 +163,36 @@ namespace Subtitle_Handler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap orange_woman {
+            get {
+                object obj = ResourceManager.GetObject("orange woman", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap purple_woman {
+            get {
+                object obj = ResourceManager.GetObject("purple woman", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap red_woman {
+            get {
+                object obj = ResourceManager.GetObject("red woman", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap save_32 {
             get {
                 object obj = ResourceManager.GetObject("save-32", resourceCulture);
@@ -156,6 +216,16 @@ namespace Subtitle_Handler.Properties {
         internal static System.Drawing.Bitmap sync {
             get {
                 object obj = ResourceManager.GetObject("sync", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yellow_man {
+            get {
+                object obj = ResourceManager.GetObject("yellow man", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

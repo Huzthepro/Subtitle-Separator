@@ -118,26 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dlt-row-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dlt-row-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sync" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="add-row-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add-row-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="open-files-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\open-files-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="close-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="green man" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\green man.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="max-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\max-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="min-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\min-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="save-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -147,5 +132,41 @@
   </data>
   <data name="light blue man" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\light blue man.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dlt-row-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dlt-row-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="add-row-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add-row-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blue man" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blue man.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="brown woman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\brown woman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="open-files-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open-files-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sync" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yellow man" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yellow man.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="orange woman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\orange woman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="min-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\min-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="close-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="red woman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\red woman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="purple woman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\purple woman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

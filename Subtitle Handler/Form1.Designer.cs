@@ -41,7 +41,14 @@
             contentTextBox = new RichTextBox();
             addRowBtn = new Button();
             dltRowBtn = new Button();
+            lightBlueBtn = new Button();
             button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
+            button7 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             panelMenu.SuspendLayout();
             SuspendLayout();
@@ -234,29 +241,139 @@
             dltRowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
             dltRowBtn.UseVisualStyleBackColor = true;
             // 
+            // lightBlueBtn
+            // 
+            lightBlueBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lightBlueBtn.FlatAppearance.BorderSize = 0;
+            lightBlueBtn.FlatStyle = FlatStyle.Flat;
+            lightBlueBtn.ForeColor = SystemColors.ButtonFace;
+            lightBlueBtn.Image = Properties.Resources.light_blue_man;
+            lightBlueBtn.Location = new Point(233, 317);
+            lightBlueBtn.Margin = new Padding(0);
+            lightBlueBtn.Name = "lightBlueBtn";
+            lightBlueBtn.Size = new Size(29, 29);
+            lightBlueBtn.TabIndex = 12;
+            lightBlueBtn.TextAlign = ContentAlignment.TopLeft;
+            lightBlueBtn.UseVisualStyleBackColor = true;
+            // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = SystemColors.ButtonFace;
-            button1.Image = Properties.Resources.light_blue_man;
-            button1.ImageAlign = ContentAlignment.BottomRight;
-            button1.Location = new Point(255, 288);
+            button1.Image = Properties.Resources.blue_man;
+            button1.Location = new Point(233, 288);
             button1.Margin = new Padding(0);
             button1.Name = "button1";
-            button1.Size = new Size(32, 31);
-            button1.TabIndex = 12;
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.Size = new Size(29, 29);
+            button1.TabIndex = 13;
+            button1.TextAlign = ContentAlignment.TopLeft;
             button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.ForeColor = SystemColors.ButtonFace;
+            button2.Image = Properties.Resources.green_man;
+            button2.Location = new Point(233, 346);
+            button2.Margin = new Padding(0);
+            button2.Name = "button2";
+            button2.Size = new Size(29, 29);
+            button2.TabIndex = 14;
+            button2.TextAlign = ContentAlignment.TopLeft;
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.ForeColor = SystemColors.ButtonFace;
+            button3.Image = Properties.Resources.yellow_man;
+            button3.Location = new Point(233, 375);
+            button3.Margin = new Padding(0);
+            button3.Name = "button3";
+            button3.Size = new Size(29, 29);
+            button3.TabIndex = 15;
+            button3.TextAlign = ContentAlignment.TopLeft;
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.ForeColor = SystemColors.ButtonFace;
+            button4.Image = Properties.Resources.brown_woman;
+            button4.Location = new Point(272, 346);
+            button4.Margin = new Padding(0);
+            button4.Name = "button4";
+            button4.Size = new Size(29, 29);
+            button4.TabIndex = 16;
+            button4.TextAlign = ContentAlignment.TopLeft;
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.ForeColor = SystemColors.ButtonFace;
+            button5.Image = Properties.Resources.orange_woman;
+            button5.Location = new Point(272, 375);
+            button5.Margin = new Padding(0);
+            button5.Name = "button5";
+            button5.Size = new Size(29, 29);
+            button5.TabIndex = 17;
+            button5.TextAlign = ContentAlignment.TopLeft;
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.ForeColor = SystemColors.ButtonFace;
+            button6.Image = Properties.Resources.purple_woman;
+            button6.Location = new Point(272, 288);
+            button6.Margin = new Padding(0);
+            button6.Name = "button6";
+            button6.Size = new Size(29, 29);
+            button6.TabIndex = 18;
+            button6.TextAlign = ContentAlignment.TopLeft;
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.ForeColor = SystemColors.ButtonFace;
+            button7.Image = Properties.Resources.red_woman;
+            button7.Location = new Point(272, 317);
+            button7.Margin = new Padding(0);
+            button7.Name = "button7";
+            button7.Size = new Size(29, 29);
+            button7.TabIndex = 19;
+            button7.TextAlign = ContentAlignment.TopLeft;
+            button7.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(562, 411);
+            Controls.Add(button7);
+            Controls.Add(button6);
+            Controls.Add(button5);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(button1);
+            Controls.Add(lightBlueBtn);
             Controls.Add(dltRowBtn);
             Controls.Add(addRowBtn);
             Controls.Add(contentTextBox);
@@ -286,6 +403,13 @@
         private RichTextBox contentTextBox;
         private Button addRowBtn;
         private Button dltRowBtn;
+        private Button lightBlueBtn;
         private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private Button button5;
+        private Button button6;
+        private Button button7;
     }
 }
