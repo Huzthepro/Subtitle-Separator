@@ -20,15 +20,33 @@ namespace Subtitle_Handler
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void panelMenu_MouseDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();   
+            ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void closeWindowBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void maxBtn_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Maximized;
+            }
+            else if (WindowState == FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void minBtn_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

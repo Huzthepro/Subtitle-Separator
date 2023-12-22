@@ -30,11 +30,11 @@
         {
             dataGridView = new DataGridView();
             panelMenu = new Panel();
+            minBtn = new Button();
+            maxBtn = new Button();
+            closeWindowBtn = new Button();
             saveBtn = new Button();
             openFileBtn = new Button();
-            closeWindowBtn = new Button();
-            maxBtn = new Button();
-            minBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             panelMenu.SuspendLayout();
             SuspendLayout();
@@ -63,6 +63,54 @@
             panelMenu.TabIndex = 1;
             panelMenu.MouseDown += panelMenu_MouseDown;
             // 
+            // minBtn
+            // 
+            minBtn.FlatAppearance.BorderSize = 0;
+            minBtn.FlatStyle = FlatStyle.Flat;
+            minBtn.ForeColor = SystemColors.ButtonFace;
+            minBtn.Image = Properties.Resources.min_24;
+            minBtn.Location = new Point(724, 4);
+            minBtn.Margin = new Padding(0);
+            minBtn.Name = "minBtn";
+            minBtn.Size = new Size(19, 20);
+            minBtn.TabIndex = 6;
+            minBtn.TextAlign = ContentAlignment.MiddleLeft;
+            minBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            minBtn.UseVisualStyleBackColor = true;
+            minBtn.Click += minBtn_Click;
+            // 
+            // maxBtn
+            // 
+            maxBtn.FlatAppearance.BorderSize = 0;
+            maxBtn.FlatStyle = FlatStyle.Flat;
+            maxBtn.ForeColor = SystemColors.ButtonFace;
+            maxBtn.Image = Properties.Resources.max_24;
+            maxBtn.Location = new Point(746, 4);
+            maxBtn.Margin = new Padding(0);
+            maxBtn.Name = "maxBtn";
+            maxBtn.Size = new Size(19, 20);
+            maxBtn.TabIndex = 5;
+            maxBtn.TextAlign = ContentAlignment.MiddleLeft;
+            maxBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            maxBtn.UseVisualStyleBackColor = true;
+            maxBtn.Click += maxBtn_Click;
+            // 
+            // closeWindowBtn
+            // 
+            closeWindowBtn.FlatAppearance.BorderSize = 0;
+            closeWindowBtn.FlatStyle = FlatStyle.Flat;
+            closeWindowBtn.ForeColor = SystemColors.ButtonFace;
+            closeWindowBtn.Image = Properties.Resources.close_24;
+            closeWindowBtn.Location = new Point(768, 4);
+            closeWindowBtn.Margin = new Padding(0);
+            closeWindowBtn.Name = "closeWindowBtn";
+            closeWindowBtn.Size = new Size(19, 20);
+            closeWindowBtn.TabIndex = 4;
+            closeWindowBtn.TextAlign = ContentAlignment.MiddleLeft;
+            closeWindowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            closeWindowBtn.UseVisualStyleBackColor = true;
+            closeWindowBtn.Click += closeWindowBtn_Click;
+            // 
             // saveBtn
             // 
             saveBtn.FlatAppearance.BorderSize = 0;
@@ -90,51 +138,6 @@
             openFileBtn.Size = new Size(33, 33);
             openFileBtn.TabIndex = 2;
             openFileBtn.UseVisualStyleBackColor = true;
-            // 
-            // closeWindowBtn
-            // 
-            closeWindowBtn.FlatAppearance.BorderSize = 0;
-            closeWindowBtn.FlatStyle = FlatStyle.Flat;
-            closeWindowBtn.ForeColor = SystemColors.ButtonFace;
-            closeWindowBtn.Image = Properties.Resources.close_24;
-            closeWindowBtn.Location = new Point(768, 4);
-            closeWindowBtn.Margin = new Padding(0);
-            closeWindowBtn.Name = "closeWindowBtn";
-            closeWindowBtn.Size = new Size(19, 20);
-            closeWindowBtn.TabIndex = 4;
-            closeWindowBtn.TextAlign = ContentAlignment.MiddleLeft;
-            closeWindowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            closeWindowBtn.UseVisualStyleBackColor = true;
-            // 
-            // maxBtn
-            // 
-            maxBtn.FlatAppearance.BorderSize = 0;
-            maxBtn.FlatStyle = FlatStyle.Flat;
-            maxBtn.ForeColor = SystemColors.ButtonFace;
-            maxBtn.Image = Properties.Resources.max_24;
-            maxBtn.Location = new Point(746, 4);
-            maxBtn.Margin = new Padding(0);
-            maxBtn.Name = "maxBtn";
-            maxBtn.Size = new Size(19, 20);
-            maxBtn.TabIndex = 5;
-            maxBtn.TextAlign = ContentAlignment.MiddleLeft;
-            maxBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            maxBtn.UseVisualStyleBackColor = true;
-            // 
-            // minBtn
-            // 
-            minBtn.FlatAppearance.BorderSize = 0;
-            minBtn.FlatStyle = FlatStyle.Flat;
-            minBtn.ForeColor = SystemColors.ButtonFace;
-            minBtn.Image = Properties.Resources.min_24;
-            minBtn.Location = new Point(724, 4);
-            minBtn.Margin = new Padding(0);
-            minBtn.Name = "minBtn";
-            minBtn.Size = new Size(19, 20);
-            minBtn.TabIndex = 6;
-            minBtn.TextAlign = ContentAlignment.MiddleLeft;
-            minBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            minBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
