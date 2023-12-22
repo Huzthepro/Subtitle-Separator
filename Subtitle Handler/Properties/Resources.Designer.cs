@@ -63,9 +63,39 @@ namespace Subtitle_Handler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_row_24 {
+            get {
+                object obj = ResourceManager.GetObject("add-row-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_24 {
             get {
                 object obj = ResourceManager.GetObject("close-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dlt_row_24 {
+            get {
+                object obj = ResourceManager.GetObject("dlt-row-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap light_blue_man {
+            get {
+                object obj = ResourceManager.GetObject("light blue man", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

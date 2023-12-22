@@ -33,12 +33,15 @@
             minBtn = new Button();
             maxBtn = new Button();
             closeWindowBtn = new Button();
+            syncBtn = new Button();
             saveBtn = new Button();
             openFileBtn = new Button();
             timeTextBox = new RichTextBox();
             extractBtn = new Button();
-            syncBtn = new Button();
             contentTextBox = new RichTextBox();
+            addRowBtn = new Button();
+            dltRowBtn = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             panelMenu.SuspendLayout();
             SuspendLayout();
@@ -58,12 +61,13 @@
             panelMenu.Controls.Add(minBtn);
             panelMenu.Controls.Add(maxBtn);
             panelMenu.Controls.Add(closeWindowBtn);
+            panelMenu.Controls.Add(syncBtn);
             panelMenu.Controls.Add(saveBtn);
             panelMenu.Controls.Add(openFileBtn);
             panelMenu.Dock = DockStyle.Top;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(565, 39);
+            panelMenu.Size = new Size(562, 39);
             panelMenu.TabIndex = 1;
             panelMenu.MouseDown += panelMenu_MouseDown;
             // 
@@ -74,7 +78,7 @@
             minBtn.FlatStyle = FlatStyle.Flat;
             minBtn.ForeColor = SystemColors.ButtonFace;
             minBtn.Image = Properties.Resources.min_24;
-            minBtn.Location = new Point(487, 4);
+            minBtn.Location = new Point(484, 4);
             minBtn.Margin = new Padding(0);
             minBtn.Name = "minBtn";
             minBtn.Size = new Size(19, 20);
@@ -91,7 +95,7 @@
             maxBtn.FlatStyle = FlatStyle.Flat;
             maxBtn.ForeColor = SystemColors.ButtonFace;
             maxBtn.Image = Properties.Resources.max_24;
-            maxBtn.Location = new Point(509, 4);
+            maxBtn.Location = new Point(506, 4);
             maxBtn.Margin = new Padding(0);
             maxBtn.Name = "maxBtn";
             maxBtn.Size = new Size(19, 20);
@@ -108,7 +112,7 @@
             closeWindowBtn.FlatStyle = FlatStyle.Flat;
             closeWindowBtn.ForeColor = SystemColors.ButtonFace;
             closeWindowBtn.Image = Properties.Resources.close_24;
-            closeWindowBtn.Location = new Point(531, 4);
+            closeWindowBtn.Location = new Point(528, 4);
             closeWindowBtn.Margin = new Padding(0);
             closeWindowBtn.Name = "closeWindowBtn";
             closeWindowBtn.Size = new Size(19, 20);
@@ -116,6 +120,22 @@
             closeWindowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
             closeWindowBtn.UseVisualStyleBackColor = true;
             closeWindowBtn.Click += closeWindowBtn_Click;
+            // 
+            // syncBtn
+            // 
+            syncBtn.FlatAppearance.BorderSize = 0;
+            syncBtn.FlatStyle = FlatStyle.Flat;
+            syncBtn.ForeColor = SystemColors.ActiveCaptionText;
+            syncBtn.Image = Properties.Resources.sync;
+            syncBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            syncBtn.Location = new Point(138, 3);
+            syncBtn.Margin = new Padding(0);
+            syncBtn.Name = "syncBtn";
+            syncBtn.Size = new Size(74, 33);
+            syncBtn.TabIndex = 8;
+            syncBtn.Text = "Sync";
+            syncBtn.TextAlign = ContentAlignment.MiddleRight;
+            syncBtn.UseVisualStyleBackColor = true;
             // 
             // saveBtn
             // 
@@ -147,6 +167,7 @@
             // 
             // timeTextBox
             // 
+            timeTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             timeTextBox.Location = new Point(12, 288);
             timeTextBox.Name = "timeTextBox";
             timeTextBox.Size = new Size(145, 29);
@@ -155,49 +176,90 @@
             // 
             // extractBtn
             // 
+            extractBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             extractBtn.FlatAppearance.BorderSize = 0;
             extractBtn.FlatStyle = FlatStyle.Flat;
-            extractBtn.ForeColor = SystemColors.ButtonFace;
+            extractBtn.ForeColor = SystemColors.ActiveCaptionText;
             extractBtn.Image = Properties.Resources.separate;
-            extractBtn.Location = new Point(520, 369);
+            extractBtn.ImageAlign = ContentAlignment.TopCenter;
+            extractBtn.Location = new Point(506, 357);
             extractBtn.Margin = new Padding(0);
             extractBtn.Name = "extractBtn";
-            extractBtn.Size = new Size(33, 33);
+            extractBtn.Size = new Size(56, 55);
             extractBtn.TabIndex = 7;
-            extractBtn.TextAlign = ContentAlignment.MiddleLeft;
-            extractBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            extractBtn.Text = "Extract";
+            extractBtn.TextAlign = ContentAlignment.BottomCenter;
             extractBtn.UseVisualStyleBackColor = true;
-            // 
-            // syncBtn
-            // 
-            syncBtn.FlatAppearance.BorderSize = 0;
-            syncBtn.FlatStyle = FlatStyle.Flat;
-            syncBtn.ForeColor = SystemColors.ButtonFace;
-            syncBtn.Image = Properties.Resources.sync;
-            syncBtn.Location = new Point(520, 324);
-            syncBtn.Margin = new Padding(0);
-            syncBtn.Name = "syncBtn";
-            syncBtn.Size = new Size(33, 33);
-            syncBtn.TabIndex = 8;
-            syncBtn.TextAlign = ContentAlignment.MiddleLeft;
-            syncBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            syncBtn.UseVisualStyleBackColor = true;
             // 
             // contentTextBox
             // 
+            contentTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             contentTextBox.Location = new Point(12, 328);
             contentTextBox.Name = "contentTextBox";
             contentTextBox.Size = new Size(200, 71);
             contentTextBox.TabIndex = 9;
             contentTextBox.Text = "";
             // 
+            // addRowBtn
+            // 
+            addRowBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            addRowBtn.FlatAppearance.BorderSize = 0;
+            addRowBtn.FlatStyle = FlatStyle.Flat;
+            addRowBtn.ForeColor = SystemColors.ButtonFace;
+            addRowBtn.Image = Properties.Resources.add_row_24;
+            addRowBtn.ImageAlign = ContentAlignment.BottomRight;
+            addRowBtn.Location = new Point(484, 286);
+            addRowBtn.Margin = new Padding(0);
+            addRowBtn.Name = "addRowBtn";
+            addRowBtn.Size = new Size(30, 25);
+            addRowBtn.TabIndex = 10;
+            addRowBtn.TextAlign = ContentAlignment.MiddleLeft;
+            addRowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            addRowBtn.UseVisualStyleBackColor = true;
+            // 
+            // dltRowBtn
+            // 
+            dltRowBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            dltRowBtn.FlatAppearance.BorderSize = 0;
+            dltRowBtn.FlatStyle = FlatStyle.Flat;
+            dltRowBtn.ForeColor = SystemColors.ButtonFace;
+            dltRowBtn.Image = Properties.Resources.dlt_row_24;
+            dltRowBtn.ImageAlign = ContentAlignment.BottomRight;
+            dltRowBtn.Location = new Point(520, 288);
+            dltRowBtn.Margin = new Padding(0);
+            dltRowBtn.Name = "dltRowBtn";
+            dltRowBtn.Size = new Size(30, 25);
+            dltRowBtn.TabIndex = 11;
+            dltRowBtn.TextAlign = ContentAlignment.MiddleLeft;
+            dltRowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            dltRowBtn.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = SystemColors.ButtonFace;
+            button1.Image = Properties.Resources.light_blue_man;
+            button1.ImageAlign = ContentAlignment.BottomRight;
+            button1.Location = new Point(255, 288);
+            button1.Margin = new Padding(0);
+            button1.Name = "button1";
+            button1.Size = new Size(32, 31);
+            button1.TabIndex = 12;
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(562, 411);
+            Controls.Add(button1);
+            Controls.Add(dltRowBtn);
+            Controls.Add(addRowBtn);
             Controls.Add(contentTextBox);
-            Controls.Add(syncBtn);
             Controls.Add(timeTextBox);
             Controls.Add(extractBtn);
             Controls.Add(panelMenu);
@@ -222,5 +284,8 @@
         private Button extractBtn;
         private Button syncBtn;
         private RichTextBox contentTextBox;
+        private Button addRowBtn;
+        private Button dltRowBtn;
+        private Button button1;
     }
 }
