@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Data;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Subtitle_Handler
 {
@@ -37,8 +39,27 @@ namespace Subtitle_Handler
                     SubtitleList.Add(new Subtitle { DoubleLine = 0, Divergent = 0, Syncronized = false, SubColor = 10, SubNumber = Convert.ToInt32(match.Groups["sira"].Value), SubTimeText = subSureMetin, SubContent = match.Groups["metin"].Value, SubTimeStart = Convert.ToInt32(subSureStart), SubTimeEnd = Convert.ToInt32(subSureEnd) });
 
                 }
+                FillDatas();
 
             }
+        }
+
+        ///////////////////////////////////////////////////////    v v v   Fill DataGridView  v v v   ///////////////////////////////////////////////////////
+        public void FillDatas()
+        {
+            SubtitleList = SubtitleList.OrderBy(o => o.SubTimeText).ToList();
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("No", typeof(int));
+            dataTable.Columns.Add("Time", typeof(string));
+            dataTable.Columns.Add("Content", typeof(string));
+            dataTable.Columns.Add("Voice", typeof(int));
+            for (int i = 0; i < SubtitleList.Count; i++)
+            {
+                dataTable.Rows.Add(i + 1, SubtitleList[i].SubTimeText, SubtitleList[i].SubContent, SubtitleList[i].SubColor);
+
+            }
+
+            dataGridView.DataSource = dataTable;
         }
 
 
