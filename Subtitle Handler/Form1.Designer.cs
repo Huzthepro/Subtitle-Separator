@@ -65,6 +65,7 @@
             // 
             // minBtn
             // 
+            minBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             minBtn.FlatAppearance.BorderSize = 0;
             minBtn.FlatStyle = FlatStyle.Flat;
             minBtn.ForeColor = SystemColors.ButtonFace;
@@ -81,6 +82,7 @@
             // 
             // maxBtn
             // 
+            maxBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             maxBtn.FlatAppearance.BorderSize = 0;
             maxBtn.FlatStyle = FlatStyle.Flat;
             maxBtn.ForeColor = SystemColors.ButtonFace;
@@ -97,6 +99,7 @@
             // 
             // closeWindowBtn
             // 
+            closeWindowBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             closeWindowBtn.FlatAppearance.BorderSize = 0;
             closeWindowBtn.FlatStyle = FlatStyle.Flat;
             closeWindowBtn.ForeColor = SystemColors.ButtonFace;
@@ -106,7 +109,6 @@
             closeWindowBtn.Name = "closeWindowBtn";
             closeWindowBtn.Size = new Size(19, 20);
             closeWindowBtn.TabIndex = 4;
-            closeWindowBtn.TextAlign = ContentAlignment.MiddleLeft;
             closeWindowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
             closeWindowBtn.UseVisualStyleBackColor = true;
             closeWindowBtn.Click += closeWindowBtn_Click;
