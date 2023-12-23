@@ -48,7 +48,7 @@ namespace Subtitle_Handler
                     string TimeText = match.Groups["StartHour"].Value + ":" + match.Groups["StartMinute"].Value + ":" + match.Groups["StartSecond"].Value + "," + match.Groups["StartMilSecond"].Value 
                     + " --> "
                     + match.Groups["EndHour"].Value + ":" + match.Groups["EndMinute"].Value + ":" + match.Groups["EndSecond"].Value + "," + match.Groups["EndMilSecond"].Value;
-                    SubtitleList.Add(new Subtitle { DoubleLine = 0, Divergent = 0, Syncronized = false, SubColor = "M-Blue", SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = TimeText, SubContent = match.Groups["Content"].Value, SubTimeStart = Convert.ToInt32(StartTime), SubTimeEnd = Convert.ToInt32(EndTime) });
+                    SubtitleList.Add(new Subtitle { DoubleLine = 0, Divergent = 0, Syncronized = false, SubColor = "No-Color", SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = TimeText, SubContent = match.Groups["Content"].Value, SubTimeStart = Convert.ToInt32(StartTime), SubTimeEnd = Convert.ToInt32(EndTime) });
                 }
         }
 
@@ -82,11 +82,8 @@ namespace Subtitle_Handler
             for (int i = 0; i < SubtitleList.Count; i++)
             {
                 string colorString = ColorPicker(SubtitleList[i].SubColor);
-                string[] colorComponents = colorString.Split(',');
-                int red = Convert.ToInt32(colorComponents[0]);
-                int green = Convert.ToInt32(colorComponents[1]);
-                int blue = Convert.ToInt32(colorComponents[2]);
-                dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(red, green, blue);
+                int[] colorComponents = colorString.Split(',').Select(int.Parse).ToArray();
+                dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(colorComponents[0], colorComponents[1], colorComponents[2], colorComponents[3]);
 
                 if (SubtitleList[i].Divergent == 1)
                 {
@@ -105,21 +102,23 @@ namespace Subtitle_Handler
             switch (color)
             {
                 case "M-Blue":
-                    return "39,133,189";
+                    return "255,39,133,189";
                 case "M-LBlue":
-                    return "112,191,255";
+                    return "255,112,191,255";
                 case "M-Green":
-                    return "150,195,98";
+                    return "255,150,195,98";
                 case "M-Yellow":
-                    return "255,197,113";
+                    return "255,255,197,113";
                 case "F-Orange":
-                    return "249,184,79";
+                    return "255,249,184,79";
                 case "F-Brown":
-                    return "244,102,92";
+                    return "255,244,102,92";
                 case "F-Red":
-                    return "216,65,120";
+                    return "255,216,65,120";
                 case "F-Purple":
-                    return "189,123,200";
+                    return "255,189,123,200";
+                case "No-Color":
+                    return "255,252, 193, 255 ";
                 default:
                     return ""; // or handle the default case accordingly
             }
