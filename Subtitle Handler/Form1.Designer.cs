@@ -73,14 +73,14 @@
             dataGridView.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGridView.RowHeadersVisible = false;
             dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView.Size = new Size(534, 224);
+            dataGridView.Size = new Size(534, 209);
             dataGridView.TabIndex = 0;
             dataGridView.RowPostPaint += dataGridView_RowPostPaint;
             // 
             // timeTextBox
             // 
             timeTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            timeTextBox.Location = new Point(12, 288);
+            timeTextBox.Location = new Point(12, 268);
             timeTextBox.Name = "timeTextBox";
             timeTextBox.Size = new Size(145, 29);
             timeTextBox.TabIndex = 3;
@@ -106,9 +106,9 @@
             // contentTextBox
             // 
             contentTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            contentTextBox.Location = new Point(12, 328);
+            contentTextBox.Location = new Point(12, 308);
             contentTextBox.Name = "contentTextBox";
-            contentTextBox.Size = new Size(200, 71);
+            contentTextBox.Size = new Size(200, 58);
             contentTextBox.TabIndex = 9;
             contentTextBox.Text = "";
             // 
@@ -120,7 +120,7 @@
             addRowBtn.ForeColor = SystemColors.ButtonFace;
             addRowBtn.Image = Properties.Resources.add_row_24;
             addRowBtn.ImageAlign = ContentAlignment.BottomRight;
-            addRowBtn.Location = new Point(480, 291);
+            addRowBtn.Location = new Point(480, 265);
             addRowBtn.Margin = new Padding(0);
             addRowBtn.Name = "addRowBtn";
             addRowBtn.Size = new Size(30, 25);
@@ -137,7 +137,7 @@
             dltRowBtn.ForeColor = SystemColors.ButtonFace;
             dltRowBtn.Image = Properties.Resources.dlt_row_24;
             dltRowBtn.ImageAlign = ContentAlignment.BottomRight;
-            dltRowBtn.Location = new Point(516, 293);
+            dltRowBtn.Location = new Point(516, 267);
             dltRowBtn.Margin = new Padding(0);
             dltRowBtn.Name = "dltRowBtn";
             dltRowBtn.Size = new Size(30, 25);
@@ -153,7 +153,7 @@
             lightBlueBtn.FlatStyle = FlatStyle.Flat;
             lightBlueBtn.ForeColor = SystemColors.ButtonFace;
             lightBlueBtn.Image = Properties.Resources.light_blue_man;
-            lightBlueBtn.Location = new Point(255, 312);
+            lightBlueBtn.Location = new Point(254, 308);
             lightBlueBtn.Margin = new Padding(0);
             lightBlueBtn.Name = "lightBlueBtn";
             lightBlueBtn.Size = new Size(29, 29);
@@ -168,7 +168,7 @@
             blueBtn.FlatStyle = FlatStyle.Flat;
             blueBtn.ForeColor = SystemColors.ButtonFace;
             blueBtn.Image = Properties.Resources.blue_man;
-            blueBtn.Location = new Point(226, 312);
+            blueBtn.Location = new Point(225, 308);
             blueBtn.Margin = new Padding(0);
             blueBtn.Name = "blueBtn";
             blueBtn.Size = new Size(29, 29);
@@ -183,7 +183,7 @@
             greenBtn.FlatStyle = FlatStyle.Flat;
             greenBtn.ForeColor = SystemColors.ButtonFace;
             greenBtn.Image = Properties.Resources.green_man;
-            greenBtn.Location = new Point(284, 312);
+            greenBtn.Location = new Point(283, 308);
             greenBtn.Margin = new Padding(0);
             greenBtn.Name = "greenBtn";
             greenBtn.Size = new Size(29, 29);
@@ -198,7 +198,7 @@
             yellowBtn.FlatStyle = FlatStyle.Flat;
             yellowBtn.ForeColor = SystemColors.ButtonFace;
             yellowBtn.Image = Properties.Resources.yellow_man;
-            yellowBtn.Location = new Point(313, 312);
+            yellowBtn.Location = new Point(312, 308);
             yellowBtn.Margin = new Padding(0);
             yellowBtn.Name = "yellowBtn";
             yellowBtn.Size = new Size(29, 29);
@@ -213,7 +213,7 @@
             brownBtn.FlatStyle = FlatStyle.Flat;
             brownBtn.ForeColor = SystemColors.ButtonFace;
             brownBtn.Image = Properties.Resources.brown_woman;
-            brownBtn.Location = new Point(284, 341);
+            brownBtn.Location = new Point(283, 337);
             brownBtn.Margin = new Padding(0);
             brownBtn.Name = "brownBtn";
             brownBtn.Size = new Size(29, 29);
@@ -228,7 +228,7 @@
             orangeBtn.FlatStyle = FlatStyle.Flat;
             orangeBtn.ForeColor = SystemColors.ButtonFace;
             orangeBtn.Image = Properties.Resources.orange_woman;
-            orangeBtn.Location = new Point(313, 341);
+            orangeBtn.Location = new Point(312, 337);
             orangeBtn.Margin = new Padding(0);
             orangeBtn.Name = "orangeBtn";
             orangeBtn.Size = new Size(29, 29);
@@ -243,7 +243,7 @@
             purpleBtn.FlatStyle = FlatStyle.Flat;
             purpleBtn.ForeColor = SystemColors.ButtonFace;
             purpleBtn.Image = Properties.Resources.purple_woman;
-            purpleBtn.Location = new Point(226, 341);
+            purpleBtn.Location = new Point(225, 337);
             purpleBtn.Margin = new Padding(0);
             purpleBtn.Name = "purpleBtn";
             purpleBtn.Size = new Size(29, 29);
@@ -258,7 +258,7 @@
             pinkBtn.FlatStyle = FlatStyle.Flat;
             pinkBtn.ForeColor = SystemColors.ButtonFace;
             pinkBtn.Image = Properties.Resources.red_woman;
-            pinkBtn.Location = new Point(255, 341);
+            pinkBtn.Location = new Point(254, 337);
             pinkBtn.Margin = new Padding(0);
             pinkBtn.Name = "pinkBtn";
             pinkBtn.Size = new Size(29, 29);
@@ -380,7 +380,7 @@
             // updateBtn
             // 
             updateBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            updateBtn.Location = new Point(226, 376);
+            updateBtn.Location = new Point(137, 377);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(75, 23);
             updateBtn.TabIndex = 20;
