@@ -56,10 +56,23 @@ namespace Subtitle_Handler
             for (int i = 0; i < SubtitleList.Count; i++)
             {
                 dataTable.Rows.Add(i + 1, SubtitleList[i].SubTimeText, SubtitleList[i].SubContent, SubtitleList[i].SubColor);
-
             }
 
             dataGridView.DataSource = dataTable;
+
+            for (int i = 0; i < SubtitleList.Count; i++)
+            {
+                dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 193, 193);
+
+                if (SubtitleList[i].Divergent == 1)
+                {
+                    dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
+                }
+                if (SubtitleList[i].Divergent == 2)
+                {
+                    dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Blue;
+                }
+            }
         }
 
 
@@ -102,8 +115,38 @@ namespace Subtitle_Handler
             this.WindowState = FormWindowState.Minimized;
         }
 
-       
+        ///////////////////////////////////////////////////////    v v v   DataGridView Design  v v v   ///////////////////////////////////////////////////////
+
+        private void dataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            if (dataGridView.Rows[e.RowIndex].Selected)
+            {
+                using (Pen pen = new Pen(Color.Black))
+                {
+                    var row = dataGridView.Rows[e.RowIndex];
+                    var bgColor = row.DefaultCellStyle.BackColor;
+                    var fontColor = row.DefaultCellStyle.ForeColor;
+                    row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(bgColor.R * 5 / 6, bgColor.G * 5 / 6, bgColor.B * 5 / 6);
+                    row.DefaultCellStyle.SelectionForeColor = Color.FromArgb(fontColor.R * 5 / 6, fontColor.G * 5 / 6, fontColor.B * 5 / 6);
+
+                    //IF YOU WANT TO DRAW A BORDER AROUND THE SELECTED ROW
+                    //int penWidth = 4;
+                    //pen.Width = penWidth;
+
+                    //int x = e.RowBounds.Left + (penWidth / 2);
+                    //int y = e.RowBounds.Top + (penWidth / 2)-2;
+                    //int width = e.RowBounds.Width - penWidth;
+                    //int height = e.RowBounds.Height - penWidth+3;
+                    //e.Graphics.DrawRectangle(pen, x, y, width, height);
+
+
+                }
+            }
+        }
+
+        //End of the class
     }
+
     //Incoming Subtitle Class
     public class Subtitle
     {

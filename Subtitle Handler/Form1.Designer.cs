@@ -56,12 +56,25 @@
             // 
             // dataGridView
             // 
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.AllowUserToResizeRows = false;
             dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.BackgroundColor = Color.Thistle;
+            dataGridView.BorderStyle = BorderStyle.Fixed3D;
+            dataGridView.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.GridColor = Color.IndianRed;
             dataGridView.Location = new Point(12, 49);
             dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
+            dataGridView.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView.Size = new Size(534, 224);
             dataGridView.TabIndex = 0;
+            dataGridView.RowPostPaint += dataGridView_RowPostPaint;
             // 
             // timeTextBox
             // 
