@@ -65,6 +65,7 @@
             dataGridView.BorderStyle = BorderStyle.Fixed3D;
             dataGridView.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.ColumnHeadersVisible = false;
             dataGridView.GridColor = Color.IndianRed;
             dataGridView.Location = new Point(12, 49);
             dataGridView.Name = "dataGridView";
