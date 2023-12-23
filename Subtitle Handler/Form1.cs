@@ -118,7 +118,7 @@ namespace Subtitle_Handler
                 case "F-Purple":
                     return "255,189,123,200";
                 case "No-Color":
-                    return "255,252, 193, 255 ";
+                    return "255,216, 191, 216 ";
                 default:
                     return ""; // or handle the default case accordingly
             }
