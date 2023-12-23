@@ -140,26 +140,24 @@ namespace Subtitle_Handler
         {
             if (dataGridView.Rows[e.RowIndex].Selected)
             {
-                using (Pen pen = new Pen(Color.Black))
-                {
-                    var row = dataGridView.Rows[e.RowIndex];
-                    var bgColor = row.DefaultCellStyle.BackColor;
-                    var fontColor = row.DefaultCellStyle.ForeColor;
-                    row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(bgColor.R * 5 / 6, bgColor.G * 5 / 6, bgColor.B * 5 / 6);
-                    row.DefaultCellStyle.SelectionForeColor = Color.FromArgb(fontColor.R * 5 / 6, fontColor.G * 5 / 6, fontColor.B * 5 / 6);
+                using Pen pen = new(Color.Black);
+                var row = dataGridView.Rows[e.RowIndex];
+                var bgColor = row.DefaultCellStyle.BackColor;
+                var fontColor = row.DefaultCellStyle.ForeColor;
+                row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(bgColor.R * 5 / 6, bgColor.G * 5 / 6, bgColor.B * 5 / 6);
+                row.DefaultCellStyle.SelectionForeColor = Color.FromArgb(fontColor.R * 5 / 6, fontColor.G * 5 / 6, fontColor.B * 5 / 6);
 
-                    //IF YOU WANT TO DRAW A BORDER AROUND THE SELECTED ROW
-                    //int penWidth = 4;
-                    //pen.Width = penWidth;
+                //IF YOU WANT TO DRAW A BORDER AROUND THE SELECTED ROW
+                //int penWidth = 4;
+                //pen.Width = penWidth;
 
-                    //int x = e.RowBounds.Left + (penWidth / 2);
-                    //int y = e.RowBounds.Top + (penWidth / 2)-2;
-                    //int width = e.RowBounds.Width - penWidth;
-                    //int height = e.RowBounds.Height - penWidth+3;
-                    //e.Graphics.DrawRectangle(pen, x, y, width, height);
+                //int x = e.RowBounds.Left + (penWidth / 2);
+                //int y = e.RowBounds.Top + (penWidth / 2)-2;
+                //int width = e.RowBounds.Width - penWidth;
+                //int height = e.RowBounds.Height - penWidth+3;
+                //e.Graphics.DrawRectangle(pen, x, y, width, height);
 
 
-                }
             }
         }
 
