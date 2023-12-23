@@ -29,36 +29,51 @@ namespace Subtitle_Handler
             {
                 SubtitleList.Clear();
                 string input = File.ReadAllText(ofd.FileName);
-                string pattern = @"(?<sira>\d+)[\r\n]((?<sure1>\d+):(?<sure2>\d+):(?<sure3>\d+),(?<sure4>\d+) --> (?<sure5>\d+):(?<sure6>\d+):(?<sure7>\d+),(?<sure8>\d+))[\r\n](?<metin>(.+\r?\n)+(?=(\r?\n)?))";
-                MatchCollection matches = Regex.Matches(input, pattern);
-                foreach (Match match in matches)
-                {
-                    string subSureStart = match.Groups["sure1"].Value + match.Groups["sure2"].Value + match.Groups["sure3"].Value + match.Groups["sure4"].Value;
-                    string subSureEnd = match.Groups["sure5"].Value + match.Groups["sure6"].Value + match.Groups["sure7"].Value + match.Groups["sure8"].Value;
-                    string subSureMetin = match.Groups["sure1"].Value + ":" + match.Groups["sure2"].Value + ":" + match.Groups["sure3"].Value + "," + match.Groups["sure4"].Value + " --> " + match.Groups["sure5"].Value + ":" + match.Groups["sure6"].Value + ":" + match.Groups["sure7"].Value + "," + match.Groups["sure8"].Value;
-                    SubtitleList.Add(new Subtitle { DoubleLine = 0, Divergent = 0, Syncronized = false, SubColor = 10, SubNumber = Convert.ToInt32(match.Groups["sira"].Value), SubTimeText = subSureMetin, SubContent = match.Groups["metin"].Value, SubTimeStart = Convert.ToInt32(subSureStart), SubTimeEnd = Convert.ToInt32(subSureEnd) });
-
-                }
-                FillDatas();
-
+                FillSubtitleList(input);
+                FillDataGridView();
             }
         }
 
+        ///////////////////////////////////////////////////////    v v v   Fill SubtitleList With Regex  v v v   ///////////////////////////////////////////////////////
+        private void FillSubtitleList(string input)
+        {
+                string pattern = @"(?<No>\d+)[\r\n]((?<StartTimeHour>\d+):(?<sure2>\d+):(?<sure3>\d+),(?<sure4>\d+) --> (?<sure5>\d+):(?<sure6>\d+):(?<sure7>\d+),(?<sure8>\d+))[\r\n](?<metin>(.+\r?\n)+(?=(\r?\n)?))";
+                MatchCollection matches = Regex.Matches(input, pattern);
+                foreach (Match match in matches)
+                {
+                    string subSureStart = match.Groups["StartTimeHour"].Value + match.Groups["sure2"].Value + match.Groups["sure3"].Value + match.Groups["sure4"].Value;
+                    string subSureEnd = match.Groups["sure5"].Value + match.Groups["sure6"].Value + match.Groups["sure7"].Value + match.Groups["sure8"].Value;
+                    string subSureMetin = match.Groups["StartTimeHour"].Value + ":" + match.Groups["sure2"].Value + ":" + match.Groups["sure3"].Value + "," + match.Groups["sure4"].Value + " --> " + match.Groups["sure5"].Value + ":" + match.Groups["sure6"].Value + ":" + match.Groups["sure7"].Value + "," + match.Groups["sure8"].Value;
+                    SubtitleList.Add(new Subtitle { DoubleLine = 0, Divergent = 0, Syncronized = false, SubColor = "M1", SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = subSureMetin, SubContent = match.Groups["metin"].Value, SubTimeStart = Convert.ToInt32(subSureStart), SubTimeEnd = Convert.ToInt32(subSureEnd) });
+                }
+        }
+
         ///////////////////////////////////////////////////////    v v v   Fill DataGridView  v v v   ///////////////////////////////////////////////////////
-        public void FillDatas()
+        public void FillDataGridView()
         {
             SubtitleList = [.. SubtitleList.OrderBy(o => o.SubTimeText)];
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("No", typeof(int));
             dataTable.Columns.Add("Time", typeof(string));
             dataTable.Columns.Add("Content", typeof(string));
-            dataTable.Columns.Add("Voice", typeof(int));
+           
             for (int i = 0; i < SubtitleList.Count; i++)
             {
-                dataTable.Rows.Add(i + 1, SubtitleList[i].SubTimeText, SubtitleList[i].SubContent, SubtitleList[i].SubColor);
+                dataTable.Rows.Add(i + 1, SubtitleList[i].SubTimeText,  SubtitleList[i].SubContent);
             }
 
             dataGridView.DataSource = dataTable;
+            DesignDataGridView();
+        }
+
+        ///////////////////////////////////////////////////////    v v v   Design DataGridView  v v v   ///////////////////////////////////////////////////////
+        public void DesignDataGridView()
+        {  
+            // Set the width for each column
+            dataGridView.Columns["No"].Width = 35;
+            dataGridView.Columns["No"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView.Columns["Time"].Width = 60;
+            dataGridView.Columns["Content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // Third column 40px
 
             for (int i = 0; i < SubtitleList.Count; i++)
             {
@@ -155,7 +170,7 @@ namespace Subtitle_Handler
         public double SubTimeStart;
         public double SubTimeEnd;
         public string? SubContent;
-        public int SubColor;
+        public string? SubColor;
         //Sync
         public bool Syncronized;
         public int Divergent;
