@@ -56,7 +56,7 @@ namespace Subtitle_Handler
         public void FillDataGridView()
         {
             SubtitleList = [.. SubtitleList.OrderBy(o => o.SubTimeText)];
-            DataTable dataTable = new DataTable();
+            DataTable dataTable = new();
             dataTable.Columns.Add("No", typeof(int));
             dataTable.Columns.Add("Time", typeof(string));
             dataTable.Columns.Add("Content", typeof(string));
