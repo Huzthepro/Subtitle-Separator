@@ -23,8 +23,10 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   Open Files  v v v   ///////////////////////////////////////////////////////
         private void openFileBtn_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "srt Files (*.srt)|*.srt|txt Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            OpenFileDialog ofd = new()
+            {
+                Filter = "srt Files (*.srt)|*.srt|txt Files (*.txt)|*.txt|All Files (*.*)|*.*"
+            };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 SubtitleList.Clear();
@@ -37,14 +39,16 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   Fill SubtitleList With Regex  v v v   ///////////////////////////////////////////////////////
         private void FillSubtitleList(string input)
         {
-                string pattern = @"(?<No>\d+)[\r\n]((?<StartTimeHour>\d+):(?<sure2>\d+):(?<sure3>\d+),(?<sure4>\d+) --> (?<sure5>\d+):(?<sure6>\d+):(?<sure7>\d+),(?<sure8>\d+))[\r\n](?<metin>(.+\r?\n)+(?=(\r?\n)?))";
+                string pattern = @"(?<No>\d+)[\r\n]((?<StartHour>\d+):(?<StartMinute>\d+):(?<StartSecond>\d+),(?<StartMilSecond>\d+) --> (?<EndHour>\d+):(?<EndMinute>\d+):(?<EndSecond>\d+),(?<EndMilSecond>\d+))[\r\n](?<Content>(.+\r?\n)+(?=(\r?\n)?))";
                 MatchCollection matches = Regex.Matches(input, pattern);
-                foreach (Match match in matches)
+            foreach (Match match in matches.Cast<Match>())
                 {
-                    string subSureStart = match.Groups["StartTimeHour"].Value + match.Groups["sure2"].Value + match.Groups["sure3"].Value + match.Groups["sure4"].Value;
-                    string subSureEnd = match.Groups["sure5"].Value + match.Groups["sure6"].Value + match.Groups["sure7"].Value + match.Groups["sure8"].Value;
-                    string subSureMetin = match.Groups["StartTimeHour"].Value + ":" + match.Groups["sure2"].Value + ":" + match.Groups["sure3"].Value + "," + match.Groups["sure4"].Value + " --> " + match.Groups["sure5"].Value + ":" + match.Groups["sure6"].Value + ":" + match.Groups["sure7"].Value + "," + match.Groups["sure8"].Value;
-                    SubtitleList.Add(new Subtitle { DoubleLine = 0, Divergent = 0, Syncronized = false, SubColor = "M1", SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = subSureMetin, SubContent = match.Groups["metin"].Value, SubTimeStart = Convert.ToInt32(subSureStart), SubTimeEnd = Convert.ToInt32(subSureEnd) });
+                    string StartTime = match.Groups["StartHour"].Value + match.Groups["StartMinute"].Value + match.Groups["StartSecond"].Value + match.Groups["StartMilSecond"].Value;
+                    string EndTime = match.Groups["EndHour"].Value + match.Groups["EndMinute"].Value + match.Groups["EndSecond"].Value + match.Groups["EndMilSecond"].Value;
+                    string TimeText = match.Groups["StartHour"].Value + ":" + match.Groups["StartMinute"].Value + ":" + match.Groups["StartSecond"].Value + "," + match.Groups["StartMilSecond"].Value 
+                    + " --> "
+                    + match.Groups["EndHour"].Value + ":" + match.Groups["EndMinute"].Value + ":" + match.Groups["EndSecond"].Value + "," + match.Groups["EndMilSecond"].Value;
+                    SubtitleList.Add(new Subtitle { DoubleLine = 0, Divergent = 0, Syncronized = false, SubColor = "M1", SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = TimeText, SubContent = match.Groups["Content"].Value, SubTimeStart = Convert.ToInt32(StartTime), SubTimeEnd = Convert.ToInt32(EndTime) });
                 }
         }
 
