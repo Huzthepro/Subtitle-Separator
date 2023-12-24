@@ -81,9 +81,10 @@
             // timeTextBox
             // 
             timeTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            timeTextBox.Location = new Point(12, 268);
+            timeTextBox.BorderStyle = BorderStyle.None;
+            timeTextBox.Location = new Point(52, 315);
             timeTextBox.Name = "timeTextBox";
-            timeTextBox.Size = new Size(160, 24);
+            timeTextBox.Size = new Size(160, 22);
             timeTextBox.TabIndex = 3;
             timeTextBox.Text = "";
             // 
@@ -107,9 +108,9 @@
             // contentTextBox
             // 
             contentTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            contentTextBox.Location = new Point(12, 308);
+            contentTextBox.Location = new Point(108, 269);
             contentTextBox.Name = "contentTextBox";
-            contentTextBox.Size = new Size(200, 58);
+            contentTextBox.Size = new Size(325, 36);
             contentTextBox.TabIndex = 9;
             contentTextBox.Text = "";
             // 
