@@ -48,22 +48,25 @@ namespace Subtitle_Handler
                     string TimeText = match.Groups["StartHour"].Value + ":" + match.Groups["StartMinute"].Value + ":" + match.Groups["StartSecond"].Value + "," + match.Groups["StartMilSecond"].Value 
                     + " --> "
                     + match.Groups["EndHour"].Value + ":" + match.Groups["EndMinute"].Value + ":" + match.Groups["EndSecond"].Value + "," + match.Groups["EndMilSecond"].Value;
-                    SubtitleList.Add(new Subtitle { DoubleLine = 0, Divergent = 0, Syncronized = false, SubColor = "No-Color", SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = TimeText, SubContent = match.Groups["Content"].Value, SubTimeStart = Convert.ToInt32(StartTime), SubTimeEnd = Convert.ToInt32(EndTime) });
+                    SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = TimeText, SubTimeStart = Convert.ToInt32(StartTime), SubTimeEnd = Convert.ToInt32(EndTime), SubContent = match.Groups["Content"].Value, SubColor = "No-Color"});
                 }
         }
 
         ///////////////////////////////////////////////////////    v v v   Fill DataGridView  v v v   ///////////////////////////////////////////////////////
         public void FillDataGridView()
         {
-            SubtitleList = [.. SubtitleList.OrderBy(o => o.SubTimeText)];
+            
             DataTable dataTable = new();
             dataTable.Columns.Add("No", typeof(int));
             dataTable.Columns.Add("Time", typeof(string));
             dataTable.Columns.Add("Content", typeof(string));
-           
+
+            //Only thing matter for sorting is the time
+            SubtitleList = [.. SubtitleList.OrderBy(o => o.SubTimeText)];
             for (int i = 0; i < SubtitleList.Count; i++)
             {
-                dataTable.Rows.Add(i + 1, SubtitleList[i].SubTimeText,  SubtitleList[i].SubContent);
+                SubtitleList[i].SubNumber = i + 1;
+                dataTable.Rows.Add(SubtitleList[i].SubNumber, SubtitleList[i].SubTimeText,  SubtitleList[i].SubContent);
             }
 
             dataGridView.DataSource = dataTable;
@@ -85,11 +88,11 @@ namespace Subtitle_Handler
                 int[] colorComponents = colorString.Split(',').Select(int.Parse).ToArray();
                 dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(colorComponents[0], colorComponents[1], colorComponents[2], colorComponents[3]);
 
-                if (SubtitleList[i].Divergent == 1)
+                if (SubtitleList[i].SubColor == "Divergent")
                 {
                     dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
                 }
-                if (SubtitleList[i].Divergent == 2)
+                if (SubtitleList[i].SubColor == "Double")
                 {
                     dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Blue;
                 }
@@ -119,6 +122,8 @@ namespace Subtitle_Handler
                     return "255,189,123,200";
                 case "No-Color":
                     return "255,216, 191, 216 ";
+                case "Sync":
+                    return "255,216, 191, 200 ";
                 default:
                     return ""; // or handle the default case accordingly
             }
@@ -203,10 +208,6 @@ namespace Subtitle_Handler
         public double SubTimeEnd;
         public string? SubContent;
         public string? SubColor;
-        //Sync
-        public bool Syncronized;
-        public int Divergent;
-        public int DoubleLine;
     }
 }
 
