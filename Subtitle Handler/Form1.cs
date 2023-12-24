@@ -130,8 +130,9 @@ namespace Subtitle_Handler
         }
 
         ///////////////////////////////////////////////////////    v v v   TextBox to DataGridView  v v v   ///////////////////////////////////////////////////////
-        public void TextBoxToSubtitleList(int rowNumber, string color)
+        public void TextBoxToSubtitleList(int rowNumber, string? color)
         {
+            if(color != null) SubtitleList[rowNumber].SubColor = color;
             SubtitleList[rowNumber].SubContent = contentTextBox.Text;
             SubtitleList[rowNumber].SubTimeText = timeTextBox.Text;
 
@@ -164,7 +165,7 @@ namespace Subtitle_Handler
         }
 
         ///////////////////////////////////////////////////////    v v v   Color Picker  v v v   ///////////////////////////////////////////////////////
-        public string ColorPicker(string color)
+        public string ColorPicker(string? color)
         {
             switch (color)
             {
@@ -193,8 +194,11 @@ namespace Subtitle_Handler
             }
         }
 
+
+
+        ///////////////////////////////////////////////////////                                          ///////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////    v v v   Window Functionality  v v v   ///////////////////////////////////////////////////////
-        ///
+        ///////////////////////////////////////////////////////                                          ///////////////////////////////////////////////////////
         /////Since control box is gone theese are for dragging the window
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
