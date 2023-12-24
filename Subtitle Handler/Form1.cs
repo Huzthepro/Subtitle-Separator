@@ -118,21 +118,29 @@ namespace Subtitle_Handler
         }
 
 
-        ///////////////////////////////////////////////////////    v v v   Update Button  v v v   ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////    v v v   Update Buttons  v v v   ///////////////////////////////////////////////////////
         private void updateBtn_Click(object sender, EventArgs e)
         {
+            UpdateList(null);
+        }
+
+        private void blueBtn_Click(object sender, EventArgs e)
+        {
+            UpdateList("M-Blue");
+        }
+        ///////////////////////////////////////////////////////    v v v   Updater  v v v   ///////////////////////////////////////////////////////
+        public void UpdateList(string? color)
+        {
             int rowNumber = dataGridView.SelectedRows[0].Index;
-            
-            TextBoxToSubtitleList(rowNumber, null);
+            TextBoxToSubtitleList(rowNumber, color);
             FillDataGridView();
             NextLine(rowNumber);
-
         }
 
         ///////////////////////////////////////////////////////    v v v   TextBox to DataGridView  v v v   ///////////////////////////////////////////////////////
         public void TextBoxToSubtitleList(int rowNumber, string? color)
         {
-            if(color != null) SubtitleList[rowNumber].SubColor = color;
+            if (color != null) SubtitleList[rowNumber].SubColor = color;
             SubtitleList[rowNumber].SubContent = contentTextBox.Text;
             SubtitleList[rowNumber].SubTimeText = timeTextBox.Text;
 
@@ -260,7 +268,9 @@ namespace Subtitle_Handler
             }
         }
 
-        
+       
+
+
 
 
         //End of the class

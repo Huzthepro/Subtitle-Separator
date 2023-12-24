@@ -177,6 +177,7 @@
             blueBtn.TabIndex = 13;
             blueBtn.TextAlign = ContentAlignment.TopLeft;
             blueBtn.UseVisualStyleBackColor = true;
+            blueBtn.Click += blueBtn_Click;
             // 
             // greenBtn
             // 
