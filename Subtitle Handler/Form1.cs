@@ -36,7 +36,7 @@ namespace Subtitle_Handler
             }
         }
 
-        ///////////////////////////////////////////////////////    v v v   Fill SubtitleList With Regex  v v v   ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////    v v v   .SRT to SubtitleList With Regex  v v v   ///////////////////////////////////////////////////////
         private void FillSubtitleList(string input)
         {
             string pattern = @"(?<No>\d+)[\r\n]((?<StartHour>\d+):(?<StartMinute>\d+):(?<StartSecond>\d+),(?<StartMilSecond>\d+) --> (?<EndHour>\d+):(?<EndMinute>\d+):(?<EndSecond>\d+),(?<EndMilSecond>\d+))[\r\n](?<Content>(.+\r?\n)+(?=(\r?\n)?))";
@@ -115,6 +115,38 @@ namespace Subtitle_Handler
                 timeTextBox.Text = row.Cells["Time"].Value.ToString();
                 contentTextBox.Text = row.Cells["Content"].Value.ToString();
             }
+        }
+
+
+        ///////////////////////////////////////////////////////    v v v   Update Button  v v v   ///////////////////////////////////////////////////////
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+
+            int rowNumber = dataGridView.SelectedRows[0].Index;
+            SubtitleList[rowNumber].SubContent = contentTextBox.Text;
+            SubtitleList[rowNumber].SubTimeText = timeTextBox.Text;
+
+            //LISTEDEKI ROW SAYILARINI TEXBOXTAKI METINDEN ALIP  GUNCELLEME
+            string input = timeTextBox.Text;
+            string pattern = @"(?<sure1>\d+):(?<sure2>\d+):(?<sure3>\d+),(?<sure4>\d+) --> (?<sure5>\d+):(?<sure6>\d+):(?<sure7>\d+),(?<sure8>\d+)";
+            MatchCollection matches = Regex.Matches(input, pattern);
+            foreach (Match match in matches)
+            {
+                string subSureStart = match.Groups["sure1"].Value + match.Groups["sure2"].Value + match.Groups["sure3"].Value + match.Groups["sure4"].Value;
+                string subSureEnd = match.Groups["sure5"].Value + match.Groups["sure6"].Value + match.Groups["sure7"].Value + match.Groups["sure8"].Value;
+                SubtitleList[rowNumber].SubTimeStart = Convert.ToInt32(subSureStart);
+                SubtitleList[rowNumber].SubTimeEnd = Convert.ToInt32(subSureEnd);
+            }
+
+            FillDataGridView();
+            dataGridView.Rows[rowNumber].Selected = false;
+            dataGridView.Rows[0].Selected = false;
+            if (rowNumber < dataGridView.Rows.Count - 1)
+            {   //Bir sonraki rowu secme, ardindan rowu ortalama
+                dataGridView.Rows[++rowNumber].Selected = true;
+                if (rowNumber > 6) { dataGridView.FirstDisplayedScrollingRowIndex = (dataGridView.SelectedRows[0].Index) - 5; }
+            }
+
         }
 
 
@@ -212,6 +244,8 @@ namespace Subtitle_Handler
 
             }
         }
+
+        
 
 
         //End of the class

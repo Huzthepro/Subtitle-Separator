@@ -82,9 +82,9 @@
             // 
             timeTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             timeTextBox.BorderStyle = BorderStyle.None;
-            timeTextBox.Location = new Point(52, 315);
+            timeTextBox.Location = new Point(13, 269);
             timeTextBox.Name = "timeTextBox";
-            timeTextBox.Size = new Size(160, 22);
+            timeTextBox.Size = new Size(89, 50);
             timeTextBox.TabIndex = 3;
             timeTextBox.Text = "";
             // 
@@ -110,7 +110,7 @@
             contentTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             contentTextBox.Location = new Point(108, 269);
             contentTextBox.Name = "contentTextBox";
-            contentTextBox.Size = new Size(325, 36);
+            contentTextBox.Size = new Size(325, 50);
             contentTextBox.TabIndex = 9;
             contentTextBox.Text = "";
             // 
@@ -155,7 +155,7 @@
             lightBlueBtn.FlatStyle = FlatStyle.Flat;
             lightBlueBtn.ForeColor = SystemColors.ButtonFace;
             lightBlueBtn.Image = Properties.Resources.light_blue_man;
-            lightBlueBtn.Location = new Point(254, 308);
+            lightBlueBtn.Location = new Point(254, 325);
             lightBlueBtn.Margin = new Padding(0);
             lightBlueBtn.Name = "lightBlueBtn";
             lightBlueBtn.Size = new Size(29, 29);
@@ -170,7 +170,7 @@
             blueBtn.FlatStyle = FlatStyle.Flat;
             blueBtn.ForeColor = SystemColors.ButtonFace;
             blueBtn.Image = Properties.Resources.blue_man;
-            blueBtn.Location = new Point(225, 308);
+            blueBtn.Location = new Point(225, 325);
             blueBtn.Margin = new Padding(0);
             blueBtn.Name = "blueBtn";
             blueBtn.Size = new Size(29, 29);
@@ -185,7 +185,7 @@
             greenBtn.FlatStyle = FlatStyle.Flat;
             greenBtn.ForeColor = SystemColors.ButtonFace;
             greenBtn.Image = Properties.Resources.green_man;
-            greenBtn.Location = new Point(283, 308);
+            greenBtn.Location = new Point(283, 325);
             greenBtn.Margin = new Padding(0);
             greenBtn.Name = "greenBtn";
             greenBtn.Size = new Size(29, 29);
@@ -200,7 +200,7 @@
             yellowBtn.FlatStyle = FlatStyle.Flat;
             yellowBtn.ForeColor = SystemColors.ButtonFace;
             yellowBtn.Image = Properties.Resources.yellow_man;
-            yellowBtn.Location = new Point(312, 308);
+            yellowBtn.Location = new Point(312, 325);
             yellowBtn.Margin = new Padding(0);
             yellowBtn.Name = "yellowBtn";
             yellowBtn.Size = new Size(29, 29);
@@ -215,7 +215,7 @@
             brownBtn.FlatStyle = FlatStyle.Flat;
             brownBtn.ForeColor = SystemColors.ButtonFace;
             brownBtn.Image = Properties.Resources.brown_woman;
-            brownBtn.Location = new Point(283, 337);
+            brownBtn.Location = new Point(283, 354);
             brownBtn.Margin = new Padding(0);
             brownBtn.Name = "brownBtn";
             brownBtn.Size = new Size(29, 29);
@@ -230,7 +230,7 @@
             orangeBtn.FlatStyle = FlatStyle.Flat;
             orangeBtn.ForeColor = SystemColors.ButtonFace;
             orangeBtn.Image = Properties.Resources.orange_woman;
-            orangeBtn.Location = new Point(312, 337);
+            orangeBtn.Location = new Point(312, 354);
             orangeBtn.Margin = new Padding(0);
             orangeBtn.Name = "orangeBtn";
             orangeBtn.Size = new Size(29, 29);
@@ -245,7 +245,7 @@
             purpleBtn.FlatStyle = FlatStyle.Flat;
             purpleBtn.ForeColor = SystemColors.ButtonFace;
             purpleBtn.Image = Properties.Resources.purple_woman;
-            purpleBtn.Location = new Point(225, 337);
+            purpleBtn.Location = new Point(225, 354);
             purpleBtn.Margin = new Padding(0);
             purpleBtn.Name = "purpleBtn";
             purpleBtn.Size = new Size(29, 29);
@@ -260,7 +260,7 @@
             pinkBtn.FlatStyle = FlatStyle.Flat;
             pinkBtn.ForeColor = SystemColors.ButtonFace;
             pinkBtn.Image = Properties.Resources.red_woman;
-            pinkBtn.Location = new Point(254, 337);
+            pinkBtn.Location = new Point(254, 354);
             pinkBtn.Margin = new Padding(0);
             pinkBtn.Name = "pinkBtn";
             pinkBtn.Size = new Size(29, 29);
@@ -382,12 +382,13 @@
             // updateBtn
             // 
             updateBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            updateBtn.Location = new Point(137, 377);
+            updateBtn.Location = new Point(358, 325);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(75, 23);
             updateBtn.TabIndex = 20;
             updateBtn.Text = "Update";
             updateBtn.UseVisualStyleBackColor = true;
+            updateBtn.Click += updateBtn_Click;
             // 
             // Form1
             // 
