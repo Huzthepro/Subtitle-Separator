@@ -124,7 +124,41 @@ namespace Subtitle_Handler
 
         private void blueBtn_Click(object sender, EventArgs e)
         {
+            UpdateList(GlobalColors.MBlue);
+        }
+        private void lightBlueBtn_Click(object sender, EventArgs e)
+        {
             UpdateList(GlobalColors.MLBlue);
+        }
+
+        private void greenBtn_Click(object sender, EventArgs e)
+        {
+            UpdateList(GlobalColors.MGreen);
+        }
+
+        private void yellowBtn_Click(object sender, EventArgs e)
+        {
+            UpdateList(GlobalColors.MYellow);
+        }
+
+        private void purpleBtn_Click(object sender, EventArgs e)
+        {
+            UpdateList(GlobalColors.FPurple);
+        }
+
+        private void pinkBtn_Click(object sender, EventArgs e)
+        {
+            UpdateList(GlobalColors.FRed);
+        }
+
+        private void brownBtn_Click(object sender, EventArgs e)
+        {
+            UpdateList(GlobalColors.FBrown);
+        }
+
+        private void orangeBtn_Click(object sender, EventArgs e)
+        {
+            UpdateList(GlobalColors.FOrange);
         }
         ///////////////////////////////////////////////////////    v v v   Updater  v v v   ///////////////////////////////////////////////////////
         public void UpdateList(int[]? color)
@@ -239,6 +273,8 @@ namespace Subtitle_Handler
         }
 
        
+
+
 
 
 

@@ -162,6 +162,7 @@
             lightBlueBtn.TabIndex = 12;
             lightBlueBtn.TextAlign = ContentAlignment.TopLeft;
             lightBlueBtn.UseVisualStyleBackColor = true;
+            lightBlueBtn.Click += lightBlueBtn_Click;
             // 
             // blueBtn
             // 
@@ -193,6 +194,7 @@
             greenBtn.TabIndex = 14;
             greenBtn.TextAlign = ContentAlignment.TopLeft;
             greenBtn.UseVisualStyleBackColor = true;
+            greenBtn.Click += greenBtn_Click;
             // 
             // yellowBtn
             // 
@@ -208,6 +210,7 @@
             yellowBtn.TabIndex = 15;
             yellowBtn.TextAlign = ContentAlignment.TopLeft;
             yellowBtn.UseVisualStyleBackColor = true;
+            yellowBtn.Click += yellowBtn_Click;
             // 
             // brownBtn
             // 
@@ -223,6 +226,7 @@
             brownBtn.TabIndex = 16;
             brownBtn.TextAlign = ContentAlignment.TopLeft;
             brownBtn.UseVisualStyleBackColor = true;
+            brownBtn.Click += brownBtn_Click;
             // 
             // orangeBtn
             // 
@@ -238,6 +242,7 @@
             orangeBtn.TabIndex = 17;
             orangeBtn.TextAlign = ContentAlignment.TopLeft;
             orangeBtn.UseVisualStyleBackColor = true;
+            orangeBtn.Click += orangeBtn_Click;
             // 
             // purpleBtn
             // 
@@ -253,6 +258,7 @@
             purpleBtn.TabIndex = 18;
             purpleBtn.TextAlign = ContentAlignment.TopLeft;
             purpleBtn.UseVisualStyleBackColor = true;
+            purpleBtn.Click += purpleBtn_Click;
             // 
             // pinkBtn
             // 
@@ -268,6 +274,7 @@
             pinkBtn.TabIndex = 19;
             pinkBtn.TextAlign = ContentAlignment.TopLeft;
             pinkBtn.UseVisualStyleBackColor = true;
+            pinkBtn.Click += pinkBtn_Click;
             // 
             // openFileBtn
             // 
