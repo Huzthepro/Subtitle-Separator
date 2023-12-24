@@ -39,23 +39,23 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   Fill SubtitleList With Regex  v v v   ///////////////////////////////////////////////////////
         private void FillSubtitleList(string input)
         {
-                string pattern = @"(?<No>\d+)[\r\n]((?<StartHour>\d+):(?<StartMinute>\d+):(?<StartSecond>\d+),(?<StartMilSecond>\d+) --> (?<EndHour>\d+):(?<EndMinute>\d+):(?<EndSecond>\d+),(?<EndMilSecond>\d+))[\r\n](?<Content>(.+\r?\n)+(?=(\r?\n)?))";
-                MatchCollection matches = Regex.Matches(input, pattern);
+            string pattern = @"(?<No>\d+)[\r\n]((?<StartHour>\d+):(?<StartMinute>\d+):(?<StartSecond>\d+),(?<StartMilSecond>\d+) --> (?<EndHour>\d+):(?<EndMinute>\d+):(?<EndSecond>\d+),(?<EndMilSecond>\d+))[\r\n](?<Content>(.+\r?\n)+(?=(\r?\n)?))";
+            MatchCollection matches = Regex.Matches(input, pattern);
             foreach (Match match in matches.Cast<Match>())
-                {
-                    string StartTime = match.Groups["StartHour"].Value + match.Groups["StartMinute"].Value + match.Groups["StartSecond"].Value + match.Groups["StartMilSecond"].Value;
-                    string EndTime = match.Groups["EndHour"].Value + match.Groups["EndMinute"].Value + match.Groups["EndSecond"].Value + match.Groups["EndMilSecond"].Value;
-                    string TimeText = match.Groups["StartHour"].Value + ":" + match.Groups["StartMinute"].Value + ":" + match.Groups["StartSecond"].Value + "," + match.Groups["StartMilSecond"].Value 
-                    + " --> "
-                    + match.Groups["EndHour"].Value + ":" + match.Groups["EndMinute"].Value + ":" + match.Groups["EndSecond"].Value + "," + match.Groups["EndMilSecond"].Value;
-                    SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = TimeText, SubTimeStart = Convert.ToInt32(StartTime), SubTimeEnd = Convert.ToInt32(EndTime), SubContent = match.Groups["Content"].Value, SubColor = "No-Color"});
-                }
+            {
+                string StartTime = match.Groups["StartHour"].Value + match.Groups["StartMinute"].Value + match.Groups["StartSecond"].Value + match.Groups["StartMilSecond"].Value;
+                string EndTime = match.Groups["EndHour"].Value + match.Groups["EndMinute"].Value + match.Groups["EndSecond"].Value + match.Groups["EndMilSecond"].Value;
+                string TimeText = match.Groups["StartHour"].Value + ":" + match.Groups["StartMinute"].Value + ":" + match.Groups["StartSecond"].Value + "," + match.Groups["StartMilSecond"].Value
+                + " --> "
+                + match.Groups["EndHour"].Value + ":" + match.Groups["EndMinute"].Value + ":" + match.Groups["EndSecond"].Value + "," + match.Groups["EndMilSecond"].Value;
+                SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = TimeText, SubTimeStart = Convert.ToInt32(StartTime), SubTimeEnd = Convert.ToInt32(EndTime), SubContent = match.Groups["Content"].Value, SubColor = "No-Color" });
+            }
         }
 
         ///////////////////////////////////////////////////////    v v v   Fill DataGridView  v v v   ///////////////////////////////////////////////////////
         public void FillDataGridView()
         {
-            
+
             DataTable dataTable = new();
             dataTable.Columns.Add("No", typeof(int));
             dataTable.Columns.Add("Time", typeof(string));
@@ -66,7 +66,7 @@ namespace Subtitle_Handler
             for (int i = 0; i < SubtitleList.Count; i++)
             {
                 SubtitleList[i].SubNumber = i + 1;
-                dataTable.Rows.Add(SubtitleList[i].SubNumber, SubtitleList[i].SubTimeText,  SubtitleList[i].SubContent);
+                dataTable.Rows.Add(SubtitleList[i].SubNumber, SubtitleList[i].SubTimeText, SubtitleList[i].SubContent);
             }
 
             dataGridView.DataSource = dataTable;
@@ -75,7 +75,7 @@ namespace Subtitle_Handler
 
         ///////////////////////////////////////////////////////    v v v   Design DataGridView  v v v   ///////////////////////////////////////////////////////
         public void DesignDataGridView()
-        {  
+        {
             // Set the width for each column
             dataGridView.Columns["No"].Width = 35;
             dataGridView.Columns["No"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -98,6 +98,27 @@ namespace Subtitle_Handler
                 }
             }
         }
+
+        ///////////////////////////////////////////////////////    v v v   Row Clicked  v v v   ///////////////////////////////////////////////////////
+        private void dataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            DataGridViewCell? cell = null;
+            foreach (DataGridViewCell selectedCell in dataGridView.SelectedCells)
+            {
+                cell = selectedCell;
+                break;
+            }
+            if (cell != null)
+            {
+                DataGridViewRow row = cell.OwningRow;
+                //sayiTextBox.Text = row.Cells["sayi"].Value.ToString();
+                timeTextBox.Text = row.Cells["Time"].Value.ToString();
+                contentTextBox.Text = row.Cells["Content"].Value.ToString();
+            }
+        }
+
+
+
 
         ///////////////////////////////////////////////////////    v v v   Color Picker  v v v   ///////////////////////////////////////////////////////
         public string ColorPicker(string color)
@@ -128,10 +149,6 @@ namespace Subtitle_Handler
                     return ""; // or handle the default case accordingly
             }
         }
-
-
-
-
 
         ///////////////////////////////////////////////////////    v v v   Window Functionality  v v v   ///////////////////////////////////////////////////////
         ///
@@ -195,6 +212,7 @@ namespace Subtitle_Handler
 
             }
         }
+
 
         //End of the class
     }

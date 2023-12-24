@@ -76,13 +76,14 @@
             dataGridView.Size = new Size(534, 209);
             dataGridView.TabIndex = 0;
             dataGridView.RowPostPaint += dataGridView_RowPostPaint;
+            dataGridView.SelectionChanged += dataGridView_SelectionChanged;
             // 
             // timeTextBox
             // 
             timeTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             timeTextBox.Location = new Point(12, 268);
             timeTextBox.Name = "timeTextBox";
-            timeTextBox.Size = new Size(145, 29);
+            timeTextBox.Size = new Size(160, 24);
             timeTextBox.TabIndex = 3;
             timeTextBox.Text = "";
             // 
