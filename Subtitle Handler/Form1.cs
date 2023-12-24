@@ -130,7 +130,7 @@ namespace Subtitle_Handler
             string input = timeTextBox.Text;
             string pattern = @"(?<sure1>\d+):(?<sure2>\d+):(?<sure3>\d+),(?<sure4>\d+) --> (?<sure5>\d+):(?<sure6>\d+):(?<sure7>\d+),(?<sure8>\d+)";
             MatchCollection matches = Regex.Matches(input, pattern);
-            foreach (Match match in matches)
+            foreach (Match match in matches.Cast<Match>())
             {
                 string subSureStart = match.Groups["sure1"].Value + match.Groups["sure2"].Value + match.Groups["sure3"].Value + match.Groups["sure4"].Value;
                 string subSureEnd = match.Groups["sure5"].Value + match.Groups["sure6"].Value + match.Groups["sure7"].Value + match.Groups["sure8"].Value;
@@ -150,8 +150,9 @@ namespace Subtitle_Handler
             dataGridView.Rows[rowNumber].Selected = false;
             dataGridView.Rows[0].Selected = false;
             if (rowNumber < dataGridView.Rows.Count - 1)
-            {   //Bir sonraki rowu secme, ardindan rowu ortalama
+            {   //Choosing Next Row
                 dataGridView.Rows[++rowNumber].Selected = true;
+                //Centering the row in the middle of the screen
                 if (rowNumber > 6) { dataGridView.FirstDisplayedScrollingRowIndex = (dataGridView.SelectedRows[0].Index) - 5; }
             }
         }
