@@ -121,8 +121,17 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   Update Button  v v v   ///////////////////////////////////////////////////////
         private void updateBtn_Click(object sender, EventArgs e)
         {
-
             int rowNumber = dataGridView.SelectedRows[0].Index;
+            
+            TextBoxToSubtitleList(rowNumber, null);
+            FillDataGridView();
+            NextLine(rowNumber);
+
+        }
+
+        ///////////////////////////////////////////////////////    v v v   TextBox to DataGridView  v v v   ///////////////////////////////////////////////////////
+        public void TextBoxToSubtitleList(int rowNumber, string color)
+        {
             SubtitleList[rowNumber].SubContent = contentTextBox.Text;
             SubtitleList[rowNumber].SubTimeText = timeTextBox.Text;
 
@@ -137,11 +146,8 @@ namespace Subtitle_Handler
                 SubtitleList[rowNumber].SubTimeStart = Convert.ToInt32(subSureStart);
                 SubtitleList[rowNumber].SubTimeEnd = Convert.ToInt32(subSureEnd);
             }
-
-            FillDataGridView();
-            NextLine(rowNumber);
-
         }
+
 
 
         ///////////////////////////////////////////////////////    v v v   Next Liner  v v v   ///////////////////////////////////////////////////////
@@ -183,7 +189,7 @@ namespace Subtitle_Handler
                 case "Sync":
                     return "255,216, 191, 200 ";
                 default:
-                    return ""; // or handle the default case accordingly
+                    return "none"; // or handle the default case accordingly
             }
         }
 
