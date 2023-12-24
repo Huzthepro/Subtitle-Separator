@@ -139,6 +139,14 @@ namespace Subtitle_Handler
             }
 
             FillDataGridView();
+            NextLine(rowNumber);
+
+        }
+
+
+        ///////////////////////////////////////////////////////    v v v   Next Liner  v v v   ///////////////////////////////////////////////////////
+        public void NextLine(int rowNumber)
+        {
             dataGridView.Rows[rowNumber].Selected = false;
             dataGridView.Rows[0].Selected = false;
             if (rowNumber < dataGridView.Rows.Count - 1)
@@ -146,11 +154,7 @@ namespace Subtitle_Handler
                 dataGridView.Rows[++rowNumber].Selected = true;
                 if (rowNumber > 6) { dataGridView.FirstDisplayedScrollingRowIndex = (dataGridView.SelectedRows[0].Index) - 5; }
             }
-
         }
-
-
-
 
         ///////////////////////////////////////////////////////    v v v   Color Picker  v v v   ///////////////////////////////////////////////////////
         public string ColorPicker(string color)
