@@ -48,7 +48,7 @@ namespace Subtitle_Handler
                 string TimeText = match.Groups["StartHour"].Value + ":" + match.Groups["StartMinute"].Value + ":" + match.Groups["StartSecond"].Value + "," + match.Groups["StartMilSecond"].Value
                 + " --> "
                 + match.Groups["EndHour"].Value + ":" + match.Groups["EndMinute"].Value + ":" + match.Groups["EndSecond"].Value + "," + match.Groups["EndMilSecond"].Value;
-                SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = TimeText, SubTimeStart = Convert.ToInt32(StartTime), SubTimeEnd = Convert.ToInt32(EndTime), SubContent = match.Groups["Content"].Value, SubColor = "No-Color" });
+                SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = TimeText, SubTimeStart = Convert.ToInt32(StartTime), SubTimeEnd = Convert.ToInt32(EndTime), SubContent = match.Groups["Content"].Value, SubColor = GlobalColors.NoColor });
             }
         }
 
@@ -84,15 +84,13 @@ namespace Subtitle_Handler
 
             for (int i = 0; i < SubtitleList.Count; i++)
             {
-                string colorString = ColorPicker(SubtitleList[i].SubColor);
-                int[] colorComponents = colorString.Split(',').Select(int.Parse).ToArray();
-                dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(colorComponents[0], colorComponents[1], colorComponents[2], colorComponents[3]);
+                dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(SubtitleList[i].SubColor[0], SubtitleList[i].SubColor[1], SubtitleList[i].SubColor[2], SubtitleList[i].SubColor[3]);
 
-                if (SubtitleList[i].SubColor == "Divergent")
+                if (SubtitleList[i].SubColor == GlobalColors.Sync)
                 {
                     dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
                 }
-                if (SubtitleList[i].SubColor == "Double")
+                if (SubtitleList[i].SubColor == GlobalColors.Sync)
                 {
                     dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Blue;
                 }
@@ -126,10 +124,10 @@ namespace Subtitle_Handler
 
         private void blueBtn_Click(object sender, EventArgs e)
         {
-            UpdateList("M-Blue");
+            UpdateList(GlobalColors.MLBlue);
         }
         ///////////////////////////////////////////////////////    v v v   Updater  v v v   ///////////////////////////////////////////////////////
-        public void UpdateList(string? color)
+        public void UpdateList(int[]? color)
         {
             int rowNumber = dataGridView.SelectedRows[0].Index;
             TextBoxToSubtitleList(rowNumber, color);
@@ -138,7 +136,7 @@ namespace Subtitle_Handler
         }
 
         ///////////////////////////////////////////////////////    v v v   TextBox to DataGridView  v v v   ///////////////////////////////////////////////////////
-        public void TextBoxToSubtitleList(int rowNumber, string? color)
+        public void TextBoxToSubtitleList(int rowNumber, int[]? color)
         {
             if (color != null) SubtitleList[rowNumber].SubColor = color;
             SubtitleList[rowNumber].SubContent = contentTextBox.Text;
@@ -172,35 +170,7 @@ namespace Subtitle_Handler
             }
         }
 
-        ///////////////////////////////////////////////////////    v v v   Color Picker  v v v   ///////////////////////////////////////////////////////
-        public string ColorPicker(string? color)
-        {
-            switch (color)
-            {
-                case "M-Blue":
-                    return "255,39,133,189";
-                case "M-LBlue":
-                    return "255,112,191,255";
-                case "M-Green":
-                    return "255,150,195,98";
-                case "M-Yellow":
-                    return "255,255,197,113";
-                case "F-Orange":
-                    return "255,249,184,79";
-                case "F-Brown":
-                    return "255,244,102,92";
-                case "F-Red":
-                    return "255,216,65,120";
-                case "F-Purple":
-                    return "255,189,123,200";
-                case "No-Color":
-                    return "255,216, 191, 216 ";
-                case "Sync":
-                    return "255,216, 191, 200 ";
-                default:
-                    return "none"; // or handle the default case accordingly
-            }
-        }
+
 
 
 
@@ -284,7 +254,20 @@ namespace Subtitle_Handler
         public double SubTimeStart;
         public double SubTimeEnd;
         public string? SubContent;
-        public string? SubColor;
+        public required int[] SubColor;
+    }
+    public static class GlobalColors
+    {
+        public static int[] MBlue = { 255, 39, 133, 189 };
+        public static int[] MLBlue = { 255, 112, 191, 255 };
+        public static int[] MGreen = { 255, 150, 195, 98 };
+        public static int[] MYellow = { 255, 255, 197, 113 };
+        public static int[] FOrange = { 255, 249, 184, 79 };
+        public static int[] FBrown = { 255, 244, 102, 92 };
+        public static int[] FRed = { 255, 216, 65, 120 };
+        public static int[] FPurple = { 255, 189, 123, 200 };
+        public static int[] NoColor = { 255, 216, 191, 216 };
+        public static int[] Sync = { 255, 216, 191, 200 };
     }
 }
 
