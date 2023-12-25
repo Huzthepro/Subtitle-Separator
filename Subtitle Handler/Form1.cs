@@ -156,7 +156,16 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   Next Liner  v v v   ///////////////////////////////////////////////////////
         public void NextLine(int rowNumber)
         {
-            dataGridView.Rows[rowNumber].Selected = false;
+            if (rowNumber >= 0 && rowNumber < dataGridView.Rows.Count)
+            {
+                dataGridView.Rows[rowNumber].Selected = false;
+            }
+            else if (dataGridView.Rows.Count > 0)
+            {
+                // Set it to the index of the last row
+                int lastRowIndex = dataGridView.Rows.Count - 1;
+                dataGridView.Rows[lastRowIndex].Selected = false;
+            }
             dataGridView.Rows[0].Selected = false;
             if (rowNumber < dataGridView.Rows.Count - 1)
             {   //Choosing Next Row
@@ -251,7 +260,6 @@ namespace Subtitle_Handler
         }
 
         ///////////////////////////////////////////////////////    v v v   DataGridView Design  v v v   ///////////////////////////////////////////////////////
-
         private void dataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             if (dataGridView.Rows[e.RowIndex].Selected)
@@ -278,21 +286,35 @@ namespace Subtitle_Handler
         }
 
         ///////////////////////////////////////////////////////    v v v   Add Row  v v v   ///////////////////////////////////////////////////////
-
         private void addRowBtn_Click(object sender, EventArgs e)
         {
             int rowNumber = dataGridView.SelectedRows[0].Index;
             AddRow(rowNumber);
-            FillDataGridView(); 
-            NextLine(rowNumber) ;
+            FillDataGridView();
+            NextLine(rowNumber);
         }
 
         public void AddRow(int rowNumber)
         {
-            
+
             SubtitleList.Insert(rowNumber + 1, new Subtitle { SubNumber = SubtitleList[rowNumber].SubNumber, SubStartTime = SubtitleList[rowNumber].SubStartTime, SubEndTime = SubtitleList[rowNumber].SubEndTime, SubContent = SubtitleList[rowNumber].SubContent, SubColor = SubtitleList[rowNumber].SubColor });
         }
-       
+
+
+
+        ///////////////////////////////////////////////////////    v v v   Delete Row  v v v   ///////////////////////////////////////////////////////
+        private void dltRowBtn_Click(object sender, EventArgs e)
+        {
+            int rowNumber = dataGridView.SelectedRows[0].Index;
+            SubtitleList.RemoveAt(rowNumber);
+            FillDataGridView();
+            NextLine(rowNumber-1);
+        }
+
+     
+
+
+
 
 
 

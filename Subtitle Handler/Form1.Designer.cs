@@ -149,6 +149,7 @@
             dltRowBtn.TextAlign = ContentAlignment.MiddleLeft;
             dltRowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
             dltRowBtn.UseVisualStyleBackColor = true;
+            dltRowBtn.Click += dltRowBtn_Click;
             // 
             // lightBlueBtn
             // 
