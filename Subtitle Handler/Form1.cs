@@ -33,6 +33,7 @@ namespace Subtitle_Handler
                 string input = File.ReadAllText(ofd.FileName);
                 FillSubtitleList(input);
                 FillDataGridView();
+                DesignDataGridView();
             }
         }
 
@@ -65,18 +66,12 @@ namespace Subtitle_Handler
             }
 
             dataGridView.DataSource = dataTable;
-            DesignDataGridView();
+            PaintDataGridView();
         }
 
-        ///////////////////////////////////////////////////////    v v v   Design DataGridView  v v v   ///////////////////////////////////////////////////////
-        public void DesignDataGridView()
+        ///////////////////////////////////////////////////////    v v v   Paint DataGridView  v v v   ///////////////////////////////////////////////////////
+        public void PaintDataGridView()
         {
-            // Set the width for each column
-            dataGridView.Columns["No"].Width = 35;
-            dataGridView.Columns["No"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView.Columns["Time"].Width = 60;
-            dataGridView.Columns["Content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // Third column 40px
-
             for (int i = 0; i < SubtitleList.Count; i++)
             {
                 dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(SubtitleList[i].SubColor[0], SubtitleList[i].SubColor[1], SubtitleList[i].SubColor[2], SubtitleList[i].SubColor[3]);
@@ -90,6 +85,15 @@ namespace Subtitle_Handler
                     dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Blue;
                 }
             }
+        }
+        ///////////////////////////////////////////////////////    v v v   Design DataGridView  v v v   ///////////////////////////////////////////////////////
+        public void DesignDataGridView()
+        {
+            // Set the width for each column
+            dataGridView.Columns["No"].Width = 35;
+            dataGridView.Columns["No"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView.Columns["Time"].Width = 60;
+            dataGridView.Columns["Content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // Third column 40px
         }
 
         ///////////////////////////////////////////////////////    v v v   Row Clicked  v v v   ///////////////////////////////////////////////////////
