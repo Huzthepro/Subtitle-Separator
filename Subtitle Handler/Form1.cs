@@ -9,6 +9,7 @@ namespace Subtitle_Handler
     public partial class Form1 : Form
     {
         public List<Subtitle> SubtitleList = [];
+        public DataTable dataTable = new();
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace Subtitle_Handler
                 SubtitleList.Clear();
                 string input = File.ReadAllText(ofd.FileName);
                 FillSubtitleList(input);
+                DataTableColumns();
                 FillDataGridView();
                 DesignDataGridView();
             }
@@ -47,16 +49,17 @@ namespace Subtitle_Handler
                 SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubStartTime = match.Groups["StartTime"].Value, SubEndTime = match.Groups["EndTime"].Value, SubContent = match.Groups["Content"].Value, SubColor = GlobalColors.NoColor });
             }
         }
+        ///////////////////////////////////////////////////////    v v v   DataTableColumns  v v v   ///////////////////////////////////////////////////////
+        public void DataTableColumns()
+        {
+            dataTable.Columns.Add("No", typeof(int));
+            dataTable.Columns.Add("Time", typeof(string));
+            dataTable.Columns.Add("Content", typeof(string));
+        }
 
         ///////////////////////////////////////////////////////    v v v   Fill DataGridView  v v v   ///////////////////////////////////////////////////////
         public void FillDataGridView()
         {
-
-            DataTable dataTable = new();
-            dataTable.Columns.Add("No", typeof(int));
-            dataTable.Columns.Add("Time", typeof(string));
-            dataTable.Columns.Add("Content", typeof(string));
-
             //Only thing matter for sorting is the time
             SubtitleList = [.. SubtitleList.OrderBy(o => o.SubStartTime)];
             for (int i = 0; i < SubtitleList.Count; i++)
