@@ -131,6 +131,7 @@
             addRowBtn.TextAlign = ContentAlignment.MiddleLeft;
             addRowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
             addRowBtn.UseVisualStyleBackColor = true;
+            addRowBtn.Click += addRowBtn_Click;
             // 
             // dltRowBtn
             // 

@@ -277,6 +277,22 @@ namespace Subtitle_Handler
             }
         }
 
+        ///////////////////////////////////////////////////////    v v v   Add Row  v v v   ///////////////////////////////////////////////////////
+
+        private void addRowBtn_Click(object sender, EventArgs e)
+        {
+            int rowNumber = dataGridView.SelectedRows[0].Index;
+            AddRow(rowNumber);
+            FillDataGridView(); 
+            NextLine(rowNumber) ;
+        }
+
+        public void AddRow(int rowNumber)
+        {
+            
+            SubtitleList.Insert(rowNumber + 1, new Subtitle { SubNumber = SubtitleList[rowNumber].SubNumber, SubStartTime = SubtitleList[rowNumber].SubStartTime, SubEndTime = SubtitleList[rowNumber].SubEndTime, SubContent = SubtitleList[rowNumber].SubContent, SubColor = SubtitleList[rowNumber].SubColor });
+        }
+       
 
 
 
