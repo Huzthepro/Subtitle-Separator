@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             dataGridView = new DataGridView();
-            timeTextBox = new RichTextBox();
+            startTimeTextBox = new RichTextBox();
             extractBtn = new Button();
             contentTextBox = new RichTextBox();
             addRowBtn = new Button();
@@ -50,6 +50,7 @@
             minBtn = new Button();
             panelMenu = new Panel();
             updateBtn = new Button();
+            endTimeTextBox = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             panelMenu.SuspendLayout();
             SuspendLayout();
@@ -78,15 +79,15 @@
             dataGridView.RowPostPaint += dataGridView_RowPostPaint;
             dataGridView.SelectionChanged += dataGridView_SelectionChanged;
             // 
-            // timeTextBox
+            // startTimeTextBox
             // 
-            timeTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            timeTextBox.BorderStyle = BorderStyle.None;
-            timeTextBox.Location = new Point(13, 269);
-            timeTextBox.Name = "timeTextBox";
-            timeTextBox.Size = new Size(89, 50);
-            timeTextBox.TabIndex = 3;
-            timeTextBox.Text = "";
+            startTimeTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            startTimeTextBox.BorderStyle = BorderStyle.None;
+            startTimeTextBox.Location = new Point(13, 269);
+            startTimeTextBox.Name = "startTimeTextBox";
+            startTimeTextBox.Size = new Size(89, 21);
+            startTimeTextBox.TabIndex = 3;
+            startTimeTextBox.Text = "";
             // 
             // extractBtn
             // 
@@ -398,11 +399,22 @@
             updateBtn.UseVisualStyleBackColor = true;
             updateBtn.Click += updateBtn_Click;
             // 
+            // endTimeTextBox
+            // 
+            endTimeTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            endTimeTextBox.BorderStyle = BorderStyle.None;
+            endTimeTextBox.Location = new Point(12, 298);
+            endTimeTextBox.Name = "endTimeTextBox";
+            endTimeTextBox.Size = new Size(89, 21);
+            endTimeTextBox.TabIndex = 21;
+            endTimeTextBox.Text = "";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(558, 411);
+            Controls.Add(endTimeTextBox);
             Controls.Add(updateBtn);
             Controls.Add(pinkBtn);
             Controls.Add(purpleBtn);
@@ -415,7 +427,7 @@
             Controls.Add(dltRowBtn);
             Controls.Add(addRowBtn);
             Controls.Add(contentTextBox);
-            Controls.Add(timeTextBox);
+            Controls.Add(startTimeTextBox);
             Controls.Add(extractBtn);
             Controls.Add(panelMenu);
             Controls.Add(dataGridView);
@@ -429,7 +441,7 @@
         #endregion
 
         private DataGridView dataGridView;
-        private RichTextBox timeTextBox;
+        private RichTextBox startTimeTextBox;
         private Button extractBtn;
         private RichTextBox contentTextBox;
         private Button addRowBtn;
@@ -450,5 +462,6 @@
         private Button minBtn;
         private Panel panelMenu;
         private Button updateBtn;
+        private RichTextBox endTimeTextBox;
     }
 }

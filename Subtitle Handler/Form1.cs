@@ -39,11 +39,11 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   .SRT to SubtitleList With Regex  v v v   ///////////////////////////////////////////////////////
         private void FillSubtitleList(string input)
         {
-            string pattern = @"(?<No>\d+)[\r\n](?<TimeText>(\d+):(\d+):(\d+),(\d+) --> (\d+):(\d+):(\d+),(\d+))[\r\n](?<Content>(.+\r?\n)+(?=(\r?\n)?))";
+            string pattern = @"(?<No>\d+)[\r\n](?<StartTime>(\d+):(\d+):(\d+),(\d+)) --> (?<EndTime>(\d+):(\d+):(\d+),(\d+))[\r\n](?<Content>(.+\r?\n)+(?=(\r?\n)?))";
             MatchCollection matches = Regex.Matches(input, pattern);
             foreach (Match match in matches.Cast<Match>())
             {
-                SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = match.Groups["TimeText"].Value, SubContent = match.Groups["Content"].Value, SubColor = GlobalColors.NoColor });
+                SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubStartTime = match.Groups["StartTime"].Value, SubEndTime = match.Groups["EndTime"].Value, SubContent = match.Groups["Content"].Value, SubColor = GlobalColors.NoColor });
             }
         }
 
@@ -57,11 +57,11 @@ namespace Subtitle_Handler
             dataTable.Columns.Add("Content", typeof(string));
 
             //Only thing matter for sorting is the time
-            SubtitleList = [.. SubtitleList.OrderBy(o => o.SubTimeText)];
+            SubtitleList = [.. SubtitleList.OrderBy(o => o.SubStartTime)];
             for (int i = 0; i < SubtitleList.Count; i++)
             {
                 SubtitleList[i].SubNumber = i + 1;
-                dataTable.Rows.Add(SubtitleList[i].SubNumber, SubtitleList[i].SubTimeText, SubtitleList[i].SubContent);
+                dataTable.Rows.Add(SubtitleList[i].SubNumber, SubtitleList[i].SubStartTime+ " --> "+ SubtitleList[i].SubEndTime, SubtitleList[i].SubContent);
             }
 
             dataGridView.DataSource = dataTable;
@@ -104,8 +104,9 @@ namespace Subtitle_Handler
             if (cell != null)
             {
                 DataGridViewRow row = cell.OwningRow;
-                //sayiTextBox.Text = row.Cells["sayi"].Value.ToString();
-                timeTextBox.Text = row.Cells["Time"].Value.ToString();
+                string subNumber = row.Cells["No"].Value.ToString();
+                startTimeTextBox.Text = SubtitleList[Convert.ToInt32(subNumber)-1].SubStartTime;
+                endTimeTextBox.Text = SubtitleList[Convert.ToInt32(subNumber)-1].SubEndTime;
                 contentTextBox.Text = row.Cells["Content"].Value.ToString();
             }
         }
@@ -126,7 +127,8 @@ namespace Subtitle_Handler
         {
             if (color != null) SubtitleList[rowNumber].SubColor = color;
             SubtitleList[rowNumber].SubContent = contentTextBox.Text;
-            SubtitleList[rowNumber].SubTimeText = timeTextBox.Text;
+            SubtitleList[rowNumber].SubStartTime = startTimeTextBox.Text;
+            SubtitleList[rowNumber].SubEndTime = endTimeTextBox.Text;
 
         }
 
@@ -285,7 +287,8 @@ namespace Subtitle_Handler
     public class Subtitle
     {
         public int SubNumber;
-        public string? SubTimeText;
+        public string? SubStartTime;
+        public string? SubEndTime;
         public string? SubContent;
         public required int[] SubColor;
     }
