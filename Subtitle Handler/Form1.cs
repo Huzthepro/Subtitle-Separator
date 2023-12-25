@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -41,13 +42,32 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   .SRT to SubtitleList With Regex  v v v   ///////////////////////////////////////////////////////
         private void FillSubtitleList(string input)
         {
-            string pattern = @"(?<No>\d+)[\r\n](?<StartTime>(\d+):(\d+):(\d+),(\d+)) --> (?<EndTime>(\d+):(\d+):(\d+),(\d+))[\r\n](?<Content>(.+\r?\n)+(?=(\r?\n)?))";
+            string pattern = @"(?<No>\d+)\s*(?:(?<SubColor>\d+,\s*\d+,\s*\d+,\s*\d+)\s*)?(?<StartTime>(\d+):(\d+):(\d+),(\d+))\s*-->\s*(?<EndTime>(\d+):(\d+):(\d+),(\d+))\s*[\r\n](?<Content>([^\r\n]+\r?\n)+(?=(\r?\n)?))";
             MatchCollection matches = Regex.Matches(input, pattern);
+
             foreach (Match match in matches.Cast<Match>())
             {
-                SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubStartTime = match.Groups["StartTime"].Value, SubEndTime = match.Groups["EndTime"].Value, SubContent = match.Groups["Content"].Value, SubColor = GlobalColors.NoColor });
+                Subtitle subtitle = new Subtitle
+                {
+                    SubNumber = Convert.ToInt32(match.Groups["No"].Value),
+                    SubStartTime = match.Groups["StartTime"].Value,
+                    SubEndTime = match.Groups["EndTime"].Value,
+                    SubContent = match.Groups["Content"].Value,
+                    SubColor = match.Groups["SubColor"].Success ? ParseColor(match.Groups["SubColor"].Value) : GlobalColors.NoColor
+                };
+
+                SubtitleList.Add(subtitle);
             }
         }
+
+        ///////////////////////////////////////////////////////    v v v   String to Int[]  v v v   ///////////////////////////////////////////////////////
+        private int[] ParseColor(string colorString)
+        {
+            // Implement the logic to parse the color string into an int array
+            // For example, you can use Split and Select to convert the string into an array of integers
+            return colorString.Split(',').Select(s => int.Parse(s.Trim())).ToArray();
+        }
+
 
         ///////////////////////////////////////////////////////    v v v   Fill DataGridView  v v v   ///////////////////////////////////////////////////////
         public void FillDataGridView()
