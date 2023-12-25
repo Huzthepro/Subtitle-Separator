@@ -307,6 +307,7 @@
             saveBtn.TextAlign = ContentAlignment.MiddleLeft;
             saveBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
             saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.Click += saveBtn_Click;
             // 
             // syncBtn
             // 

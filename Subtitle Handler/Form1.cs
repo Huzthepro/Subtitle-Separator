@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Runtime.InteropServices;
@@ -308,10 +309,32 @@ namespace Subtitle_Handler
             int rowNumber = dataGridView.SelectedRows[0].Index;
             SubtitleList.RemoveAt(rowNumber);
             FillDataGridView();
-            NextLine(rowNumber-1);
+            NextLine(rowNumber - 1);
         }
 
-     
+
+        ///////////////////////////////////////////////////////    v v v   Save Progress  v v v   ///////////////////////////////////////////////////////
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            using (TextWriter tw = new StreamWriter("save.srt"))
+            {
+                    for (int i = 0; i < SubtitleList.Count; i++)
+                    {
+                    
+                    tw.WriteLine(SubtitleList[i].SubNumber);
+                    int[] colorArray = SubtitleList[i].SubColor;
+                    string colorString = string.Join(", ", colorArray);
+                    tw.WriteLine(colorString);
+                    tw.WriteLine(SubtitleList[i].SubStartTime + " --> " + SubtitleList[i].SubEndTime);
+                    tw.WriteLine(SubtitleList[i].SubContent);
+                        tw.WriteLine();
+                    }
+            }
+            MessageBox.Show("Current Progress saved as 'save.srt'!"
+                + Environment.NewLine + "!!Next save will rewrite same file if you dont change name or location of the file");
+        }
+
+
 
 
 
