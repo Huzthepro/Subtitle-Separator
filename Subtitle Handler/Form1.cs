@@ -9,7 +9,6 @@ namespace Subtitle_Handler
     public partial class Form1 : Form
     {
         public List<Subtitle> SubtitleList = [];
-        public DataTable dataTable = new();
         public Form1()
         {
             InitializeComponent();
@@ -33,7 +32,6 @@ namespace Subtitle_Handler
                 SubtitleList.Clear();
                 string input = File.ReadAllText(ofd.FileName);
                 FillSubtitleList(input);
-                DataTableColumns();
                 FillDataGridView();
                 DesignDataGridView();
             }
@@ -49,23 +47,22 @@ namespace Subtitle_Handler
                 SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubStartTime = match.Groups["StartTime"].Value, SubEndTime = match.Groups["EndTime"].Value, SubContent = match.Groups["Content"].Value, SubColor = GlobalColors.NoColor });
             }
         }
-        ///////////////////////////////////////////////////////    v v v   DataTableColumns  v v v   ///////////////////////////////////////////////////////
-        public void DataTableColumns()
-        {
-            dataTable.Columns.Add("No", typeof(int));
-            dataTable.Columns.Add("Time", typeof(string));
-            dataTable.Columns.Add("Content", typeof(string));
-        }
 
         ///////////////////////////////////////////////////////    v v v   Fill DataGridView  v v v   ///////////////////////////////////////////////////////
         public void FillDataGridView()
         {
+
+            DataTable dataTable = new();
+            dataTable.Columns.Add("No", typeof(int));
+            dataTable.Columns.Add("Time", typeof(string));
+            dataTable.Columns.Add("Content", typeof(string));
+
             //Only thing matter for sorting is the time
             SubtitleList = [.. SubtitleList.OrderBy(o => o.SubStartTime)];
             for (int i = 0; i < SubtitleList.Count; i++)
             {
                 SubtitleList[i].SubNumber = i + 1;
-                dataTable.Rows.Add(SubtitleList[i].SubNumber, SubtitleList[i].SubStartTime+ " --> "+ SubtitleList[i].SubEndTime, SubtitleList[i].SubContent);
+                dataTable.Rows.Add(SubtitleList[i].SubNumber, SubtitleList[i].SubStartTime + " --> " + SubtitleList[i].SubEndTime, SubtitleList[i].SubContent);
             }
 
             dataGridView.DataSource = dataTable;
@@ -112,14 +109,14 @@ namespace Subtitle_Handler
             {
                 DataGridViewRow row = cell.OwningRow;
                 string subNumber = row.Cells["No"].Value.ToString();
-                startTimeTextBox.Text = SubtitleList[Convert.ToInt32(subNumber)-1].SubStartTime;
-                endTimeTextBox.Text = SubtitleList[Convert.ToInt32(subNumber)-1].SubEndTime;
+                startTimeTextBox.Text = SubtitleList[Convert.ToInt32(subNumber) - 1].SubStartTime;
+                endTimeTextBox.Text = SubtitleList[Convert.ToInt32(subNumber) - 1].SubEndTime;
                 contentTextBox.Text = row.Cells["Content"].Value.ToString();
             }
         }
 
 
-        
+
         ///////////////////////////////////////////////////////    v v v   Updater  v v v   ///////////////////////////////////////////////////////
         public void UpdateList(int[]? color)
         {
@@ -149,7 +146,7 @@ namespace Subtitle_Handler
             {
                 string subSureStart = match.Groups["sure1"].Value + match.Groups["sure2"].Value + match.Groups["sure3"].Value + match.Groups["sure4"].Value;
                 string subSureEnd = match.Groups["sure5"].Value + match.Groups["sure6"].Value + match.Groups["sure7"].Value + match.Groups["sure8"].Value;
-               
+
             }
         }
 
@@ -280,7 +277,7 @@ namespace Subtitle_Handler
             }
         }
 
-       
+
 
 
 
@@ -313,5 +310,4 @@ namespace Subtitle_Handler
         public static int[] Sync = { 255, 216, 191, 200 };
     }
 }
-
 
