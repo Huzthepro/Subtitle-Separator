@@ -39,16 +39,11 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   .SRT to SubtitleList With Regex  v v v   ///////////////////////////////////////////////////////
         private void FillSubtitleList(string input)
         {
-            string pattern = @"(?<No>\d+)[\r\n]((?<StartHour>\d+):(?<StartMinute>\d+):(?<StartSecond>\d+),(?<StartMilSecond>\d+) --> (?<EndHour>\d+):(?<EndMinute>\d+):(?<EndSecond>\d+),(?<EndMilSecond>\d+))[\r\n](?<Content>(.+\r?\n)+(?=(\r?\n)?))";
+            string pattern = @"(?<No>\d+)[\r\n](?<TimeText>(\d+):(\d+):(\d+),(\d+) --> (\d+):(\d+):(\d+),(\d+))[\r\n](?<Content>(.+\r?\n)+(?=(\r?\n)?))";
             MatchCollection matches = Regex.Matches(input, pattern);
             foreach (Match match in matches.Cast<Match>())
             {
-                string StartTime = match.Groups["StartHour"].Value + match.Groups["StartMinute"].Value + match.Groups["StartSecond"].Value + match.Groups["StartMilSecond"].Value;
-                string EndTime = match.Groups["EndHour"].Value + match.Groups["EndMinute"].Value + match.Groups["EndSecond"].Value + match.Groups["EndMilSecond"].Value;
-                string TimeText = match.Groups["StartHour"].Value + ":" + match.Groups["StartMinute"].Value + ":" + match.Groups["StartSecond"].Value + "," + match.Groups["StartMilSecond"].Value
-                + " --> "
-                + match.Groups["EndHour"].Value + ":" + match.Groups["EndMinute"].Value + ":" + match.Groups["EndSecond"].Value + "," + match.Groups["EndMilSecond"].Value;
-                SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = TimeText, SubTimeStart = Convert.ToInt32(StartTime), SubTimeEnd = Convert.ToInt32(EndTime), SubContent = match.Groups["Content"].Value, SubColor = GlobalColors.NoColor });
+                SubtitleList.Add(new Subtitle { SubNumber = Convert.ToInt32(match.Groups["No"].Value), SubTimeText = match.Groups["TimeText"].Value, SubContent = match.Groups["Content"].Value, SubColor = GlobalColors.NoColor });
             }
         }
 
@@ -116,6 +111,57 @@ namespace Subtitle_Handler
         }
 
 
+        
+        ///////////////////////////////////////////////////////    v v v   Updater  v v v   ///////////////////////////////////////////////////////
+        public void UpdateList(int[]? color)
+        {
+            int rowNumber = dataGridView.SelectedRows[0].Index;
+            TextBoxToSubtitleList(rowNumber, color);
+            FillDataGridView();
+            NextLine(rowNumber);
+        }
+
+        ///////////////////////////////////////////////////////    v v v   TextBox to DataGridView  v v v   ///////////////////////////////////////////////////////
+        public void TextBoxToSubtitleList(int rowNumber, int[]? color)
+        {
+            if (color != null) SubtitleList[rowNumber].SubColor = color;
+            SubtitleList[rowNumber].SubContent = contentTextBox.Text;
+            SubtitleList[rowNumber].SubTimeText = timeTextBox.Text;
+
+        }
+
+        ///////////////////////////////////////////////////////    v v v   Time Converter  v v v   ///////////////////////////////////////////////////////
+        public void TimeConventer(string? time)
+        {
+            string input = time;
+            string pattern = @"(?<StartHour>\d+):(?<StartMinute>\d+):(?<StartSecond>\d+),(?<StartMilSecond>\d+) --> (?<EndHour>\d+):(?<EndMinute>\d+):(?<EndSecond>\d+),(?<EndMilSecond>\d+)";
+            MatchCollection matches = Regex.Matches(input, pattern);
+            foreach (Match match in matches.Cast<Match>())
+            {
+                string subSureStart = match.Groups["sure1"].Value + match.Groups["sure2"].Value + match.Groups["sure3"].Value + match.Groups["sure4"].Value;
+                string subSureEnd = match.Groups["sure5"].Value + match.Groups["sure6"].Value + match.Groups["sure7"].Value + match.Groups["sure8"].Value;
+               
+            }
+        }
+
+
+
+
+        ///////////////////////////////////////////////////////    v v v   Next Liner  v v v   ///////////////////////////////////////////////////////
+        public void NextLine(int rowNumber)
+        {
+            dataGridView.Rows[rowNumber].Selected = false;
+            dataGridView.Rows[0].Selected = false;
+            if (rowNumber < dataGridView.Rows.Count - 1)
+            {   //Choosing Next Row
+                dataGridView.Rows[++rowNumber].Selected = true;
+                //Centering the row in the middle of the screen
+                if (rowNumber > 6) { dataGridView.FirstDisplayedScrollingRowIndex = (dataGridView.SelectedRows[0].Index) - 5; }
+            }
+        }
+
+
+
         ///////////////////////////////////////////////////////    v v v   Update Buttons  v v v   ///////////////////////////////////////////////////////
         private void updateBtn_Click(object sender, EventArgs e)
         {
@@ -160,53 +206,6 @@ namespace Subtitle_Handler
         {
             UpdateList(GlobalColors.FOrange);
         }
-        ///////////////////////////////////////////////////////    v v v   Updater  v v v   ///////////////////////////////////////////////////////
-        public void UpdateList(int[]? color)
-        {
-            int rowNumber = dataGridView.SelectedRows[0].Index;
-            TextBoxToSubtitleList(rowNumber, color);
-            FillDataGridView();
-            NextLine(rowNumber);
-        }
-
-        ///////////////////////////////////////////////////////    v v v   TextBox to DataGridView  v v v   ///////////////////////////////////////////////////////
-        public void TextBoxToSubtitleList(int rowNumber, int[]? color)
-        {
-            if (color != null) SubtitleList[rowNumber].SubColor = color;
-            SubtitleList[rowNumber].SubContent = contentTextBox.Text;
-            SubtitleList[rowNumber].SubTimeText = timeTextBox.Text;
-
-            //LISTEDEKI ROW SAYILARINI TEXBOXTAKI METINDEN ALIP  GUNCELLEME
-            string input = timeTextBox.Text;
-            string pattern = @"(?<sure1>\d+):(?<sure2>\d+):(?<sure3>\d+),(?<sure4>\d+) --> (?<sure5>\d+):(?<sure6>\d+):(?<sure7>\d+),(?<sure8>\d+)";
-            MatchCollection matches = Regex.Matches(input, pattern);
-            foreach (Match match in matches.Cast<Match>())
-            {
-                string subSureStart = match.Groups["sure1"].Value + match.Groups["sure2"].Value + match.Groups["sure3"].Value + match.Groups["sure4"].Value;
-                string subSureEnd = match.Groups["sure5"].Value + match.Groups["sure6"].Value + match.Groups["sure7"].Value + match.Groups["sure8"].Value;
-                SubtitleList[rowNumber].SubTimeStart = Convert.ToInt32(subSureStart);
-                SubtitleList[rowNumber].SubTimeEnd = Convert.ToInt32(subSureEnd);
-            }
-        }
-
-
-
-        ///////////////////////////////////////////////////////    v v v   Next Liner  v v v   ///////////////////////////////////////////////////////
-        public void NextLine(int rowNumber)
-        {
-            dataGridView.Rows[rowNumber].Selected = false;
-            dataGridView.Rows[0].Selected = false;
-            if (rowNumber < dataGridView.Rows.Count - 1)
-            {   //Choosing Next Row
-                dataGridView.Rows[++rowNumber].Selected = true;
-                //Centering the row in the middle of the screen
-                if (rowNumber > 6) { dataGridView.FirstDisplayedScrollingRowIndex = (dataGridView.SelectedRows[0].Index) - 5; }
-            }
-        }
-
-
-
-
 
         ///////////////////////////////////////////////////////                                          ///////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////    v v v   Window Functionality  v v v   ///////////////////////////////////////////////////////
@@ -287,8 +286,6 @@ namespace Subtitle_Handler
     {
         public int SubNumber;
         public string? SubTimeText;
-        public double SubTimeStart;
-        public double SubTimeEnd;
         public string? SubContent;
         public required int[] SubColor;
     }
