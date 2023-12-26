@@ -334,24 +334,34 @@ namespace Subtitle_Handler
 
 
         ///////////////////////////////////////////////////////    v v v   Save Progress  v v v   ///////////////////////////////////////////////////////
-        public void Save(string mode, TextWriter tw)
+        public void Save(string mode, TextWriter tw, int[] colorFilter = null)
         {
-            for (int i = 0; i < SubtitleList.Count; i++)
+            List<Subtitle> filteredSubtitles;
+
+            if (colorFilter == null)
             {
+                // No color filter specified, use all subtitles
+                filteredSubtitles = SubtitleList;
+            }
+            else
+            {
+                // Filter subtitles based on SubColor
+                filteredSubtitles = SubtitleList.Where(sub =>
+                    Enumerable.SequenceEqual(sub.SubColor, colorFilter)).ToList();
+            }
 
-                tw.WriteLine(SubtitleList[i].SubNumber);
-                if (mode == "save")
-                {
-                    int[] colorArray = SubtitleList[i].SubColor;
-                    string colorString = string.Join(", ", colorArray);
-                    tw.WriteLine(colorString);
-                }
-
-                tw.WriteLine(SubtitleList[i].SubStartTime + " --> " + SubtitleList[i].SubEndTime);
-                tw.WriteLine(SubtitleList[i].SubContent);
+            foreach (Subtitle subtitle in filteredSubtitles)
+            {
+                tw.WriteLine(subtitle.SubNumber);
+                tw.WriteLine(subtitle.SubStartTime + " --> " + subtitle.SubEndTime);
+                tw.WriteLine(subtitle.SubContent);
                 tw.WriteLine();
             }
         }
+
+
+
+
 
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -369,7 +379,7 @@ namespace Subtitle_Handler
         {
             using (TextWriter tw = new StreamWriter("extract.srt"))
             {
-                Save("extract", tw);
+                Save("extract", tw, GlobalColors.MBlue);
             }
             MessageBox.Show("Current Progress saved as 'extract.srt'!"
                 + Environment.NewLine + "!!Next save will rewrite same file if you dont change name or location of the file");
