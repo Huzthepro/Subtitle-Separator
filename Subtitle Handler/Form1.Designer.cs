@@ -105,6 +105,7 @@
             extractBtn.Text = "Extract";
             extractBtn.TextAlign = ContentAlignment.BottomCenter;
             extractBtn.UseVisualStyleBackColor = true;
+            extractBtn.Click += extractBtn_Click;
             // 
             // contentTextBox
             // 

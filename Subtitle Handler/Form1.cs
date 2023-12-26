@@ -334,23 +334,44 @@ namespace Subtitle_Handler
 
 
         ///////////////////////////////////////////////////////    v v v   Save Progress  v v v   ///////////////////////////////////////////////////////
+        public void Save(string mode, TextWriter tw)
+        {
+            for (int i = 0; i < SubtitleList.Count; i++)
+            {
+
+                tw.WriteLine(SubtitleList[i].SubNumber);
+                if (mode == "save")
+                {
+                    int[] colorArray = SubtitleList[i].SubColor;
+                    string colorString = string.Join(", ", colorArray);
+                    tw.WriteLine(colorString);
+                }
+
+                tw.WriteLine(SubtitleList[i].SubStartTime + " --> " + SubtitleList[i].SubEndTime);
+                tw.WriteLine(SubtitleList[i].SubContent);
+                tw.WriteLine();
+            }
+        }
+
+
         private void saveBtn_Click(object sender, EventArgs e)
         {
             using (TextWriter tw = new StreamWriter("save.srt"))
             {
-                    for (int i = 0; i < SubtitleList.Count; i++)
-                    {
-                    
-                    tw.WriteLine(SubtitleList[i].SubNumber);
-                    int[] colorArray = SubtitleList[i].SubColor;
-                    string colorString = string.Join(", ", colorArray);
-                    tw.WriteLine(colorString);
-                    tw.WriteLine(SubtitleList[i].SubStartTime + " --> " + SubtitleList[i].SubEndTime);
-                    tw.WriteLine(SubtitleList[i].SubContent);
-                        tw.WriteLine();
-                    }
+                Save("save", tw);
             }
             MessageBox.Show("Current Progress saved as 'save.srt'!"
+                + Environment.NewLine + "!!Next save will rewrite same file if you dont change name or location of the file");
+        }
+
+        ///////////////////////////////////////////////////////    v v v   Extract  v v v   ///////////////////////////////////////////////////////
+        private void extractBtn_Click(object sender, EventArgs e)
+        {
+            using (TextWriter tw = new StreamWriter("extract.srt"))
+            {
+                Save("extract", tw);
+            }
+            MessageBox.Show("Current Progress saved as 'extract.srt'!"
                 + Environment.NewLine + "!!Next save will rewrite same file if you dont change name or location of the file");
         }
 
