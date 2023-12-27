@@ -299,21 +299,32 @@ namespace Subtitle_Handler
             if (colorFilter == null)
             {
                 filteredSubtitles = SubtitleList;
+                foreach (Subtitle subtitle in filteredSubtitles)
+                {
+                    tw.WriteLine(subtitle.SubNumber);
+                    int[] colorArray = subtitle.SubColor;
+                    string colorString = string.Join(", ", colorArray);
+                    tw.WriteLine(colorString);
+                    tw.WriteLine(subtitle.SubStartTime + " --> " + subtitle.SubEndTime);
+                    tw.WriteLine(subtitle.SubContent);
+                    tw.WriteLine();
+                }
             }
             else
             {
                 // Filter subtitles based on SubColor
                 filteredSubtitles = SubtitleList.Where(sub =>
                     Enumerable.SequenceEqual(sub.SubColor, colorFilter)).ToList();
+                foreach (Subtitle subtitle in filteredSubtitles)
+                {
+                    tw.WriteLine(subtitle.SubNumber);
+                    tw.WriteLine(subtitle.SubStartTime + " --> " + subtitle.SubEndTime);
+                    tw.WriteLine(subtitle.SubContent);
+                    tw.WriteLine();
+                }
             }
 
-            foreach (Subtitle subtitle in filteredSubtitles)
-            {
-                tw.WriteLine(subtitle.SubNumber);
-                tw.WriteLine(subtitle.SubStartTime + " --> " + subtitle.SubEndTime);
-                tw.WriteLine(subtitle.SubContent);
-                tw.WriteLine();
-            }
+            
         }
 
         ///////////////////////////////////////////////////////                                          ///////////////////////////////////////////////////////
