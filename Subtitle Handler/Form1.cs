@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Subtitle_Handler
 {
@@ -53,7 +54,7 @@ namespace Subtitle_Handler
                     SubStartTime = match.Groups["StartTime"].Value,
                     SubEndTime = match.Groups["EndTime"].Value,
                     SubContent = match.Groups["Content"].Value,
-                    SubColor = match.Groups["SubColor"].Success ? ParseColor(match.Groups["SubColor"].Value) : GlobalColors.NoColor
+                    SubColorName = match.Groups["SubColor"].Success ? match.Groups["SubColor"].Value : "NoColor"
                 };
 
                 SubtitleList.Add(subtitle);
@@ -95,16 +96,10 @@ namespace Subtitle_Handler
         {
             for (int i = 0; i < SubtitleList.Count; i++)
             {
-                dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(SubtitleList[i].SubColor[0], SubtitleList[i].SubColor[1], SubtitleList[i].SubColor[2], SubtitleList[i].SubColor[3]);
+                string colorName = SubtitleList[i].SubColorName;
+                int[] colorArray = GlobalColors.GetColorArray(colorName);
+                dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(colorArray[0], colorArray[1], colorArray[2], colorArray[3]);
 
-                if (SubtitleList[i].SubColor == GlobalColors.Sync)
-                {
-                    dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
-                }
-                if (SubtitleList[i].SubColor == GlobalColors.Sync)
-                {
-                    dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Blue;
-                }
             }
         }
         ///////////////////////////////////////////////////////    v v v   Design DataGridView  v v v   ///////////////////////////////////////////////////////
@@ -136,25 +131,25 @@ namespace Subtitle_Handler
             }
         }
 
-
-
         ///////////////////////////////////////////////////////    v v v   Updater  v v v   ///////////////////////////////////////////////////////
-        public void UpdateList(int[]? color)
+        public void UpdateList(string? colorName)
         {
-            int rowNumber = dataGridView.SelectedRows[0].Index;
-            TextBoxToSubtitleList(rowNumber, color);
-            FillDataGridView();
-            NextLine(rowNumber);
+            if (dataGridView.SelectedRows.Count > 0)
+            {
+                int rowNumber = dataGridView.SelectedRows[0].Index;
+                TextBoxToSubtitleList(rowNumber, colorName);
+                FillDataGridView();
+                NextLine(rowNumber);
+            }
         }
 
         ///////////////////////////////////////////////////////    v v v   TextBox to DataGridView  v v v   ///////////////////////////////////////////////////////
-        public void TextBoxToSubtitleList(int rowNumber, int[]? color)
+        public void TextBoxToSubtitleList(int rowNumber, string? colorName)
         {
-            if (color != null) SubtitleList[rowNumber].SubColor = color;
+            if (colorName != null) SubtitleList[rowNumber].SubColorName = colorName;
             SubtitleList[rowNumber].SubContent = contentTextBox.Text;
             SubtitleList[rowNumber].SubStartTime = startTimeTextBox.Text;
             SubtitleList[rowNumber].SubEndTime = endTimeTextBox.Text;
-
         }
 
         ///////////////////////////////////////////////////////    v v v   Time Converter  v v v   ///////////////////////////////////////////////////////
@@ -170,9 +165,6 @@ namespace Subtitle_Handler
 
             }
         }
-
-
-
 
         ///////////////////////////////////////////////////////    v v v   Next Liner  v v v   ///////////////////////////////////////////////////////
         public void NextLine(int rowNumber)
@@ -207,8 +199,7 @@ namespace Subtitle_Handler
 
         public void AddRow(int rowNumber)
         {
-
-            SubtitleList.Insert(rowNumber + 1, new Subtitle { SubNumber = SubtitleList[rowNumber].SubNumber, SubStartTime = SubtitleList[rowNumber].SubStartTime, SubEndTime = SubtitleList[rowNumber].SubEndTime, SubContent = SubtitleList[rowNumber].SubContent, SubColor = SubtitleList[rowNumber].SubColor });
+            SubtitleList.Insert(rowNumber + 1, new Subtitle { SubNumber = SubtitleList[rowNumber].SubNumber, SubStartTime = SubtitleList[rowNumber].SubStartTime, SubEndTime = SubtitleList[rowNumber].SubEndTime, SubContent = SubtitleList[rowNumber].SubContent, SubColorName = SubtitleList[rowNumber].SubColorName });
         }
 
         ///////////////////////////////////////////////////////    v v v   Delete Row  v v v   ///////////////////////////////////////////////////////
@@ -236,32 +227,26 @@ namespace Subtitle_Handler
         {
             UpdateList(GlobalColors.LightBlue);
         }
-
         private void greenBtn_Click(object sender, EventArgs e)
         {
             UpdateList(GlobalColors.Green);
         }
-
         private void yellowBtn_Click(object sender, EventArgs e)
         {
             UpdateList(GlobalColors.Yellow);
         }
-
         private void purpleBtn_Click(object sender, EventArgs e)
         {
             UpdateList(GlobalColors.Purple);
         }
-
         private void pinkBtn_Click(object sender, EventArgs e)
         {
             UpdateList(GlobalColors.Red);
         }
-
         private void brownBtn_Click(object sender, EventArgs e)
         {
             UpdateList(GlobalColors.Brown);
         }
-
         private void orangeBtn_Click(object sender, EventArgs e)
         {
             UpdateList(GlobalColors.Orange);
@@ -273,7 +258,9 @@ namespace Subtitle_Handler
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            SaveAs("Save", null);
+            
+            using TextWriter tw = new StreamWriter($"Save.srt");
+            Save(tw, null);
         }
 
         private void extractBtn_Click(object sender, EventArgs e)
@@ -281,50 +268,42 @@ namespace Subtitle_Handler
             foreach (var colorProperty in typeof(GlobalColors).GetFields())
             {
                 var colorName = colorProperty.Name;
-                var colorValue = (int[])colorProperty.GetValue(null);
-                SaveAs(colorName, colorValue);
+                using TextWriter tw = new StreamWriter($"{colorName}.srt");
+                Save(tw, colorName);
             }
+            using TextWriter twSave = new StreamWriter($"Save.srt");
+            Save(twSave, null);
+            using TextWriter twAll = new StreamWriter($"All.srt");
+            Save(twAll, null);
         }
 
-        public void SaveAs(string name, int[] colorValue)
-        {
-            using TextWriter tw = new StreamWriter($"{name}.srt");
-            Save(tw, colorValue);
-        }
-
-        public void Save(TextWriter tw, int[] colorFilter)
+        public void Save(TextWriter tw, string colorFilter)
         {
             List<Subtitle> filteredSubtitles;
 
             if (colorFilter == null)
             {
                 filteredSubtitles = SubtitleList;
-                foreach (Subtitle subtitle in filteredSubtitles)
-                {
-                    tw.WriteLine(subtitle.SubNumber);
-                    int[] colorArray = subtitle.SubColor;
-                    string colorString = string.Join(", ", colorArray);
-                    tw.WriteLine(colorString);
-                    tw.WriteLine(subtitle.SubStartTime + " --> " + subtitle.SubEndTime);
-                    tw.WriteLine(subtitle.SubContent);
-                    tw.WriteLine();
-                }
             }
             else
             {
-                // Filter subtitles based on SubColor
                 filteredSubtitles = SubtitleList.Where(sub =>
-                    Enumerable.SequenceEqual(sub.SubColor, colorFilter)).ToList();
-                foreach (Subtitle subtitle in filteredSubtitles)
-                {
-                    tw.WriteLine(subtitle.SubNumber);
-                    tw.WriteLine(subtitle.SubStartTime + " --> " + subtitle.SubEndTime);
-                    tw.WriteLine(subtitle.SubContent);
-                    tw.WriteLine();
-                }
+                    Enumerable.SequenceEqual(sub.SubColorName, colorFilter)).ToList();
             }
 
-            
+            foreach (Subtitle subtitle in filteredSubtitles)
+            {
+                tw.WriteLine(subtitle.SubNumber);
+
+                if (colorFilter == null)
+                {
+                    tw.WriteLine(subtitle.SubColorName);
+                }
+
+                tw.WriteLine(subtitle.SubStartTime + " --> " + subtitle.SubEndTime);
+                tw.WriteLine(subtitle.SubContent);
+                tw.WriteLine();
+            }
         }
 
         ///////////////////////////////////////////////////////                                          ///////////////////////////////////////////////////////
@@ -402,20 +381,42 @@ namespace Subtitle_Handler
         public string? SubStartTime;
         public string? SubEndTime;
         public string? SubContent;
-        public required int[] SubColor;
+        public string SubColorName { get; set; }
     }
     public static class GlobalColors
     {
-        public static int[] DarkBlue = { 255, 39, 133, 189 };
-        public static int[] LightBlue = { 255, 112, 191, 255 };
-        public static int[] Green = { 255, 150, 195, 98 };
-        public static int[] Yellow = { 255, 255, 197, 113 };
-        public static int[] Orange = { 255, 249, 184, 79 };
-        public static int[] Brown = { 255, 244, 102, 92 };
-        public static int[] Red = { 255, 216, 65, 120 };
-        public static int[] Purple = { 255, 189, 123, 200 };
-        public static int[] NoColor = { 255, 216, 191, 216 };
-        public static int[] Sync = { 255, 216, 191, 200 };
+        public const string DarkBlue = nameof(DarkBlue);
+        public const string LightBlue = nameof(LightBlue);
+        public const string Green = nameof(Green);
+        public const string Yellow = nameof(Yellow);
+        public const string Orange = nameof(Orange);
+        public const string Brown = nameof(Brown);
+        public const string Red = nameof(Red);
+        public const string Purple = nameof(Purple);
+        public const string NoColor = nameof(NoColor);
+
+        public static Dictionary<string, int[]> ColorDictionary = new Dictionary<string, int[]>
+    {
+        { DarkBlue, new int[] { 255, 39, 133, 189 } },
+        { LightBlue, new int[] { 255, 112, 191, 255 } },
+        { Green, new int[] { 255, 150, 195, 98 } },
+        { Yellow, new int[] { 255, 255, 197, 113 } },
+        { Orange, new int[] { 255, 249, 184, 79 } },
+        { Brown, new int[] { 255, 244, 102, 92 } },
+        { Red, new int[] { 255, 216, 65, 120 } },
+        { Purple, new int[] { 255, 189, 123, 200 } },
+        { NoColor, new int[] { 255, 216, 191, 216 } }
+    };
+
+        public static int[] GetColorArray(string colorName)
+        {
+            if (ColorDictionary.TryGetValue(colorName, out var colorArray))
+            {
+                return colorArray;
+            }
+
+            return null; // Return null or some default value if the color name is not found
+        }
     }
 }
 
