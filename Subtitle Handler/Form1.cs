@@ -333,21 +333,58 @@ namespace Subtitle_Handler
         }
 
 
+        ///////////////////////////////////////////////////////    v v v   Save Button  v v v   ///////////////////////////////////////////////////////
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            SaveAs("Save", null);
+            MessageBox.Show("Current Progress saved as: " + $"save.srt"
+                + Environment.NewLine + "!!Next save will rewrite same file if you dont change name or location of the file");
+        }
+
+        ///////////////////////////////////////////////////////    v v v   Extract Button  v v v   ///////////////////////////////////////////////////////
+        private void extractBtn_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine("here: extract Button");
+            foreach (var colorProperty in typeof(GlobalColors).GetFields())
+            {
+                Debug.WriteLine("here:inside foreach extract");
+                var colorName = colorProperty.Name;
+                var colorValue = (int[])colorProperty.GetValue(null);
+
+                Debug.WriteLine("colorname:"+colorName+"\ncolorValue:"+colorValue);
+                SaveAs(colorName, colorValue);
+            }
+            MessageBox.Show("Current Progress saved."
+                + Environment.NewLine + "!!Next save will rewrite same file if you dont change name or location of the file");
+        }
+
+
+        ///////////////////////////////////////////////////////    v v v   Save As  v v v   ///////////////////////////////////////////////////////
+        public void SaveAs(string name, int[] colorValue)
+        {
+                using TextWriter tw = new StreamWriter($"{name}.srt");
+                Save(tw, colorValue);
+        }
+
         ///////////////////////////////////////////////////////    v v v   Save Progress  v v v   ///////////////////////////////////////////////////////
-        public void Save(string mode, TextWriter tw, int[] colorFilter = null)
+        public void Save(TextWriter tw, int[] colorFilter)
         {
             List<Subtitle> filteredSubtitles;
 
             if (colorFilter == null)
             {
+                Debug.WriteLine("here: save");
                 // No color filter specified, use all subtitles
                 filteredSubtitles = SubtitleList;
             }
             else
             {
+                Debug.WriteLine("here: extract");
                 // Filter subtitles based on SubColor
                 filteredSubtitles = SubtitleList.Where(sub =>
-                    Enumerable.SequenceEqual(sub.SubColor, colorFilter)).ToList();
+                    Enumerable.SequenceEqual(sub.SubColor, colorFilter) ).ToList();
+                Debug.WriteLine(filteredSubtitles);
             }
 
             foreach (Subtitle subtitle in filteredSubtitles)
@@ -363,27 +400,6 @@ namespace Subtitle_Handler
 
 
 
-
-        private void saveBtn_Click(object sender, EventArgs e)
-        {
-            using (TextWriter tw = new StreamWriter("save.srt"))
-            {
-                Save("save", tw);
-            }
-            MessageBox.Show("Current Progress saved as 'save.srt'!"
-                + Environment.NewLine + "!!Next save will rewrite same file if you dont change name or location of the file");
-        }
-
-        ///////////////////////////////////////////////////////    v v v   Extract  v v v   ///////////////////////////////////////////////////////
-        private void extractBtn_Click(object sender, EventArgs e)
-        {
-            using (TextWriter tw = new StreamWriter("extract.srt"))
-            {
-                Save("extract", tw, GlobalColors.MBlue);
-            }
-            MessageBox.Show("Current Progress saved as 'extract.srt'!"
-                + Environment.NewLine + "!!Next save will rewrite same file if you dont change name or location of the file");
-        }
 
 
 
