@@ -196,6 +196,30 @@ namespace Subtitle_Handler
             }
         }
 
+        ///////////////////////////////////////////////////////    v v v   Add Row  v v v   ///////////////////////////////////////////////////////
+        private void addRowBtn_Click(object sender, EventArgs e)
+        {
+            int rowNumber = dataGridView.SelectedRows[0].Index;
+            AddRow(rowNumber);
+            FillDataGridView();
+            NextLine(rowNumber);
+        }
+
+        public void AddRow(int rowNumber)
+        {
+
+            SubtitleList.Insert(rowNumber + 1, new Subtitle { SubNumber = SubtitleList[rowNumber].SubNumber, SubStartTime = SubtitleList[rowNumber].SubStartTime, SubEndTime = SubtitleList[rowNumber].SubEndTime, SubContent = SubtitleList[rowNumber].SubContent, SubColor = SubtitleList[rowNumber].SubColor });
+        }
+
+        ///////////////////////////////////////////////////////    v v v   Delete Row  v v v   ///////////////////////////////////////////////////////
+        private void dltRowBtn_Click(object sender, EventArgs e)
+        {
+            int rowNumber = dataGridView.SelectedRows[0].Index;
+            SubtitleList.RemoveAt(rowNumber);
+            FillDataGridView();
+            NextLine(rowNumber - 1);
+        }
+
 
 
         ///////////////////////////////////////////////////////    v v v   Update Buttons  v v v   ///////////////////////////////////////////////////////
@@ -206,41 +230,90 @@ namespace Subtitle_Handler
 
         private void blueBtn_Click(object sender, EventArgs e)
         {
-            UpdateList(GlobalColors.MBlue);
+            UpdateList(GlobalColors.DarkBlue);
         }
         private void lightBlueBtn_Click(object sender, EventArgs e)
         {
-            UpdateList(GlobalColors.MLBlue);
+            UpdateList(GlobalColors.LightBlue);
         }
 
         private void greenBtn_Click(object sender, EventArgs e)
         {
-            UpdateList(GlobalColors.MGreen);
+            UpdateList(GlobalColors.Green);
         }
 
         private void yellowBtn_Click(object sender, EventArgs e)
         {
-            UpdateList(GlobalColors.MYellow);
+            UpdateList(GlobalColors.Yellow);
         }
 
         private void purpleBtn_Click(object sender, EventArgs e)
         {
-            UpdateList(GlobalColors.FPurple);
+            UpdateList(GlobalColors.Purple);
         }
 
         private void pinkBtn_Click(object sender, EventArgs e)
         {
-            UpdateList(GlobalColors.FRed);
+            UpdateList(GlobalColors.Red);
         }
 
         private void brownBtn_Click(object sender, EventArgs e)
         {
-            UpdateList(GlobalColors.FBrown);
+            UpdateList(GlobalColors.Brown);
         }
 
         private void orangeBtn_Click(object sender, EventArgs e)
         {
-            UpdateList(GlobalColors.FOrange);
+            UpdateList(GlobalColors.Orange);
+        }
+
+        ///////////////////////////////////////////////////////                            ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////    v v v   Saving  v v v   ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////                            ///////////////////////////////////////////////////////
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            SaveAs("Save", null);
+        }
+
+        private void extractBtn_Click(object sender, EventArgs e)
+        {
+            foreach (var colorProperty in typeof(GlobalColors).GetFields())
+            {
+                var colorName = colorProperty.Name;
+                var colorValue = (int[])colorProperty.GetValue(null);
+                SaveAs(colorName, colorValue);
+            }
+        }
+
+        public void SaveAs(string name, int[] colorValue)
+        {
+            using TextWriter tw = new StreamWriter($"{name}.srt");
+            Save(tw, colorValue);
+        }
+
+        public void Save(TextWriter tw, int[] colorFilter)
+        {
+            List<Subtitle> filteredSubtitles;
+
+            if (colorFilter == null)
+            {
+                filteredSubtitles = SubtitleList;
+            }
+            else
+            {
+                // Filter subtitles based on SubColor
+                filteredSubtitles = SubtitleList.Where(sub =>
+                    Enumerable.SequenceEqual(sub.SubColor, colorFilter)).ToList();
+            }
+
+            foreach (Subtitle subtitle in filteredSubtitles)
+            {
+                tw.WriteLine(subtitle.SubNumber);
+                tw.WriteLine(subtitle.SubStartTime + " --> " + subtitle.SubEndTime);
+                tw.WriteLine(subtitle.SubContent);
+                tw.WriteLine();
+            }
         }
 
         ///////////////////////////////////////////////////////                                          ///////////////////////////////////////////////////////
@@ -306,111 +379,7 @@ namespace Subtitle_Handler
             }
         }
 
-        ///////////////////////////////////////////////////////    v v v   Add Row  v v v   ///////////////////////////////////////////////////////
-        private void addRowBtn_Click(object sender, EventArgs e)
-        {
-            int rowNumber = dataGridView.SelectedRows[0].Index;
-            AddRow(rowNumber);
-            FillDataGridView();
-            NextLine(rowNumber);
-        }
-
-        public void AddRow(int rowNumber)
-        {
-
-            SubtitleList.Insert(rowNumber + 1, new Subtitle { SubNumber = SubtitleList[rowNumber].SubNumber, SubStartTime = SubtitleList[rowNumber].SubStartTime, SubEndTime = SubtitleList[rowNumber].SubEndTime, SubContent = SubtitleList[rowNumber].SubContent, SubColor = SubtitleList[rowNumber].SubColor });
-        }
-
-
-
-        ///////////////////////////////////////////////////////    v v v   Delete Row  v v v   ///////////////////////////////////////////////////////
-        private void dltRowBtn_Click(object sender, EventArgs e)
-        {
-            int rowNumber = dataGridView.SelectedRows[0].Index;
-            SubtitleList.RemoveAt(rowNumber);
-            FillDataGridView();
-            NextLine(rowNumber - 1);
-        }
-
-
-        ///////////////////////////////////////////////////////    v v v   Save Button  v v v   ///////////////////////////////////////////////////////
-
-        private void saveBtn_Click(object sender, EventArgs e)
-        {
-            SaveAs("Save", null);
-            MessageBox.Show("Current Progress saved as: " + $"save.srt"
-                + Environment.NewLine + "!!Next save will rewrite same file if you dont change name or location of the file");
-        }
-
-        ///////////////////////////////////////////////////////    v v v   Extract Button  v v v   ///////////////////////////////////////////////////////
-        private void extractBtn_Click(object sender, EventArgs e)
-        {
-            Debug.WriteLine("here: extract Button");
-            foreach (var colorProperty in typeof(GlobalColors).GetFields())
-            {
-                Debug.WriteLine("here:inside foreach extract");
-                var colorName = colorProperty.Name;
-                var colorValue = (int[])colorProperty.GetValue(null);
-
-                Debug.WriteLine("colorname:"+colorName+"\ncolorValue:"+colorValue);
-                SaveAs(colorName, colorValue);
-            }
-            MessageBox.Show("Current Progress saved."
-                + Environment.NewLine + "!!Next save will rewrite same file if you dont change name or location of the file");
-        }
-
-
-        ///////////////////////////////////////////////////////    v v v   Save As  v v v   ///////////////////////////////////////////////////////
-        public void SaveAs(string name, int[] colorValue)
-        {
-                using TextWriter tw = new StreamWriter($"{name}.srt");
-                Save(tw, colorValue);
-        }
-
-        ///////////////////////////////////////////////////////    v v v   Save Progress  v v v   ///////////////////////////////////////////////////////
-        public void Save(TextWriter tw, int[] colorFilter)
-        {
-            List<Subtitle> filteredSubtitles;
-
-            if (colorFilter == null)
-            {
-                Debug.WriteLine("here: save");
-                // No color filter specified, use all subtitles
-                filteredSubtitles = SubtitleList;
-            }
-            else
-            {
-                Debug.WriteLine("here: extract");
-                // Filter subtitles based on SubColor
-                filteredSubtitles = SubtitleList.Where(sub =>
-                    Enumerable.SequenceEqual(sub.SubColor, colorFilter) ).ToList();
-                Debug.WriteLine(filteredSubtitles);
-            }
-
-            foreach (Subtitle subtitle in filteredSubtitles)
-            {
-                tw.WriteLine(subtitle.SubNumber);
-                tw.WriteLine(subtitle.SubStartTime + " --> " + subtitle.SubEndTime);
-                tw.WriteLine(subtitle.SubContent);
-                tw.WriteLine();
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       
 
         //End of the class
     }
@@ -426,14 +395,14 @@ namespace Subtitle_Handler
     }
     public static class GlobalColors
     {
-        public static int[] MBlue = { 255, 39, 133, 189 };
-        public static int[] MLBlue = { 255, 112, 191, 255 };
-        public static int[] MGreen = { 255, 150, 195, 98 };
-        public static int[] MYellow = { 255, 255, 197, 113 };
-        public static int[] FOrange = { 255, 249, 184, 79 };
-        public static int[] FBrown = { 255, 244, 102, 92 };
-        public static int[] FRed = { 255, 216, 65, 120 };
-        public static int[] FPurple = { 255, 189, 123, 200 };
+        public static int[] DarkBlue = { 255, 39, 133, 189 };
+        public static int[] LightBlue = { 255, 112, 191, 255 };
+        public static int[] Green = { 255, 150, 195, 98 };
+        public static int[] Yellow = { 255, 255, 197, 113 };
+        public static int[] Orange = { 255, 249, 184, 79 };
+        public static int[] Brown = { 255, 244, 102, 92 };
+        public static int[] Red = { 255, 216, 65, 120 };
+        public static int[] Purple = { 255, 189, 123, 200 };
         public static int[] NoColor = { 255, 216, 191, 216 };
         public static int[] Sync = { 255, 216, 191, 200 };
     }
