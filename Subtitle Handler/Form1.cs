@@ -45,7 +45,7 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   .SRT to SubtitleList With Regex  v v v   ///////////////////////////////////////////////////////
         private void FillSubtitleList(string input)
         {
-            string pattern = @"(?<No>\d+)\s*(?:(?<SubColor>\w+)\s*)?(?<StartTime>(\d+):(\d+):(\d+),(\d+))\s*-->\s*(?<EndTime>(\d+):(\d+):(\d+),(\d+))\s*[\r\n](?<Content>([^\r\n]+\r?\n)+(?=(\r?\n)?))";
+            string pattern = @"(?<No>\d+)\s*(?:(?<SubColor>\w+)\s*)?(?<StartTime>(\d+)(\d+):(\d+):(\d+),(\d+))\s*-->\s*(?<EndTime>(\d+):(\d+):(\d+),(\d+))\s*[\r\n](?<Content>([^\r\n]+\r?\n)+(?=(\r?\n)?))";
             MatchCollection matches = Regex.Matches(input, pattern);
 
             foreach (Match match in matches.Cast<Match>())
@@ -64,6 +64,7 @@ namespace Subtitle_Handler
 
                 SubtitleList.Add(subtitle);
             }
+            Debug.WriteLine(SubtitleList[0].SubStartTime);
         }
 
 
