@@ -158,6 +158,8 @@
             // 
             lightBlueBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lightBlueBtn.FlatAppearance.BorderSize = 0;
+            lightBlueBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(163, 214, 255);
+            lightBlueBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(163, 214, 255);
             lightBlueBtn.FlatStyle = FlatStyle.Flat;
             lightBlueBtn.ForeColor = SystemColors.ButtonFace;
             lightBlueBtn.Image = Properties.Resources.light_blue_man;
@@ -174,6 +176,8 @@
             // 
             blueBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             blueBtn.FlatAppearance.BorderSize = 0;
+            blueBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(65, 160, 216);
+            blueBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(65, 160, 216);
             blueBtn.FlatStyle = FlatStyle.Flat;
             blueBtn.ForeColor = SystemColors.ButtonFace;
             blueBtn.Image = Properties.Resources.blue_man;
@@ -190,6 +194,8 @@
             // 
             greenBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             greenBtn.FlatAppearance.BorderSize = 0;
+            greenBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(161, 202, 114);
+            greenBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(161, 202, 114);
             greenBtn.FlatStyle = FlatStyle.Flat;
             greenBtn.ForeColor = SystemColors.ButtonFace;
             greenBtn.Image = Properties.Resources.green_man;
@@ -206,6 +212,8 @@
             // 
             yellowBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             yellowBtn.FlatAppearance.BorderSize = 0;
+            yellowBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 242, 143);
+            yellowBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 242, 143);
             yellowBtn.FlatStyle = FlatStyle.Flat;
             yellowBtn.ForeColor = SystemColors.ButtonFace;
             yellowBtn.Image = Properties.Resources.yellow_man;
@@ -222,6 +230,8 @@
             // 
             brownBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             brownBtn.FlatAppearance.BorderSize = 0;
+            brownBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(249, 123, 123);
+            brownBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(249, 123, 123);
             brownBtn.FlatStyle = FlatStyle.Flat;
             brownBtn.ForeColor = SystemColors.ButtonFace;
             brownBtn.Image = Properties.Resources.brown_woman;
@@ -238,6 +248,8 @@
             // 
             orangeBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             orangeBtn.FlatAppearance.BorderSize = 0;
+            orangeBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 171, 102);
+            orangeBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 171, 102);
             orangeBtn.FlatStyle = FlatStyle.Flat;
             orangeBtn.ForeColor = SystemColors.ButtonFace;
             orangeBtn.Image = Properties.Resources.orange_woman;
@@ -254,6 +266,8 @@
             // 
             purpleBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             purpleBtn.FlatAppearance.BorderSize = 0;
+            purpleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(200, 147, 210);
+            purpleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(200, 147, 210);
             purpleBtn.FlatStyle = FlatStyle.Flat;
             purpleBtn.ForeColor = SystemColors.ButtonFace;
             purpleBtn.Image = Properties.Resources.purple_woman;
@@ -270,6 +284,8 @@
             // 
             pinkBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             pinkBtn.FlatAppearance.BorderSize = 0;
+            pinkBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(225, 107, 150);
+            pinkBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(225, 107, 150);
             pinkBtn.FlatStyle = FlatStyle.Flat;
             pinkBtn.ForeColor = SystemColors.ButtonFace;
             pinkBtn.Image = Properties.Resources.red_woman;
