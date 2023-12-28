@@ -98,7 +98,7 @@ namespace Subtitle_Handler
 
                 if (GlobalColors.ColorDictionary.TryGetValue(colorName, out var colorArray))
                 {
-                    dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(colorArray[0], colorArray[1], colorArray[2], colorArray[3]);
+                    dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, colorArray[0], colorArray[1], colorArray[2]);
                 }
                 else
                 {
@@ -412,15 +412,15 @@ namespace Subtitle_Handler
 
         public static Dictionary<string, int[]> ColorDictionary = new Dictionary<string, int[]>
     {
-        { DarkBlue, new int[] { 255, 39, 133, 189 } },
-        { LightBlue, new int[] { 255, 112, 191, 255 } },
-        { Green, new int[] { 255, 150, 195, 98 } },
-        { Yellow, new int[] { 255, 255, 197, 113 } },
-        { Orange, new int[] { 255, 249, 184, 79 } },
-        { Brown, new int[] { 255, 244, 102, 92 } },
-        { Red, new int[] { 255, 216, 65, 120 } },
-        { Purple, new int[] { 255, 189, 123, 200 } },
-        { NoColor, new int[] { 255, 216, 191, 216 } }
+        { DarkBlue, new int[] { 65, 160, 216 } },
+        { LightBlue, new int[] { 163, 214, 255 } },
+        { Green, new int[] { 161, 202, 114 } },
+        { Yellow, new int[] { 255, 242, 143 } },
+        { Orange, new int[] { 255, 171, 102 } },
+        { Brown, new int[] { 249, 123, 123 } },
+        { Red, new int[] { 225, 107, 150 } },
+        { Purple, new int[] { 200, 147, 210 } },
+        { NoColor, new int[] {  216, 191, 216 } }
     };
 
         public static int[] GetColorArray(string colorName)
