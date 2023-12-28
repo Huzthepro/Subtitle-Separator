@@ -95,6 +95,8 @@
             // 
             extractBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             extractBtn.FlatAppearance.BorderSize = 0;
+            extractBtn.FlatAppearance.MouseDownBackColor = SystemColors.GradientInactiveCaption;
+            extractBtn.FlatAppearance.MouseOverBackColor = SystemColors.GradientInactiveCaption;
             extractBtn.FlatStyle = FlatStyle.Flat;
             extractBtn.ForeColor = SystemColors.ActiveCaptionText;
             extractBtn.Image = Properties.Resources.separate;
@@ -122,6 +124,8 @@
             // 
             addRowBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             addRowBtn.FlatAppearance.BorderSize = 0;
+            addRowBtn.FlatAppearance.MouseDownBackColor = SystemColors.GradientInactiveCaption;
+            addRowBtn.FlatAppearance.MouseOverBackColor = SystemColors.GradientInactiveCaption;
             addRowBtn.FlatStyle = FlatStyle.Flat;
             addRowBtn.ForeColor = SystemColors.ButtonFace;
             addRowBtn.Image = Properties.Resources.add_row_24;
@@ -140,6 +144,8 @@
             // 
             dltRowBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             dltRowBtn.FlatAppearance.BorderSize = 0;
+            dltRowBtn.FlatAppearance.MouseDownBackColor = SystemColors.GradientInactiveCaption;
+            dltRowBtn.FlatAppearance.MouseOverBackColor = SystemColors.GradientInactiveCaption;
             dltRowBtn.FlatStyle = FlatStyle.Flat;
             dltRowBtn.ForeColor = SystemColors.ButtonFace;
             dltRowBtn.Image = Properties.Resources.dlt_row_24;
@@ -302,8 +308,8 @@
             // 
             openFileBtn.BackColor = Color.Transparent;
             openFileBtn.FlatAppearance.BorderSize = 0;
-            openFileBtn.FlatAppearance.MouseDownBackColor = Color.LightCyan;
-            openFileBtn.FlatAppearance.MouseOverBackColor = Color.LightCyan;
+            openFileBtn.FlatAppearance.MouseDownBackColor = SystemColors.GradientInactiveCaption;
+            openFileBtn.FlatAppearance.MouseOverBackColor = SystemColors.GradientInactiveCaption;
             openFileBtn.FlatStyle = FlatStyle.Flat;
             openFileBtn.ForeColor = Color.Transparent;
             openFileBtn.Image = Properties.Resources.open_files_32;
@@ -318,8 +324,8 @@
             // saveBtn
             // 
             saveBtn.FlatAppearance.BorderSize = 0;
-            saveBtn.FlatAppearance.MouseDownBackColor = Color.LightCyan;
-            saveBtn.FlatAppearance.MouseOverBackColor = Color.LightCyan;
+            saveBtn.FlatAppearance.MouseDownBackColor = SystemColors.GradientInactiveCaption;
+            saveBtn.FlatAppearance.MouseOverBackColor = SystemColors.GradientInactiveCaption;
             saveBtn.FlatStyle = FlatStyle.Flat;
             saveBtn.ForeColor = SystemColors.ButtonFace;
             saveBtn.Image = Properties.Resources.save_32;
