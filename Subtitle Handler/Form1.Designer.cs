@@ -42,20 +42,20 @@
             orangeBtn = new Button();
             purpleBtn = new Button();
             pinkBtn = new Button();
-            openFileBtn = new Button();
-            saveBtn = new Button();
-            closeWindowBtn = new Button();
-            maxBtn = new Button();
-            minBtn = new Button();
-            panelMenu = new Panel();
             updateBtn = new Button();
             endTimeTextBox = new RichTextBox();
             panelStartTime = new Panel();
             panelEndTime = new Panel();
+            panelMenu = new Panel();
+            minBtn = new Button();
+            maxBtn = new Button();
+            closeWindowBtn = new Button();
+            saveBtn = new Button();
+            openFileBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
-            panelMenu.SuspendLayout();
             panelStartTime.SuspendLayout();
             panelEndTime.SuspendLayout();
+            panelMenu.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView
@@ -218,8 +218,8 @@
             // 
             yellowBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             yellowBtn.FlatAppearance.BorderSize = 0;
-            yellowBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 242, 143);
-            yellowBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 242, 143);
+            yellowBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 224, 112);
+            yellowBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 224, 112);
             yellowBtn.FlatStyle = FlatStyle.Flat;
             yellowBtn.ForeColor = SystemColors.ButtonFace;
             yellowBtn.Image = Properties.Resources.yellow_man;
@@ -304,106 +304,6 @@
             pinkBtn.UseVisualStyleBackColor = true;
             pinkBtn.Click += pinkBtn_Click;
             // 
-            // openFileBtn
-            // 
-            openFileBtn.BackColor = Color.Transparent;
-            openFileBtn.FlatAppearance.BorderSize = 0;
-            openFileBtn.FlatAppearance.MouseDownBackColor = SystemColors.GradientInactiveCaption;
-            openFileBtn.FlatAppearance.MouseOverBackColor = SystemColors.GradientInactiveCaption;
-            openFileBtn.FlatStyle = FlatStyle.Flat;
-            openFileBtn.ForeColor = Color.Transparent;
-            openFileBtn.Image = Properties.Resources.open_files_32;
-            openFileBtn.Location = new Point(13, 8);
-            openFileBtn.Margin = new Padding(0);
-            openFileBtn.Name = "openFileBtn";
-            openFileBtn.Size = new Size(33, 33);
-            openFileBtn.TabIndex = 2;
-            openFileBtn.UseVisualStyleBackColor = false;
-            openFileBtn.Click += openFileBtn_Click;
-            // 
-            // saveBtn
-            // 
-            saveBtn.FlatAppearance.BorderSize = 0;
-            saveBtn.FlatAppearance.MouseDownBackColor = SystemColors.GradientInactiveCaption;
-            saveBtn.FlatAppearance.MouseOverBackColor = SystemColors.GradientInactiveCaption;
-            saveBtn.FlatStyle = FlatStyle.Flat;
-            saveBtn.ForeColor = SystemColors.ButtonFace;
-            saveBtn.Image = Properties.Resources.save_32;
-            saveBtn.Location = new Point(66, 8);
-            saveBtn.Margin = new Padding(0);
-            saveBtn.Name = "saveBtn";
-            saveBtn.Size = new Size(33, 33);
-            saveBtn.TabIndex = 3;
-            saveBtn.TextAlign = ContentAlignment.MiddleLeft;
-            saveBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            saveBtn.UseVisualStyleBackColor = true;
-            saveBtn.Click += saveBtn_Click;
-            // 
-            // closeWindowBtn
-            // 
-            closeWindowBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            closeWindowBtn.FlatAppearance.BorderSize = 0;
-            closeWindowBtn.FlatStyle = FlatStyle.Flat;
-            closeWindowBtn.ForeColor = SystemColors.ButtonFace;
-            closeWindowBtn.Image = Properties.Resources.close_24;
-            closeWindowBtn.Location = new Point(537, 4);
-            closeWindowBtn.Margin = new Padding(0);
-            closeWindowBtn.Name = "closeWindowBtn";
-            closeWindowBtn.Size = new Size(19, 20);
-            closeWindowBtn.TabIndex = 4;
-            closeWindowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            closeWindowBtn.UseVisualStyleBackColor = true;
-            closeWindowBtn.Click += closeWindowBtn_Click;
-            // 
-            // maxBtn
-            // 
-            maxBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            maxBtn.FlatAppearance.BorderSize = 0;
-            maxBtn.FlatStyle = FlatStyle.Flat;
-            maxBtn.ForeColor = SystemColors.ButtonFace;
-            maxBtn.Image = Properties.Resources.max_24;
-            maxBtn.Location = new Point(515, 4);
-            maxBtn.Margin = new Padding(0);
-            maxBtn.Name = "maxBtn";
-            maxBtn.Size = new Size(19, 20);
-            maxBtn.TabIndex = 5;
-            maxBtn.TextAlign = ContentAlignment.MiddleLeft;
-            maxBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            maxBtn.UseVisualStyleBackColor = true;
-            maxBtn.Click += maxBtn_Click;
-            // 
-            // minBtn
-            // 
-            minBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            minBtn.FlatAppearance.BorderSize = 0;
-            minBtn.FlatStyle = FlatStyle.Flat;
-            minBtn.ForeColor = SystemColors.ButtonFace;
-            minBtn.Image = Properties.Resources.min_24;
-            minBtn.Location = new Point(493, 4);
-            minBtn.Margin = new Padding(0);
-            minBtn.Name = "minBtn";
-            minBtn.Size = new Size(19, 20);
-            minBtn.TabIndex = 6;
-            minBtn.TextAlign = ContentAlignment.MiddleLeft;
-            minBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            minBtn.UseVisualStyleBackColor = true;
-            minBtn.Click += minBtn_Click;
-            // 
-            // panelMenu
-            // 
-            panelMenu.BackColor = Color.Transparent;
-            panelMenu.Controls.Add(minBtn);
-            panelMenu.Controls.Add(maxBtn);
-            panelMenu.Controls.Add(closeWindowBtn);
-            panelMenu.Controls.Add(saveBtn);
-            panelMenu.Controls.Add(openFileBtn);
-            panelMenu.Dock = DockStyle.Top;
-            panelMenu.Location = new Point(0, 0);
-            panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(573, 43);
-            panelMenu.TabIndex = 1;
-            panelMenu.MouseDown += panelMenu_MouseDown;
-            // 
             // updateBtn
             // 
             updateBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
@@ -455,6 +355,106 @@
             panelEndTime.Size = new Size(73, 22);
             panelEndTime.TabIndex = 23;
             // 
+            // panelMenu
+            // 
+            panelMenu.BackColor = Color.Transparent;
+            panelMenu.Controls.Add(minBtn);
+            panelMenu.Controls.Add(maxBtn);
+            panelMenu.Controls.Add(closeWindowBtn);
+            panelMenu.Controls.Add(saveBtn);
+            panelMenu.Controls.Add(openFileBtn);
+            panelMenu.Dock = DockStyle.Top;
+            panelMenu.Location = new Point(0, 0);
+            panelMenu.Name = "panelMenu";
+            panelMenu.Size = new Size(573, 47);
+            panelMenu.TabIndex = 1;
+            panelMenu.MouseDown += panelMenu_MouseDown;
+            // 
+            // minBtn
+            // 
+            minBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            minBtn.FlatAppearance.BorderSize = 0;
+            minBtn.FlatStyle = FlatStyle.Flat;
+            minBtn.ForeColor = SystemColors.ButtonFace;
+            minBtn.Image = Properties.Resources.min_24;
+            minBtn.Location = new Point(493, 4);
+            minBtn.Margin = new Padding(0);
+            minBtn.Name = "minBtn";
+            minBtn.Size = new Size(19, 20);
+            minBtn.TabIndex = 6;
+            minBtn.TextAlign = ContentAlignment.MiddleLeft;
+            minBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            minBtn.UseVisualStyleBackColor = true;
+            minBtn.Click += minBtn_Click;
+            // 
+            // maxBtn
+            // 
+            maxBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            maxBtn.FlatAppearance.BorderSize = 0;
+            maxBtn.FlatStyle = FlatStyle.Flat;
+            maxBtn.ForeColor = SystemColors.ButtonFace;
+            maxBtn.Image = Properties.Resources.max_24;
+            maxBtn.Location = new Point(515, 4);
+            maxBtn.Margin = new Padding(0);
+            maxBtn.Name = "maxBtn";
+            maxBtn.Size = new Size(19, 20);
+            maxBtn.TabIndex = 5;
+            maxBtn.TextAlign = ContentAlignment.MiddleLeft;
+            maxBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            maxBtn.UseVisualStyleBackColor = true;
+            maxBtn.Click += maxBtn_Click;
+            // 
+            // closeWindowBtn
+            // 
+            closeWindowBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            closeWindowBtn.FlatAppearance.BorderSize = 0;
+            closeWindowBtn.FlatStyle = FlatStyle.Flat;
+            closeWindowBtn.ForeColor = SystemColors.ButtonFace;
+            closeWindowBtn.Image = Properties.Resources.close_24;
+            closeWindowBtn.Location = new Point(537, 4);
+            closeWindowBtn.Margin = new Padding(0);
+            closeWindowBtn.Name = "closeWindowBtn";
+            closeWindowBtn.Size = new Size(19, 20);
+            closeWindowBtn.TabIndex = 4;
+            closeWindowBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            closeWindowBtn.UseVisualStyleBackColor = true;
+            closeWindowBtn.Click += closeWindowBtn_Click;
+            // 
+            // saveBtn
+            // 
+            saveBtn.FlatAppearance.BorderSize = 0;
+            saveBtn.FlatAppearance.MouseDownBackColor = SystemColors.GradientInactiveCaption;
+            saveBtn.FlatAppearance.MouseOverBackColor = SystemColors.GradientInactiveCaption;
+            saveBtn.FlatStyle = FlatStyle.Flat;
+            saveBtn.ForeColor = SystemColors.ButtonFace;
+            saveBtn.Image = Properties.Resources.save_32;
+            saveBtn.Location = new Point(66, 8);
+            saveBtn.Margin = new Padding(0);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(33, 33);
+            saveBtn.TabIndex = 3;
+            saveBtn.TextAlign = ContentAlignment.MiddleLeft;
+            saveBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.Click += saveBtn_Click;
+            // 
+            // openFileBtn
+            // 
+            openFileBtn.BackColor = Color.Transparent;
+            openFileBtn.FlatAppearance.BorderSize = 0;
+            openFileBtn.FlatAppearance.MouseDownBackColor = SystemColors.GradientInactiveCaption;
+            openFileBtn.FlatAppearance.MouseOverBackColor = SystemColors.GradientInactiveCaption;
+            openFileBtn.FlatStyle = FlatStyle.Flat;
+            openFileBtn.ForeColor = Color.Transparent;
+            openFileBtn.Image = Properties.Resources.open_files_32;
+            openFileBtn.Location = new Point(13, 8);
+            openFileBtn.Margin = new Padding(0);
+            openFileBtn.Name = "openFileBtn";
+            openFileBtn.Size = new Size(33, 33);
+            openFileBtn.TabIndex = 2;
+            openFileBtn.UseVisualStyleBackColor = false;
+            openFileBtn.Click += openFileBtn_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -483,9 +483,9 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
-            panelMenu.ResumeLayout(false);
             panelStartTime.ResumeLayout(false);
             panelEndTime.ResumeLayout(false);
+            panelMenu.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -505,15 +505,15 @@
         private Button orangeBtn;
         private Button purpleBtn;
         private Button pinkBtn;
-        private Button openFileBtn;
-        private Button saveBtn;
-        private Button closeWindowBtn;
-        private Button maxBtn;
-        private Button minBtn;
-        private Panel panelMenu;
         private Button updateBtn;
         private RichTextBox endTimeTextBox;
         private Panel panelStartTime;
         private Panel panelEndTime;
+        private Button minBtn;
+        private Button maxBtn;
+        private Button closeWindowBtn;
+        private Button saveBtn;
+        private Button openFileBtn;
+        private Panel panelMenu;
     }
 }

@@ -18,10 +18,14 @@ namespace Subtitle_Handler
             //Removing name and the control box
             this.Text = string.Empty;
             this.ControlBox = false;
+
+            SetCursorForButtons(this);
+
             //When maximized the form will not cover the taskbar
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
         }
+       
 
         ///////////////////////////////////////////////////////    v v v   Open Files  v v v   ///////////////////////////////////////////////////////
         private void openFileBtn_Click(object sender, EventArgs e)
@@ -350,7 +354,7 @@ namespace Subtitle_Handler
             this.WindowState = FormWindowState.Minimized;
         }
 
-        ///////////////////////////////////////////////////////    v v v   DataGridView Design  v v v   ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////    v v v   Design  v v v   ///////////////////////////////////////////////////////
         private void dataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             if (dataGridView.Rows[e.RowIndex].Selected)
@@ -373,7 +377,25 @@ namespace Subtitle_Handler
             }
         }
 
+        private void SetCursorForButtons(Control container)
+        {
+            // Iterate through all controls in the container
+            foreach (Control control in container.Controls)
+            {
+                // Check if the control is a Button
+                if (control is Button button)
+                {
+                    // Set the cursor for the button to a hand pointer
+                    button.Cursor = Cursors.Hand;
+                }
 
+                // If the control is a container (e.g., a Panel), recursively set the cursor for its buttons
+                if (control.HasChildren)
+                {
+                    SetCursorForButtons(control);
+                }
+            }
+        }
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -415,7 +437,7 @@ namespace Subtitle_Handler
         { DarkBlue, new int[] { 65, 160, 216 } },
         { LightBlue, new int[] { 163, 214, 255 } },
         { Green, new int[] { 161, 202, 114 } },
-        { Yellow, new int[] { 255, 242, 143 } },
+        { Yellow, new int[] { 255, 224, 112 } },
         { Orange, new int[] { 255, 171, 102 } },
         { Brown, new int[] { 249, 123, 123 } },
         { Red, new int[] { 225, 107, 150 } },
