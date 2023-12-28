@@ -44,15 +44,16 @@
             pinkBtn = new Button();
             openFileBtn = new Button();
             saveBtn = new Button();
-            syncBtn = new Button();
             closeWindowBtn = new Button();
             maxBtn = new Button();
             minBtn = new Button();
             panelMenu = new Panel();
             updateBtn = new Button();
             endTimeTextBox = new RichTextBox();
+            panelStartTime = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             panelMenu.SuspendLayout();
+            panelStartTime.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView
@@ -81,11 +82,11 @@
             // 
             // startTimeTextBox
             // 
-            startTimeTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             startTimeTextBox.BorderStyle = BorderStyle.None;
-            startTimeTextBox.Location = new Point(12, 292);
+            startTimeTextBox.Dock = DockStyle.Fill;
+            startTimeTextBox.Location = new Point(3, 3);
             startTimeTextBox.Name = "startTimeTextBox";
-            startTimeTextBox.Size = new Size(70, 21);
+            startTimeTextBox.Size = new Size(67, 16);
             startTimeTextBox.TabIndex = 3;
             startTimeTextBox.Text = "";
             // 
@@ -110,9 +111,9 @@
             // contentTextBox
             // 
             contentTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            contentTextBox.Location = new Point(88, 292);
+            contentTextBox.Location = new Point(94, 292);
             contentTextBox.Name = "contentTextBox";
-            contentTextBox.Size = new Size(243, 57);
+            contentTextBox.Size = new Size(237, 57);
             contentTextBox.TabIndex = 9;
             contentTextBox.Text = "";
             // 
@@ -310,22 +311,6 @@
             saveBtn.UseVisualStyleBackColor = true;
             saveBtn.Click += saveBtn_Click;
             // 
-            // syncBtn
-            // 
-            syncBtn.FlatAppearance.BorderSize = 0;
-            syncBtn.FlatStyle = FlatStyle.Flat;
-            syncBtn.ForeColor = SystemColors.ActiveCaptionText;
-            syncBtn.Image = Properties.Resources.sync;
-            syncBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            syncBtn.Location = new Point(138, 8);
-            syncBtn.Margin = new Padding(0);
-            syncBtn.Name = "syncBtn";
-            syncBtn.Size = new Size(74, 33);
-            syncBtn.TabIndex = 8;
-            syncBtn.Text = "Sync";
-            syncBtn.TextAlign = ContentAlignment.MiddleRight;
-            syncBtn.UseVisualStyleBackColor = true;
-            // 
             // closeWindowBtn
             // 
             closeWindowBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -382,7 +367,6 @@
             panelMenu.Controls.Add(minBtn);
             panelMenu.Controls.Add(maxBtn);
             panelMenu.Controls.Add(closeWindowBtn);
-            panelMenu.Controls.Add(syncBtn);
             panelMenu.Controls.Add(saveBtn);
             panelMenu.Controls.Add(openFileBtn);
             panelMenu.Dock = DockStyle.Top;
@@ -413,11 +397,21 @@
             endTimeTextBox.TabIndex = 21;
             endTimeTextBox.Text = "";
             // 
+            // panelStartTime
+            // 
+            panelStartTime.Controls.Add(startTimeTextBox);
+            panelStartTime.Location = new Point(12, 292);
+            panelStartTime.Name = "panelStartTime";
+            panelStartTime.Padding = new Padding(3);
+            panelStartTime.Size = new Size(73, 22);
+            panelStartTime.TabIndex = 22;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(559, 391);
+            Controls.Add(panelStartTime);
             Controls.Add(endTimeTextBox);
             Controls.Add(updateBtn);
             Controls.Add(pinkBtn);
@@ -431,15 +425,16 @@
             Controls.Add(dltRowBtn);
             Controls.Add(addRowBtn);
             Controls.Add(contentTextBox);
-            Controls.Add(startTimeTextBox);
             Controls.Add(extractBtn);
             Controls.Add(panelMenu);
             Controls.Add(dataGridView);
             MinimumSize = new Size(575, 230);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             panelMenu.ResumeLayout(false);
+            panelStartTime.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -461,12 +456,12 @@
         private Button pinkBtn;
         private Button openFileBtn;
         private Button saveBtn;
-        private Button syncBtn;
         private Button closeWindowBtn;
         private Button maxBtn;
         private Button minBtn;
         private Panel panelMenu;
         private Button updateBtn;
         private RichTextBox endTimeTextBox;
+        private Panel panelStartTime;
     }
 }

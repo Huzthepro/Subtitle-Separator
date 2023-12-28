@@ -65,7 +65,7 @@ namespace Subtitle_Handler
                 SubtitleList.Add(subtitle);
             }
         }
-   
+
 
         ///////////////////////////////////////////////////////    v v v   Fill DataGridView  v v v   ///////////////////////////////////////////////////////
         public void FillDataGridView()
@@ -113,7 +113,7 @@ namespace Subtitle_Handler
             dataGridView.Columns["No"].Width = 35;
             dataGridView.Columns["No"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView.Columns["Time"].Width = 60;
-            dataGridView.Columns["Content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; 
+            dataGridView.Columns["Content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         ///////////////////////////////////////////////////////    v v v   Row Clicked  v v v   ///////////////////////////////////////////////////////
@@ -264,7 +264,7 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////                            ///////////////////////////////////////////////////////
 
         private void saveBtn_Click(object sender, EventArgs e)
-        {  
+        {
             using TextWriter tw = new StreamWriter($"Save.srt");
             Save(tw, null);
         }
@@ -372,12 +372,24 @@ namespace Subtitle_Handler
             }
         }
 
-       
 
-        //End of the class
-    }
 
-    //Incoming Subtitle Class
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Customize the appearance of the panelStartTime (border and border radius)
+            panelStartTime.BackColor = Color.White;
+            panelStartTime.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelStartTime.Width, panelStartTime.Height, 10, 10));
+
+            // Bring the panel to the front
+            panelStartTime.BringToFront();
+        }
+
+        [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+    }//End of the class Form1 : Form
+
+
     public class Subtitle
     {
         public int SubNumber;
