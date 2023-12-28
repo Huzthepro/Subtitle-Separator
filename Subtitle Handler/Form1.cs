@@ -32,8 +32,10 @@ namespace Subtitle_Handler
             };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                SubtitleList.Clear();
                 string input = File.ReadAllText(ofd.FileName);
+
+                //If new file is opened clear the list
+                SubtitleList.Clear();
                 FillSubtitleList(input);
                 FillDataGridView();
                 DesignDataGridView();
@@ -54,6 +56,7 @@ namespace Subtitle_Handler
                     SubStartTime = match.Groups["StartTime"].Value,
                     SubEndTime = match.Groups["EndTime"].Value,
                     SubContent = match.Groups["Content"].Value,
+                    //Only save files have color line in them
                     SubColorName = match.Groups["SubColor"].Success
                         ? GetColorConstant(match.Groups["SubColor"].Value)
                         : GlobalColors.NoColor
@@ -62,31 +65,11 @@ namespace Subtitle_Handler
                 SubtitleList.Add(subtitle);
             }
         }
-        private string GetColorConstant(string colorName)
-        {
-            // Use reflection to get the value of the constant in GlobalColors
-            var field = typeof(GlobalColors).GetField(colorName);
-            if (field != null)
-            {
-                return (string)field.GetValue(null);
-            }
-
-            return GlobalColors.NoColor;
-        }
-
-        ///////////////////////////////////////////////////////    v v v   String to Int[]  v v v   ///////////////////////////////////////////////////////
-        private int[] ParseColor(string colorString)
-        {
-            // Implement the logic to parse the color string into an int array
-            // For example, you can use Split and Select to convert the string into an array of integers
-            return colorString.Split(',').Select(s => int.Parse(s.Trim())).ToArray();
-        }
-
+   
 
         ///////////////////////////////////////////////////////    v v v   Fill DataGridView  v v v   ///////////////////////////////////////////////////////
         public void FillDataGridView()
         {
-
             DataTable dataTable = new();
             dataTable.Columns.Add("No", typeof(int));
             dataTable.Columns.Add("Time", typeof(string));
@@ -94,6 +77,7 @@ namespace Subtitle_Handler
 
             //Only thing matter for sorting is the time
             SubtitleList = [.. SubtitleList.OrderBy(o => o.SubStartTime)];
+
             for (int i = 0; i < SubtitleList.Count; i++)
             {
                 SubtitleList[i].SubNumber = i + 1;
@@ -118,7 +102,6 @@ namespace Subtitle_Handler
                 else
                 {
                     // Handle the case when the color name is not found in the dictionary
-                    // For example, set a default color
                     dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.White;
                 }
             }
@@ -130,7 +113,7 @@ namespace Subtitle_Handler
             dataGridView.Columns["No"].Width = 35;
             dataGridView.Columns["No"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView.Columns["Time"].Width = 60;
-            dataGridView.Columns["Content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // Third column 40px
+            dataGridView.Columns["Content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; 
         }
 
         ///////////////////////////////////////////////////////    v v v   Row Clicked  v v v   ///////////////////////////////////////////////////////
@@ -164,27 +147,13 @@ namespace Subtitle_Handler
             }
         }
 
-        ///////////////////////////////////////////////////////    v v v   TextBox to DataGridView  v v v   ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////    v v v   TextBox to SubtitleList  v v v   ///////////////////////////////////////////////////////
         public void TextBoxToSubtitleList(int rowNumber, string? colorName)
         {
             if (colorName != null) SubtitleList[rowNumber].SubColorName = colorName;
             SubtitleList[rowNumber].SubContent = contentTextBox.Text;
             SubtitleList[rowNumber].SubStartTime = startTimeTextBox.Text;
             SubtitleList[rowNumber].SubEndTime = endTimeTextBox.Text;
-        }
-
-        ///////////////////////////////////////////////////////    v v v   Time Converter  v v v   ///////////////////////////////////////////////////////
-        public void TimeConventer(string? time)
-        {
-            string input = time;
-            string pattern = @"(?<StartHour>\d+):(?<StartMinute>\d+):(?<StartSecond>\d+),(?<StartMilSecond>\d+) --> (?<EndHour>\d+):(?<EndMinute>\d+):(?<EndSecond>\d+),(?<EndMilSecond>\d+)";
-            MatchCollection matches = Regex.Matches(input, pattern);
-            foreach (Match match in matches.Cast<Match>())
-            {
-                string subSureStart = match.Groups["sure1"].Value + match.Groups["sure2"].Value + match.Groups["sure3"].Value + match.Groups["sure4"].Value;
-                string subSureEnd = match.Groups["sure5"].Value + match.Groups["sure6"].Value + match.Groups["sure7"].Value + match.Groups["sure8"].Value;
-
-            }
         }
 
         ///////////////////////////////////////////////////////    v v v   Next Liner  v v v   ///////////////////////////////////////////////////////
@@ -212,10 +181,13 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   Add Row  v v v   ///////////////////////////////////////////////////////
         private void addRowBtn_Click(object sender, EventArgs e)
         {
-            int rowNumber = dataGridView.SelectedRows[0].Index;
-            AddRow(rowNumber);
-            FillDataGridView();
-            NextLine(rowNumber);
+            if (dataGridView.SelectedRows.Count > 0)
+            {
+                int rowNumber = dataGridView.SelectedRows[0].Index;
+                AddRow(rowNumber);
+                FillDataGridView();
+                NextLine(rowNumber);
+            }
         }
 
         public void AddRow(int rowNumber)
@@ -226,13 +198,27 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   Delete Row  v v v   ///////////////////////////////////////////////////////
         private void dltRowBtn_Click(object sender, EventArgs e)
         {
-            int rowNumber = dataGridView.SelectedRows[0].Index;
-            SubtitleList.RemoveAt(rowNumber);
-            FillDataGridView();
-            NextLine(rowNumber - 1);
+            if (dataGridView.SelectedRows.Count > 0)
+            {
+                int rowNumber = dataGridView.SelectedRows[0].Index;
+                SubtitleList.RemoveAt(rowNumber);
+                FillDataGridView();
+                NextLine(rowNumber - 1);
+            }
         }
 
+        ///////////////////////////////////////////////////////    v v v   String to GlobalColors.Color  v v v   ///////////////////////////////////////////////////////
+        private string GetColorConstant(string colorName)
+        {
+            // Use reflection to get the value of the constant in GlobalColors
+            var field = typeof(GlobalColors).GetField(colorName);
+            if (field != null)
+            {
+                return field.GetValue(null) as string;
+            }
 
+            return GlobalColors.NoColor;
+        }
 
         ///////////////////////////////////////////////////////    v v v   Update Buttons  v v v   ///////////////////////////////////////////////////////
         private void updateBtn_Click(object sender, EventArgs e)
@@ -278,8 +264,7 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////                            ///////////////////////////////////////////////////////
 
         private void saveBtn_Click(object sender, EventArgs e)
-        {
-            
+        {  
             using TextWriter tw = new StreamWriter($"Save.srt");
             Save(tw, null);
         }
@@ -377,16 +362,13 @@ namespace Subtitle_Handler
                 row.DefaultCellStyle.SelectionForeColor = Color.FromArgb(fontColor.R * 5 / 6, fontColor.G * 5 / 6, fontColor.B * 5 / 6);
 
                 //IF YOU WANT TO DRAW A BORDER AROUND THE SELECTED ROW
-                //int penWidth = 4;
+                //int penWidth = 2;
                 //pen.Width = penWidth;
-
                 //int x = e.RowBounds.Left + (penWidth / 2);
-                //int y = e.RowBounds.Top + (penWidth / 2)-2;
+                //int y = e.RowBounds.Top + (penWidth / 2) - 2;
                 //int width = e.RowBounds.Width - penWidth;
-                //int height = e.RowBounds.Height - penWidth+3;
+                //int height = e.RowBounds.Height - penWidth + 3;
                 //e.Graphics.DrawRectangle(pen, x, y, width, height);
-
-
             }
         }
 
