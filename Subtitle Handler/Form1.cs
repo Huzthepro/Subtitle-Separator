@@ -43,7 +43,7 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   .SRT to SubtitleList With Regex  v v v   ///////////////////////////////////////////////////////
         private void FillSubtitleList(string input)
         {
-            string pattern = @"(?<No>\d+)\s*(?:(?<SubColor>\d+,\s*\d+,\s*\d+,\s*\d+)\s*)?(?<StartTime>(\d+):(\d+):(\d+),(\d+))\s*-->\s*(?<EndTime>(\d+):(\d+):(\d+),(\d+))\s*[\r\n](?<Content>([^\r\n]+\r?\n)+(?=(\r?\n)?))";
+            string pattern = @"(?<No>\d+)\s*(?:(?<SubColor>\w+)\s*)?(?<StartTime>(\d+):(\d+):(\d+),(\d+))\s*-->\s*(?<EndTime>(\d+):(\d+):(\d+),(\d+))\s*[\r\n](?<Content>([^\r\n]+\r?\n)+(?=(\r?\n)?))";
             MatchCollection matches = Regex.Matches(input, pattern);
 
             foreach (Match match in matches.Cast<Match>())
@@ -54,11 +54,24 @@ namespace Subtitle_Handler
                     SubStartTime = match.Groups["StartTime"].Value,
                     SubEndTime = match.Groups["EndTime"].Value,
                     SubContent = match.Groups["Content"].Value,
-                    SubColorName = match.Groups["SubColor"].Success ? match.Groups["SubColor"].Value : "NoColor"
+                    SubColorName = match.Groups["SubColor"].Success
+                        ? GetColorConstant(match.Groups["SubColor"].Value)
+                        : GlobalColors.NoColor
                 };
 
                 SubtitleList.Add(subtitle);
             }
+        }
+        private string GetColorConstant(string colorName)
+        {
+            // Use reflection to get the value of the constant in GlobalColors
+            var field = typeof(GlobalColors).GetField(colorName);
+            if (field != null)
+            {
+                return (string)field.GetValue(null);
+            }
+
+            return GlobalColors.NoColor;
         }
 
         ///////////////////////////////////////////////////////    v v v   String to Int[]  v v v   ///////////////////////////////////////////////////////
@@ -97,9 +110,17 @@ namespace Subtitle_Handler
             for (int i = 0; i < SubtitleList.Count; i++)
             {
                 string colorName = SubtitleList[i].SubColorName;
-                int[] colorArray = GlobalColors.GetColorArray(colorName);
-                dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(colorArray[0], colorArray[1], colorArray[2], colorArray[3]);
 
+                if (GlobalColors.ColorDictionary.TryGetValue(colorName, out var colorArray))
+                {
+                    dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(colorArray[0], colorArray[1], colorArray[2], colorArray[3]);
+                }
+                else
+                {
+                    // Handle the case when the color name is not found in the dictionary
+                    // For example, set a default color
+                    dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.White;
+                }
             }
         }
         ///////////////////////////////////////////////////////    v v v   Design DataGridView  v v v   ///////////////////////////////////////////////////////
