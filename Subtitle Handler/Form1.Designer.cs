@@ -410,6 +410,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Lavender;
             ClientSize = new Size(559, 391);
             Controls.Add(panelStartTime);
             Controls.Add(endTimeTextBox);
