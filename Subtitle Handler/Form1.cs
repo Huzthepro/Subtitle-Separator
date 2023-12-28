@@ -274,13 +274,13 @@ namespace Subtitle_Handler
             foreach (var colorProperty in typeof(GlobalColors).GetFields())
             {
                 var colorName = colorProperty.Name;
-                using TextWriter tw = new StreamWriter($"{colorName}.srt");
-                Save(tw, colorName);
+                var subtitlesForColor = SubtitleList.Where(sub => sub.SubColorName == colorName).ToList();
+                if (subtitlesForColor.Any())
+                {
+                    using TextWriter tw = new StreamWriter($"{colorName}.srt");
+                    Save(tw, colorName);
+                }
             }
-            using TextWriter twSave = new StreamWriter($"Save.srt");
-            Save(twSave, null);
-            using TextWriter twAll = new StreamWriter($"All.srt");
-            Save(twAll, null);
         }
 
         public void Save(TextWriter tw, string colorFilter)
