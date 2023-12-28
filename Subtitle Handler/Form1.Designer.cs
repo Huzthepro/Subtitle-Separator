@@ -402,13 +402,13 @@
             // 
             updateBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             updateBtn.BackColor = Color.LightSteelBlue;
-            updateBtn.FlatAppearance.BorderColor = Color.CornflowerBlue;
-            updateBtn.FlatAppearance.BorderSize = 2;
-            updateBtn.FlatAppearance.MouseDownBackColor = Color.SkyBlue;
+            updateBtn.FlatAppearance.BorderColor = Color.Gray;
+            updateBtn.FlatAppearance.BorderSize = 0;
+            updateBtn.FlatAppearance.MouseDownBackColor = Color.LightSkyBlue;
             updateBtn.FlatAppearance.MouseOverBackColor = Color.LightSkyBlue;
             updateBtn.FlatStyle = FlatStyle.Flat;
             updateBtn.Font = new Font("Segoe UI", 9F);
-            updateBtn.ForeColor = Color.RoyalBlue;
+            updateBtn.ForeColor = Color.FromArgb(64, 64, 64);
             updateBtn.Location = new Point(277, 355);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(75, 28);
