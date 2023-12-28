@@ -111,7 +111,7 @@ namespace Subtitle_Handler
         public void DesignDataGridView()
         {
             // Set the width for each column
-            dataGridView.Columns["No"].Width = 35;
+            dataGridView.Columns["No"].Width = 37;
             dataGridView.Columns["No"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView.Columns["Time"].Width = 60;
             dataGridView.Columns["Content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -379,15 +379,14 @@ namespace Subtitle_Handler
         private void Form1_Load(object sender, EventArgs e)
         {
             // Customize the appearance of the panelStartTime (border and border radius)
-            panelStartTime.BackColor = Color.White;
             panelStartTime.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelStartTime.Width, panelStartTime.Height, 10, 10));
-
-            // Bring the panel to the front
-            panelStartTime.BringToFront();
+            panelEndTime.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelStartTime.Width, panelStartTime.Height, 10, 10));
         }
 
         [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+
+      
     }//End of the class Form1 : Form
 
 
