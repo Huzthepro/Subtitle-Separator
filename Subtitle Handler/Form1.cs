@@ -155,6 +155,7 @@ namespace Subtitle_Handler
         ///////////////////////////////////////////////////////    v v v   TextBox to SubtitleList  v v v   ///////////////////////////////////////////////////////
         public void TextBoxToSubtitleList(int rowNumber, string? colorName)
         {
+            if(colorName == SubtitleList[rowNumber].SubColorName) colorName = GlobalColors.NoColor;     
             if (colorName != null) SubtitleList[rowNumber].SubColorName = colorName;
             SubtitleList[rowNumber].SubContent = contentTextBox.Text;
             SubtitleList[rowNumber].SubStartTime = startTimeTextBox.Text;
