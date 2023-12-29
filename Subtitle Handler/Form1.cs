@@ -68,7 +68,6 @@ namespace Subtitle_Handler
 
                 SubtitleList.Add(subtitle);
             }
-            Debug.WriteLine(SubtitleList[0].SubStartTime);
         }
 
 
@@ -271,8 +270,23 @@ namespace Subtitle_Handler
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            using TextWriter tw = new StreamWriter($"Save.srt");
-            Save(tw, null);
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Subtitle Files (*.srt)|*.srt|All Files (*.*)|*.*";
+                saveFileDialog.Title = "Save Subtitle File";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = saveFileDialog.FileName;
+
+                    using (TextWriter tw = new StreamWriter(fileName))
+                    {
+                        Save(tw, null);
+                    }
+
+                    MessageBox.Show("File saved successfully!");
+                }
+            }
         }
 
         private void extractBtn_Click(object sender, EventArgs e)
