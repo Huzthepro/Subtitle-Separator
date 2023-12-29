@@ -114,7 +114,6 @@
             // 
             // contentTextBox
             // 
-            contentTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             contentTextBox.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
             contentTextBox.ForeColor = Color.FromArgb(64, 64, 64);
             contentTextBox.Location = new Point(91, 288);

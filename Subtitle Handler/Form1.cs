@@ -291,7 +291,7 @@ namespace Subtitle_Handler
 
         private void extractBtn_Click(object sender, EventArgs e)
         {
-            string userInput = GetUserInput($"Enter the Movie name");
+            string userInput = GetUserInput("Extract Subtitle","Subtitles will be seperated by color and saved one by one.\nEnter the movie name:");
             if (!string.IsNullOrEmpty(userInput))
             {
                     foreach (var colorProperty in typeof(GlobalColors).GetFields())
@@ -311,25 +311,53 @@ namespace Subtitle_Handler
                 }
             }
         }
-        private string GetUserInput(string prompt)
+        private string GetUserInput(string name, string prompt)
         {
             Form promptForm = new Form()
             {
-                Width = 500,
-                Height = 150,
+                Width = 300,
+                Height = 185,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
-                Text = prompt,
+                Text = name,
                 StartPosition = FormStartPosition.CenterScreen
             };
-            Label lbl = new Label() { Left = 50, Top = 20, Text = prompt };
-            TextBox txtBox = new TextBox() { Left = 50, Top = 50, Width = 300 };
-            Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
-            confirmation.Click += (sender, e) => { promptForm.Close(); };
-            promptForm.Controls.Add(lbl);
-            promptForm.Controls.Add(txtBox);
-            promptForm.Controls.Add(confirmation);
 
-            return promptForm.ShowDialog() == DialogResult.OK ? txtBox.Text : "";
+            TableLayoutPanel panel = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                Padding = new Padding(10)
+            };
+
+            Label lblPrompt = new Label
+            {
+                Text = prompt,
+                Dock = DockStyle.Top,
+                Height = 50, // Set the desired height
+            };
+
+            TextBox txtInput = new TextBox
+            {
+                Dock = DockStyle.Top,
+                Width = 100,
+            };
+
+            Button btnOk = new Button
+            {
+                Text = "OK",
+                Height = 30, // Set the desired height
+                Margin = new Padding(0, 10, 0, 0),
+                DialogResult = DialogResult.OK
+            };
+
+            panel.Controls.Add(lblPrompt, 0, 0);
+            panel.Controls.Add(txtInput, 0, 2);
+            panel.Controls.Add(btnOk, 0, 3);
+
+            btnOk.Click += (sender, e) => { promptForm.Close(); };
+
+            promptForm.Controls.Add(panel);
+
+            return promptForm.ShowDialog() == DialogResult.OK ? txtInput.Text : "";
         }
 
         public void Save(TextWriter tw, string colorFilter)
