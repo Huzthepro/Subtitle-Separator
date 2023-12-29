@@ -291,16 +291,45 @@ namespace Subtitle_Handler
 
         private void extractBtn_Click(object sender, EventArgs e)
         {
-            foreach (var colorProperty in typeof(GlobalColors).GetFields())
+            string userInput = GetUserInput($"Enter the Movie name");
+            if (!string.IsNullOrEmpty(userInput))
             {
-                var colorName = colorProperty.Name;
-                var subtitlesForColor = SubtitleList.Where(sub => sub.SubColorName == colorName).ToList();
-                if (subtitlesForColor.Any())
+                    foreach (var colorProperty in typeof(GlobalColors).GetFields())
                 {
-                    using TextWriter tw = new StreamWriter($"{colorName}.srt");
-                    Save(tw, colorName);
+                    var colorName = colorProperty.Name;
+                    var subtitlesForColor = SubtitleList.Where(sub => sub.SubColorName == colorName).ToList();
+                    if (subtitlesForColor.Any())
+                    {
+
+                            using (TextWriter tw = new StreamWriter($"{userInput}-{colorName}.srt"))
+                            {
+                                Save(tw, colorName);
+                            }
+
+                            MessageBox.Show($"{colorName} subtitles saved successfully as: {userInput}-{colorName}.srt!");
+                    }
                 }
             }
+        }
+        private string GetUserInput(string prompt)
+        {
+            Form promptForm = new Form()
+            {
+                Width = 500,
+                Height = 150,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = prompt,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            Label lbl = new Label() { Left = 50, Top = 20, Text = prompt };
+            TextBox txtBox = new TextBox() { Left = 50, Top = 50, Width = 300 };
+            Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
+            confirmation.Click += (sender, e) => { promptForm.Close(); };
+            promptForm.Controls.Add(lbl);
+            promptForm.Controls.Add(txtBox);
+            promptForm.Controls.Add(confirmation);
+
+            return promptForm.ShowDialog() == DialogResult.OK ? txtBox.Text : "";
         }
 
         public void Save(TextWriter tw, string colorFilter)
