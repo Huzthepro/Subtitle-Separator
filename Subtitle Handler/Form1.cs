@@ -270,6 +270,7 @@ namespace Subtitle_Handler
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
+            MessageBox.Show($"This will save your current progress in this app as a .srt file. \n You can only use this file with this app. You can't use it with Movies");
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Filter = "Subtitle Files (*.srt)|*.srt|All Files (*.*)|*.*";
