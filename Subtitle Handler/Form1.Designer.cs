@@ -77,7 +77,7 @@
             dataGridView.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGridView.RowHeadersVisible = false;
             dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView.Size = new Size(557, 223);
+            dataGridView.Size = new Size(650, 223);
             dataGridView.TabIndex = 0;
             dataGridView.RowPostPaint += dataGridView_RowPostPaint;
             dataGridView.SelectionChanged += dataGridView_SelectionChanged;
@@ -102,7 +102,7 @@
             extractBtn.ForeColor = Color.FromArgb(64, 64, 64);
             extractBtn.Image = Properties.Resources.separate;
             extractBtn.ImageAlign = ContentAlignment.TopCenter;
-            extractBtn.Location = new Point(516, 327);
+            extractBtn.Location = new Point(609, 327);
             extractBtn.Margin = new Padding(0);
             extractBtn.Name = "extractBtn";
             extractBtn.Size = new Size(56, 55);
@@ -114,11 +114,12 @@
             // 
             // contentTextBox
             // 
+            contentTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             contentTextBox.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
             contentTextBox.ForeColor = Color.FromArgb(64, 64, 64);
-            contentTextBox.Location = new Point(91, 288);
+            contentTextBox.Location = new Point(104, 288);
             contentTextBox.Name = "contentTextBox";
-            contentTextBox.Size = new Size(280, 62);
+            contentTextBox.Size = new Size(333, 62);
             contentTextBox.TabIndex = 9;
             contentTextBox.Text = "";
             // 
@@ -132,7 +133,7 @@
             addRowBtn.ForeColor = SystemColors.ButtonFace;
             addRowBtn.Image = Properties.Resources.add_row_24;
             addRowBtn.ImageAlign = ContentAlignment.BottomRight;
-            addRowBtn.Location = new Point(502, 282);
+            addRowBtn.Location = new Point(595, 282);
             addRowBtn.Margin = new Padding(0);
             addRowBtn.Name = "addRowBtn";
             addRowBtn.Size = new Size(30, 25);
@@ -152,7 +153,7 @@
             dltRowBtn.ForeColor = SystemColors.ButtonFace;
             dltRowBtn.Image = Properties.Resources.dlt_row_24;
             dltRowBtn.ImageAlign = ContentAlignment.BottomRight;
-            dltRowBtn.Location = new Point(538, 284);
+            dltRowBtn.Location = new Point(631, 284);
             dltRowBtn.Margin = new Padding(0);
             dltRowBtn.Name = "dltRowBtn";
             dltRowBtn.Size = new Size(30, 25);
@@ -171,7 +172,7 @@
             lightBlueBtn.FlatStyle = FlatStyle.Flat;
             lightBlueBtn.ForeColor = SystemColors.ButtonFace;
             lightBlueBtn.Image = Properties.Resources.light_blue_man;
-            lightBlueBtn.Location = new Point(403, 288);
+            lightBlueBtn.Location = new Point(489, 288);
             lightBlueBtn.Margin = new Padding(0);
             lightBlueBtn.Name = "lightBlueBtn";
             lightBlueBtn.Size = new Size(29, 29);
@@ -189,7 +190,7 @@
             blueBtn.FlatStyle = FlatStyle.Flat;
             blueBtn.ForeColor = SystemColors.ButtonFace;
             blueBtn.Image = Properties.Resources.blue_man;
-            blueBtn.Location = new Point(374, 288);
+            blueBtn.Location = new Point(460, 288);
             blueBtn.Margin = new Padding(0);
             blueBtn.Name = "blueBtn";
             blueBtn.Size = new Size(29, 29);
@@ -207,7 +208,7 @@
             greenBtn.FlatStyle = FlatStyle.Flat;
             greenBtn.ForeColor = SystemColors.ButtonFace;
             greenBtn.Image = Properties.Resources.green_man;
-            greenBtn.Location = new Point(432, 288);
+            greenBtn.Location = new Point(518, 288);
             greenBtn.Margin = new Padding(0);
             greenBtn.Name = "greenBtn";
             greenBtn.Size = new Size(29, 29);
@@ -225,7 +226,7 @@
             yellowBtn.FlatStyle = FlatStyle.Flat;
             yellowBtn.ForeColor = SystemColors.ButtonFace;
             yellowBtn.Image = Properties.Resources.yellow_man;
-            yellowBtn.Location = new Point(461, 288);
+            yellowBtn.Location = new Point(547, 288);
             yellowBtn.Margin = new Padding(0);
             yellowBtn.Name = "yellowBtn";
             yellowBtn.Size = new Size(29, 29);
@@ -243,7 +244,7 @@
             brownBtn.FlatStyle = FlatStyle.Flat;
             brownBtn.ForeColor = SystemColors.ButtonFace;
             brownBtn.Image = Properties.Resources.brown_woman;
-            brownBtn.Location = new Point(432, 321);
+            brownBtn.Location = new Point(518, 321);
             brownBtn.Margin = new Padding(0);
             brownBtn.Name = "brownBtn";
             brownBtn.Size = new Size(29, 29);
@@ -261,7 +262,7 @@
             orangeBtn.FlatStyle = FlatStyle.Flat;
             orangeBtn.ForeColor = SystemColors.ButtonFace;
             orangeBtn.Image = Properties.Resources.orange_woman;
-            orangeBtn.Location = new Point(461, 321);
+            orangeBtn.Location = new Point(547, 321);
             orangeBtn.Margin = new Padding(0);
             orangeBtn.Name = "orangeBtn";
             orangeBtn.Size = new Size(29, 29);
@@ -279,7 +280,7 @@
             purpleBtn.FlatStyle = FlatStyle.Flat;
             purpleBtn.ForeColor = SystemColors.ButtonFace;
             purpleBtn.Image = Properties.Resources.purple_woman;
-            purpleBtn.Location = new Point(374, 321);
+            purpleBtn.Location = new Point(460, 321);
             purpleBtn.Margin = new Padding(0);
             purpleBtn.Name = "purpleBtn";
             purpleBtn.Size = new Size(29, 29);
@@ -297,7 +298,7 @@
             pinkBtn.FlatStyle = FlatStyle.Flat;
             pinkBtn.ForeColor = SystemColors.ButtonFace;
             pinkBtn.Image = Properties.Resources.red_woman;
-            pinkBtn.Location = new Point(403, 321);
+            pinkBtn.Location = new Point(489, 321);
             pinkBtn.Margin = new Padding(0);
             pinkBtn.Name = "pinkBtn";
             pinkBtn.Size = new Size(29, 29);
@@ -317,7 +318,7 @@
             updateBtn.FlatStyle = FlatStyle.Flat;
             updateBtn.Font = new Font("Segoe UI", 9F);
             updateBtn.ForeColor = Color.FromArgb(64, 64, 64);
-            updateBtn.Location = new Point(296, 356);
+            updateBtn.Location = new Point(362, 355);
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(75, 28);
             updateBtn.TabIndex = 20;
@@ -367,7 +368,7 @@
             panelMenu.Dock = DockStyle.Top;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(581, 47);
+            panelMenu.Size = new Size(674, 47);
             panelMenu.TabIndex = 1;
             panelMenu.MouseDown += panelMenu_MouseDown;
             // 
@@ -378,7 +379,7 @@
             minBtn.FlatStyle = FlatStyle.Flat;
             minBtn.ForeColor = SystemColors.ButtonFace;
             minBtn.Image = Properties.Resources.min_24;
-            minBtn.Location = new Point(501, 4);
+            minBtn.Location = new Point(594, 4);
             minBtn.Margin = new Padding(0);
             minBtn.Name = "minBtn";
             minBtn.Size = new Size(19, 20);
@@ -395,7 +396,7 @@
             maxBtn.FlatStyle = FlatStyle.Flat;
             maxBtn.ForeColor = SystemColors.ButtonFace;
             maxBtn.Image = Properties.Resources.max_24;
-            maxBtn.Location = new Point(523, 4);
+            maxBtn.Location = new Point(616, 4);
             maxBtn.Margin = new Padding(0);
             maxBtn.Name = "maxBtn";
             maxBtn.Size = new Size(19, 20);
@@ -412,7 +413,7 @@
             closeWindowBtn.FlatStyle = FlatStyle.Flat;
             closeWindowBtn.ForeColor = SystemColors.ButtonFace;
             closeWindowBtn.Image = Properties.Resources.close_24;
-            closeWindowBtn.Location = new Point(545, 4);
+            closeWindowBtn.Location = new Point(638, 4);
             closeWindowBtn.Margin = new Padding(0);
             closeWindowBtn.Name = "closeWindowBtn";
             closeWindowBtn.Size = new Size(19, 20);
@@ -461,7 +462,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Lavender;
-            ClientSize = new Size(581, 391);
+            ClientSize = new Size(674, 391);
             Controls.Add(panelEndTime);
             Controls.Add(panelStartTime);
             Controls.Add(updateBtn);
