@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -23,9 +24,26 @@ namespace Subtitle_Handler
 
             //When maximized the form will not cover the taskbar
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-
+            InitializeUI();
         }
-       
+        private void InitializeUI()
+        {
+            // Set form properties
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.BackColor = Color.White;
+
+            // Create rounded region
+            GraphicsPath path = new GraphicsPath();
+            int radius = 20; // Adjust the radius as needed
+
+            path.AddArc(0, 0, radius * 2, radius * 2, 180, 90);
+            path.AddArc(this.Width - (radius * 2), 0, radius * 2, radius * 2, 270, 90);
+            path.AddArc(this.Width - (radius * 2), this.Height - (radius * 2), radius * 2, radius * 2, 0, 90);
+            path.AddArc(0, this.Height - (radius * 2), radius * 2, radius * 2, 90, 90);
+
+            this.Region = new Region(path);
+        }
+
 
         ///////////////////////////////////////////////////////    v v v   Open Files  v v v   ///////////////////////////////////////////////////////
         private void openFileBtn_Click(object sender, EventArgs e)
@@ -483,7 +501,6 @@ namespace Subtitle_Handler
 
       
     }//End of the class Form1 : Form
-
 
     public class Subtitle
     {
