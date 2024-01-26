@@ -2,7 +2,7 @@
   <br>
   <img src="/SubtitleSeparator.png" alt="Markdownify" width="64">
   <br>
-  Subtıtle Separator
+  Subtitle Separator
   <br>
 </h1>
 
