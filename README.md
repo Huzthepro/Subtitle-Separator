@@ -1,3 +1,15 @@
+<h1 align="center">
+  <br>
+  <img src="/SubtitleSeparator.png" alt="Markdownify" width="64">
+  <br>
+  Subtıtle Separator
+  <br>
+</h1>
+
+<h4 align="center">Separating Subtitles for Voice Actors</h4>
+
+
+
 Subtitle Seperator
 Description
 This C# project is designed to streamline the process of separating .srt files for voice artists. If you work with subtitles and need a convenient way to split them for different voice actors, this tool is here to help.
