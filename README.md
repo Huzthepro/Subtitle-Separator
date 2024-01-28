@@ -1,56 +1,57 @@
 <h1 align="center">
   <br>
-  <img src="/SubtitleSeparator.png" alt="Markdownify" width="64">
+  <img src="/SubtitleSeparator.png" alt="Subtitle Separator" width="64">
   <br>
   Subtitle Separator
   <br>
 </h1>
 
+<h4 align="center">Enhancing Subtitle Separation for Voice Actors</h4>
 
-<h4 align="center" >Separating Subtitles for Voice Actors</h4>
 <p align="center">
-  <img  alt="HowToUse" src="/SubtitleUse.gif" width=60%>
+  <img alt="How To Use" src="/SubtitleUse.gif" width="60%">
 </p>
 
 <h1 align="center">
   Use Case
 </h1>
 
-<img alt="HowToUse" src="/wrongway.gif" align="right" width=30%>
+<img alt="How To Use" src="/wrongway.gif" align="right" width="30%">
 
-* I build this program on demand of my translator friend who has to translate and separate subtitles to .srt files manually by copy paste the lines so each voice actor can have their own separated lines to perform.
-* With Subtitle Separator it is possible to **tag lines** with colors for different voice actors and have them in **separeted .srt files** with just one click.
-* You can also translate lines very easily or change timing while tagging lines with colors.
+* This program was created in response to a request from a translator friend who manually translated and separated subtitles into .srt files by copying and pasting lines for each voice actor's performance.
+* Subtitle Separator enables you to **tag lines** with colors for different voice actors, effortlessly generating **separate .srt files** with just one click.
+* Conveniently translate lines or adjust timing while tagging lines with colors.
+
 <br>
 <br>
 <h1 align="center">
   Features
 </h1>
 
-<img alt="HowToUse" src="/Features.gif" align="right" width=50%>
+<img alt="Features" src="/Features.gif" align="right" width="50%">
 
-* Both .srt and .txt files can be edited.
-* 8 different colors to tag the lines.
-* Subtitle time can be changed, this will send that line to its correct row.
-* Changing/Translating subtitle content, tagging color, changing time will put you next row automatically.
-* Add row: Dublicate the previous row | Delte row: Deleting selected row and select the next one.
-* You can save your current progress with save button.
-* Extract: Extract option will ask you the movie name, then make srt files you tag with that name and colors.
+* Edit both .srt and .txt files seamlessly.
+* Utilize 8 different colors to tag lines for easy identification.
+* Modify subtitle timing, automatically placing the line in its correct row.
+* Changes to subtitle content, color tagging, or timing adjustments seamlessly transition to the next row.
+* Add row: Duplicate the previous row | Delete row: Remove the selected row and select the next one.
+* Save your progress with the handy save button.
+* Extract: Enter the movie name, and Subtitle Separator will create .srt files with the specified name and colors.
 
 <br>
 <br>
 <h1 align="center">
   Download
 </h1>
-<p >
-  <img  alt="Dowload" align="left"  src="/Download.jpg" width=30%>
+
+<p>
+  <img alt="Download" align="left" src="/Download.jpg" width="30%">
 </p>
 
-<p margin >
+<p margin>
   
-* Click **Code** than **Download**
-* Open the **Demo** folder. 
-* You can start the program with **Subtitle Separator.exe**
-* Save files, Exracted files will be in this **Demo** folder.
+* Click **Code**, then **Download**.
+* Navigate to the **Demo** folder. 
+* Launch the program using **Subtitle Separator.exe**.
+* Saved files and extracted files can be found in the **Demo** folder.
 </p>
-
