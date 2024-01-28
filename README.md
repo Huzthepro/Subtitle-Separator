@@ -42,3 +42,15 @@
 <h1 align="center">
   Download
 </h1>
+<p >
+  <img  alt="Dowload" align="left"  src="/Download.jpg" width=30%>
+</p>
+
+<p margin >
+  
+* Click **Code** than **Download**
+* Open the **Demo** folder. 
+* You can start the program with **Subtitle Separator.exe**
+* Save files, Exracted files will be in this **Demo** folder.
+</p>
+
