@@ -16,9 +16,11 @@
   Use Case
 </h1>
 
+ This program was created in response to a request from a translator friend who manually translated and separated subtitles into .srt files by copying and pasting lines for each voice actor's performance.
+  <br>
 <img alt="How To Use" src="/wrongway.gif" align="right" width="30%">
 
-* This program was created in response to a request from a translator friend who manually translated and separated subtitles into .srt files by copying and pasting lines for each voice actor's performance.
+
 * Subtitle Separator enables you to **tag lines** with colors for different voice actors, effortlessly generating **separate .srt files** with just one click.
 * Conveniently translate lines or adjust timing while tagging lines with colors.
 
@@ -50,8 +52,14 @@
 
 <p margin>
   
-* Click **Code**, then **Download**.
-* Navigate to the **Demo** folder. 
-* Launch the program using **Subtitle Separator.exe**.
-* Saved files and extracted files can be found in the **Demo** folder.
+ Click **Code**, then **Download**.
+ <br>
+ <br>
+ Navigate to the **Demo** folder.
+ <br>
+ <br>
+ Launch the program using **Subtitle Separator.exe**.
+ <br>
+ <br>
+ Saved files and extracted files can be found in the **Demo** folder.
 </p>
